@@ -57,6 +57,9 @@ To fine-tune a GPT2-XL model on the PyTorrent dataset:
 ./sft_xlarge_pytorrent.sh [BASE_PATH] [PORT]
 ```
 
+Results:
+![alt text](/figures/training_plot.png)
+
 ### Knowledge Distillation
 
 To distill knowledge from a fine-tuned GPT2-XL model to a smaller GPT2 model:
