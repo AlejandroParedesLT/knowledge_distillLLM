@@ -1,8 +1,23 @@
-# PyTorrent: Knowledge Distillation Framework for LLMs
+# distillLLM: Knowledge Distillation for LLMs
 
 ## Overview
 
-PyTorrent is a framework for fine-tuning and knowledge distillation of large language models. It supports supervised fine-tuning (SFT) and knowledge distillation (KD) techniques for training models like GPT-2 on Python code datasets.
+We present an application of fine-tuning and knowledge distillation for large language models targeting GPT2. It supports supervised fine-tuning (SFT) and knowledge distillation (KD) techniques for training models like GPT-2 on Python code datasets.
+
+## Dataset
+- Bugnet
+Reference: https://github.com/alexjercan/bug-detection
+- Pytorrent
+Extracted from:
+@misc{bahrami2021pytorrent,
+      title={PyTorrent: A Python Library Corpus for Large-scale Language Models}, 
+      author={Mehdi Bahrami and N. C. Shrikanth and Shade Ruangwan and Lei Liu and Yuji Mizobuchi and Masahiro Fukuyori and Wei-Peng Chen and Kazuki Munakata and Tim Menzies},
+      year={2021},
+      eprint={2110.01710},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      howpublished={https://arxiv.org/abs/2110.01710},
+}
 
 ## Requirements
 
