@@ -1,0 +1,25 @@
+torchrun --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2040 \
+    alejandro_eval.py \
+    --base-path . \
+    --model-path ./checkpoints/gpt2-xlarge \
+    --ckpt-name gpt2-xlarge \
+    --n-gpu 3 \
+    --model-type gpt2 \
+    --data-dir ./processed_data/bugnet_python/prompt/gpt2/ \
+    --data-names bugnet_python \
+    --num-workers 0 \
+    --dev-num -1 \
+    --data-process-workers -1 \
+    --json-data \
+    --eval-batch-size 16 \
+    --max-length 512 \
+    --max-prompt-length 256 \
+    --do-eval \
+    --eval-interval 100 \
+    --log-interval 4 \
+    --mid-log-num 4 \
+    --save ./results/gpt2/eval_main/ \
+    --seed 10 \
+    --deepspeed \
+    --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json \
+    --type eval_main
