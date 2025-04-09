@@ -1,0 +1,194 @@
+gpu-compute7
+Sun Apr  6 10:15:06 PM EDT 2025
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path gpt2-xl --ckpt-name gpt2-xlarge --n-gpu 4 --data-dir ./processed_data/bugnet_python/full/gpt2/ --num-workers 0 --dev-num 1000 --lr 0.00005 --batch-size 2 --eval-batch-size 4 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 4000 --eval-interval 4000 --log-interval 4 --mid-log-num 10 --save ./results/gpt2/train/sft/gpt2-xlarge/ --seed 10 --seed-order 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type lm --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0406 22:15:08.739000 3267730 torch/distributed/run.py:792] 
+W0406 22:15:08.739000 3267730 torch/distributed/run.py:792] *****************************************
+W0406 22:15:08.739000 3267730 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0406 22:15:08.739000 3267730 torch/distributed/run.py:792] *****************************************
+[2025-04-06 22:15:15,035] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-06 22:15:15,035] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-06 22:15:15,040] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-06 22:15:15,041] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+[2025-04-06 22:15:25,998] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 22:15:25,998] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... gpt2-xl
+  ckpt_name .................... gpt2-xlarge
+  model_type ................... gpt2
+  teacher_model_type ........... None
+  n_gpu ........................ 4
+  n_nodes ...................... 1
+  teacher_model_path ........... None
+  teacher_ckpt_name ............ None
+  teacher_model_fp16 ........... False
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... lm
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/gpt2/train/sft/gpt2-xlarge/e10-bs2-lr5e-05-G1-N4-NN1
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 4000
+  eval_interval ................ 4000
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/bugnet_python/full/gpt2/
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 2
+  eval_batch_size .............. 4
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 10
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... False
+  attn_dtype ................... None
+  lr ........................... 5e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... None
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 4
+Probing Dataset
+Probing end. Max data state 1, total length 1693
+1693
+Num LM instances: 1693
+train num 1693
+Probing Dataset
+Probing end. Max data state 1, total length 596
+596
+Num LM instances: 596
+Train iters per epoch 211
+total_iters 2110
+[2025-04-06 22:15:26,887] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 22:15:26,896] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 22:15:26,921] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 22:15:51,657] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 4
+ > number of parameters: 1557611200
+Model load time: 24.975808143615723s
+Optimizer = AdamW
+[2025-04-06 22:15:51,742] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed info: version=0.16.4, git-hash=unknown, git-branch=unknown
+[2025-04-06 22:15:51,742] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 4
+[2025-04-06 22:15:51,759] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 4
+[2025-04-06 22:15:51,806] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 4
+[2025-04-06 22:15:53,303] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2025-04-06 22:15:53,307] [INFO] [logging.py:128:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2025-04-06 22:15:53,307] [INFO] [logging.py:128:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2025-04-06 22:15:53,469] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2025-04-06 22:15:53,482] [INFO] [utils.py:59:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2025-04-06 22:15:53,483] [INFO] [logging.py:128:log_dist] [Rank 0] Creating torch.float32 ZeRO stage 1 optimizer
+[2025-04-06 22:15:53,483] [INFO] [stage_1_and_2.py:149:__init__] Reduce bucket size 500000000
+[2025-04-06 22:15:53,483] [INFO] [stage_1_and_2.py:150:__init__] Allgather bucket size 500000000
+[2025-04-06 22:15:53,484] [INFO] [stage_1_and_2.py:151:__init__] CPU Offload: False
+[2025-04-06 22:15:53,484] [INFO] [stage_1_and_2.py:152:__init__] Round robin gradient partitioning: False
+W0406 22:17:05.212000 3267730 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3267734 closing signal SIGTERM
+W0406 22:17:05.235000 3267730 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3267736 closing signal SIGTERM
+W0406 22:17:05.236000 3267730 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3267737 closing signal SIGTERM
+E0406 22:17:07.021000 3267730 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: -9) local_rank: 1 (pid: 3267735) of binary: /home/users/ap794/final_project_distillLLM/venv/bin/python3
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/venv/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+========================================================
+./finetune.py FAILED
+--------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+--------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-06_22:17:05
+  host      : gpu-compute7.cs.duke.edu.
+  rank      : 1 (local_rank: 1)
+  exitcode  : -9 (pid: 3267735)
+  error_file: <N/A>
+  traceback : Signal 9 (SIGKILL) received by PID 3267735
+========================================================
+slurmstepd: error: Detected 1 oom_kill event in StepId=8342429.2. Some of the step tasks have been OOM Killed.
+srun: error: gpu-compute7: task 0: Out Of Memory

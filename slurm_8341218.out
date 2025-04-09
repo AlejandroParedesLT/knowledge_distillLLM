@@ -1,0 +1,280 @@
+compsci-cluster-fitz-18
+Sun Apr  6 08:14:59 PM EDT 2025
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path ./checkpoints/gpt2-xlarge/ --ckpt-name gpt2-xlarge --n-gpu 4 --data-dir ./processed_data/bugnet_python/full/gpt2/ --num-workers 0 --dev-num 1000 --lr 0.00005 --batch-size 2 --eval-batch-size 4 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 5000 --eval-interval 5000 --log-interval 4 --mid-log-num 10 --save ./results/gpt2/train/sft --seed 10 --seed-order 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type lm --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0406 20:15:02.975000 3023568 torch/distributed/run.py:792] 
+W0406 20:15:02.975000 3023568 torch/distributed/run.py:792] *****************************************
+W0406 20:15:02.975000 3023568 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0406 20:15:02.975000 3023568 torch/distributed/run.py:792] *****************************************
+[2025-04-06 20:15:08,317] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-06 20:15:08,318] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-06 20:15:08,319] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-06 20:15:08,319] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+using world size: 4
+[2025-04-06 20:15:17,825] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 20:15:17,829] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... ./checkpoints/gpt2-xlarge/
+  ckpt_name .................... gpt2-xlarge
+  model_type ................... gpt2
+  teacher_model_type ........... None
+  n_gpu ........................ 4
+  n_nodes ...................... 1
+  teacher_model_path ........... None
+  teacher_ckpt_name ............ None
+  teacher_model_fp16 ........... False
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... lm
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/gpt2/train/sft/e10-bs2-lr5e-05-G1-N4-NN1
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 5000
+  eval_interval ................ 5000
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/bugnet_python/full/gpt2/
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 2
+  eval_batch_size .............. 4
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 10
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... False
+  attn_dtype ................... None
+  lr ........................... 5e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... None
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 4
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank0]:     resolved_file = hf_hub_download(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+[rank0]:     validate_repo_id(arg_value)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+[rank0]:     raise HFValidationError(
+[rank0]: huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-xlarge/'. Use `repo_type` argument if needed.
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 558, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank0]:     tokenizer = get_tokenizer(args)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank0]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
+[rank0]:     tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
+[rank0]:     resolved_config_file = cached_file(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
+[rank0]:     raise EnvironmentError(
+[rank0]: OSError: Incorrect path_or_model_id: './checkpoints/gpt2-xlarge/'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+[2025-04-06 20:15:18,110] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 20:15:18,115] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-06 20:15:18,143] [INFO] [comm.py:658:init_distributed] cdb=None
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank3]:     resolved_file = hf_hub_download(
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+[rank3]:     validate_repo_id(arg_value)
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+[rank3]:     raise HFValidationError(
+[rank3]: huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-xlarge/'. Use `repo_type` argument if needed.
+
+[rank3]: The above exception was the direct cause of the following exception:
+
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 558, in <module>
+[rank3]:     main()
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank3]:     tokenizer = get_tokenizer(args)
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank3]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
+[rank3]:     tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
+[rank3]:     resolved_config_file = cached_file(
+[rank3]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
+[rank3]:     raise EnvironmentError(
+[rank3]: OSError: Incorrect path_or_model_id: './checkpoints/gpt2-xlarge/'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank1]:     resolved_file = hf_hub_download(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+[rank1]:     validate_repo_id(arg_value)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+[rank1]:     raise HFValidationError(
+[rank1]: huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-xlarge/'. Use `repo_type` argument if needed.
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 558, in <module>
+[rank1]:     main()
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank1]:     tokenizer = get_tokenizer(args)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank1]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
+[rank1]:     tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
+[rank1]:     resolved_config_file = cached_file(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
+[rank1]:     raise EnvironmentError(
+[rank1]: OSError: Incorrect path_or_model_id: './checkpoints/gpt2-xlarge/'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank2]:     resolved_file = hf_hub_download(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+[rank2]:     validate_repo_id(arg_value)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+[rank2]:     raise HFValidationError(
+[rank2]: huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-xlarge/'. Use `repo_type` argument if needed.
+
+[rank2]: The above exception was the direct cause of the following exception:
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 558, in <module>
+[rank2]:     main()
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank2]:     tokenizer = get_tokenizer(args)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank2]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
+[rank2]:     tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
+[rank2]:     resolved_config_file = cached_file(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
+[rank2]:     raise EnvironmentError(
+[rank2]: OSError: Incorrect path_or_model_id: './checkpoints/gpt2-xlarge/'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
+[rank0]:[W406 20:15:18.304278931 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0406 20:15:20.175000 3023568 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3023578 closing signal SIGTERM
+E0406 20:15:20.289000 3023568 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 3023575) of binary: /home/users/ap794/final_project_distillLLM/venv/bin/python3
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/venv/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+./finetune.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2025-04-06_20:15:20
+  host      : compsci-cluster-fitz-18.cs.duke.edu.
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 3023576)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2025-04-06_20:15:20
+  host      : compsci-cluster-fitz-18.cs.duke.edu.
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 3023577)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-06_20:15:20
+  host      : compsci-cluster-fitz-18.cs.duke.edu.
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 3023575)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: compsci-cluster-fitz-18: task 0: Exited with exit code 1

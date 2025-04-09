@@ -1,0 +1,6 @@
+checkpoints
+results
+processed_data
+data/*
+__pycache__
+*.sh
