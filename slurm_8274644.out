@@ -1,1069 +1,0 @@
-compsci-cluster-fitz-08
-Sat Mar 22 09:25:16 AM EDT 2025
-Collecting git+https://github.com/t1101675/transformers@minillm
-  Cloning https://github.com/t1101675/transformers (to revision minillm) to /tmp/pip-req-build-vzdpjy_l
-  Running command git clone --filter=blob:none --quiet https://github.com/t1101675/transformers /tmp/pip-req-build-vzdpjy_l
-  Running command git checkout -b minillm --track origin/minillm
-  Switched to a new branch 'minillm'
-  Branch 'minillm' set up to track remote branch 'minillm' from 'origin'.
-  Resolved https://github.com/t1101675/transformers to commit be0435edd0e45f491fbb66fe9fa630d458a2ace6
-  Installing build dependencies: started
-  Installing build dependencies: finished with status 'done'
-  Getting requirements to build wheel: started
-  Getting requirements to build wheel: finished with status 'done'
-  Preparing metadata (pyproject.toml): started
-  Preparing metadata (pyproject.toml): finished with status 'done'
-Requirement already satisfied: safetensors>=0.4.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (0.5.3)
-Requirement already satisfied: numpy>=1.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (2.2.4)
-Requirement already satisfied: pyyaml>=5.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (6.0.2)
-Requirement already satisfied: huggingface-hub<1.0,>=0.23.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (0.29.3)
-Requirement already satisfied: tqdm>=4.27 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (4.67.1)
-Requirement already satisfied: tokenizers<0.21,>=0.20 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (0.20.3)
-Requirement already satisfied: packaging>=20.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (24.2)
-Requirement already satisfied: requests in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (2.32.3)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (3.18.0)
-Requirement already satisfied: regex!=2019.12.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers==4.47.0.dev0) (2024.11.6)
-Requirement already satisfied: fsspec>=2023.5.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.23.2->transformers==4.47.0.dev0) (2024.12.0)
-Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.23.2->transformers==4.47.0.dev0) (4.12.2)
-Requirement already satisfied: certifi>=2017.4.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->transformers==4.47.0.dev0) (2025.1.31)
-Requirement already satisfied: urllib3<3,>=1.21.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->transformers==4.47.0.dev0) (2.3.0)
-Requirement already satisfied: idna<4,>=2.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->transformers==4.47.0.dev0) (3.10)
-Requirement already satisfied: charset-normalizer<4,>=2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->transformers==4.47.0.dev0) (3.4.1)
-Requirement already satisfied: torch in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (2.6.0)
-Requirement already satisfied: triton==3.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (3.2.0)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.4.127)
-Requirement already satisfied: fsspec in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (2024.12.0)
-Requirement already satisfied: jinja2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (3.1.6)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (2.21.5)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.4.127)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (11.6.1.9)
-Requirement already satisfied: typing-extensions>=4.10.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (4.12.2)
-Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (0.6.2)
-Requirement already satisfied: networkx in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (3.4.2)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.4.127)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (10.3.5.147)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (9.1.0.70)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.4.127)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.3.1.170)
-Requirement already satisfied: sympy==1.13.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (1.13.1)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (11.2.1.3)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.4.127)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (3.18.0)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch) (12.4.5.8)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from sympy==1.13.1->torch) (1.3.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
-Requirement already satisfied: deepspeed in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (0.16.4)
-Requirement already satisfied: einops in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (0.8.1)
-Requirement already satisfied: hjson in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (3.1.0)
-Requirement already satisfied: msgpack in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (1.1.0)
-Requirement already satisfied: ninja in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (1.11.1.3)
-Requirement already satisfied: numpy in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (2.2.4)
-Requirement already satisfied: nvidia-ml-py in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (12.570.86)
-Requirement already satisfied: packaging>=20.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (24.2)
-Requirement already satisfied: psutil in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (7.0.0)
-Requirement already satisfied: py-cpuinfo in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (9.0.0)
-Requirement already satisfied: pydantic>=2.0.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (2.10.6)
-Requirement already satisfied: torch in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (2.6.0)
-Requirement already satisfied: tqdm in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from deepspeed) (4.67.1)
-Requirement already satisfied: annotated-types>=0.6.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from pydantic>=2.0.0->deepspeed) (0.7.0)
-Requirement already satisfied: pydantic-core==2.27.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from pydantic>=2.0.0->deepspeed) (2.27.2)
-Requirement already satisfied: typing-extensions>=4.12.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from pydantic>=2.0.0->deepspeed) (4.12.2)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (9.1.0.70)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.4.5.8)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (11.2.1.3)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.4.127)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (3.18.0)
-Requirement already satisfied: sympy==1.13.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (1.13.1)
-Requirement already satisfied: fsspec in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (2024.12.0)
-Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (0.6.2)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (11.6.1.9)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.4.127)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.4.127)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (2.21.5)
-Requirement already satisfied: triton==3.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (3.2.0)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.4.127)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (10.3.5.147)
-Requirement already satisfied: networkx in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (3.4.2)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.4.127)
-Requirement already satisfied: jinja2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (3.1.6)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch->deepspeed) (12.3.1.170)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from sympy==1.13.1->torch->deepspeed) (1.3.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from jinja2->torch->deepspeed) (3.0.2)
-Requirement already satisfied: numerize in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (0.12)
-Requirement already satisfied: rouge-score in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (0.1.2)
-Requirement already satisfied: absl-py in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rouge-score) (2.1.0)
-Requirement already satisfied: nltk in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rouge-score) (3.9.1)
-Requirement already satisfied: numpy in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rouge-score) (2.2.4)
-Requirement already satisfied: six>=1.14.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rouge-score) (1.17.0)
-Requirement already satisfied: tqdm in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from nltk->rouge-score) (4.67.1)
-Requirement already satisfied: click in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from nltk->rouge-score) (8.1.8)
-Requirement already satisfied: regex>=2021.8.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from nltk->rouge-score) (2024.11.6)
-Requirement already satisfied: joblib in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from nltk->rouge-score) (1.4.2)
-Requirement already satisfied: torchtyping in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (0.1.5)
-Requirement already satisfied: typeguard<3,>=2.11.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torchtyping) (2.13.3)
-Requirement already satisfied: torch>=1.7.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torchtyping) (2.6.0)
-Requirement already satisfied: typing-extensions>=4.10.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (4.12.2)
-Requirement already satisfied: sympy==1.13.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (1.13.1)
-Requirement already satisfied: networkx in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (3.4.2)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.4.127)
-Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (0.6.2)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (9.1.0.70)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.4.127)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (11.6.1.9)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (3.18.0)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.4.127)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (2.21.5)
-Requirement already satisfied: triton==3.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (3.2.0)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (11.2.1.3)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.4.127)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.3.1.170)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.4.5.8)
-Requirement already satisfied: jinja2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (3.1.6)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (12.4.127)
-Requirement already satisfied: fsspec in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (2024.12.0)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.7.0->torchtyping) (10.3.5.147)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from sympy==1.13.1->torch>=1.7.0->torchtyping) (1.3.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from jinja2->torch>=1.7.0->torchtyping) (3.0.2)
-Requirement already satisfied: rich in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (13.9.4)
-Requirement already satisfied: markdown-it-py>=2.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rich) (3.0.0)
-Requirement already satisfied: typing-extensions<5.0,>=4.0.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rich) (4.12.2)
-Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from rich) (2.19.1)
-Requirement already satisfied: mdurl~=0.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from markdown-it-py>=2.2.0->rich) (0.1.2)
-Requirement already satisfied: accelerate in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (1.5.2)
-Requirement already satisfied: pyyaml in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (6.0.2)
-Requirement already satisfied: packaging>=20.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (24.2)
-Requirement already satisfied: huggingface-hub>=0.21.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (0.29.3)
-Requirement already satisfied: torch>=2.0.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (2.6.0)
-Requirement already satisfied: psutil in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (7.0.0)
-Requirement already satisfied: numpy<3.0.0,>=1.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (2.2.4)
-Requirement already satisfied: safetensors>=0.4.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from accelerate) (0.5.3)
-Requirement already satisfied: fsspec>=2023.5.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.21.0->accelerate) (2024.12.0)
-Requirement already satisfied: tqdm>=4.42.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.21.0->accelerate) (4.67.1)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.21.0->accelerate) (3.18.0)
-Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.21.0->accelerate) (4.12.2)
-Requirement already satisfied: requests in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.21.0->accelerate) (2.32.3)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (11.2.1.3)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.4.127)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (2.21.5)
-Requirement already satisfied: triton==3.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (3.2.0)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.4.127)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.4.127)
-Requirement already satisfied: jinja2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (3.1.6)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.4.5.8)
-Requirement already satisfied: networkx in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (3.4.2)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (11.6.1.9)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (9.1.0.70)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.4.127)
-Requirement already satisfied: sympy==1.13.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (1.13.1)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.4.127)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (12.3.1.170)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (10.3.5.147)
-Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=2.0.0->accelerate) (0.6.2)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from sympy==1.13.1->torch>=2.0.0->accelerate) (1.3.0)
-Requirement already satisfied: MarkupSafe>=2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from jinja2->torch>=2.0.0->accelerate) (3.0.2)
-Requirement already satisfied: idna<4,>=2.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.21.0->accelerate) (3.10)
-Requirement already satisfied: charset-normalizer<4,>=2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.21.0->accelerate) (3.4.1)
-Requirement already satisfied: urllib3<3,>=1.21.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.21.0->accelerate) (2.3.0)
-Requirement already satisfied: certifi>=2017.4.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.21.0->accelerate) (2025.1.31)
-Requirement already satisfied: datasets in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (3.4.1)
-Requirement already satisfied: pyyaml>=5.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (6.0.2)
-Requirement already satisfied: aiohttp in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (3.11.14)
-Requirement already satisfied: huggingface-hub>=0.24.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (0.29.3)
-Requirement already satisfied: numpy>=1.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (2.2.4)
-Requirement already satisfied: xxhash in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (3.5.0)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (3.18.0)
-Requirement already satisfied: pandas in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (2.2.3)
-Requirement already satisfied: pyarrow>=15.0.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (19.0.1)
-Requirement already satisfied: tqdm>=4.66.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (4.67.1)
-Requirement already satisfied: multiprocess<0.70.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (0.70.16)
-Requirement already satisfied: dill<0.3.9,>=0.3.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (0.3.8)
-Requirement already satisfied: packaging in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (24.2)
-Requirement already satisfied: requests>=2.32.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (2.32.3)
-Requirement already satisfied: fsspec[http]<=2024.12.0,>=2023.1.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from datasets) (2024.12.0)
-Requirement already satisfied: attrs>=17.3.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (25.3.0)
-Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (2.6.1)
-Requirement already satisfied: async-timeout<6.0,>=4.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (5.0.1)
-Requirement already satisfied: yarl<2.0,>=1.17.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (1.18.3)
-Requirement already satisfied: multidict<7.0,>=4.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (6.2.0)
-Requirement already satisfied: propcache>=0.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (0.3.0)
-Requirement already satisfied: frozenlist>=1.1.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (1.5.0)
-Requirement already satisfied: aiosignal>=1.1.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from aiohttp->datasets) (1.3.2)
-Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.24.0->datasets) (4.12.2)
-Requirement already satisfied: idna<4,>=2.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.10)
-Requirement already satisfied: charset-normalizer<4,>=2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (3.4.1)
-Requirement already satisfied: urllib3<3,>=1.21.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2.3.0)
-Requirement already satisfied: certifi>=2017.4.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests>=2.32.2->datasets) (2025.1.31)
-Requirement already satisfied: python-dateutil>=2.8.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from pandas->datasets) (2.9.0.post0)
-Requirement already satisfied: pytz>=2020.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
-Requirement already satisfied: tzdata>=2022.7 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from pandas->datasets) (2025.1)
-Requirement already satisfied: six>=1.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from python-dateutil>=2.8.2->pandas->datasets) (1.17.0)
-Requirement already satisfied: peft in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (0.14.0)
-Requirement already satisfied: transformers in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (4.47.0.dev0)
-Requirement already satisfied: torch>=1.13.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (2.6.0)
-Requirement already satisfied: tqdm in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (4.67.1)
-Requirement already satisfied: packaging>=20.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (24.2)
-Requirement already satisfied: pyyaml in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (6.0.2)
-Requirement already satisfied: safetensors in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (0.5.3)
-Requirement already satisfied: huggingface-hub>=0.25.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (0.29.3)
-Requirement already satisfied: psutil in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (7.0.0)
-Requirement already satisfied: accelerate>=0.21.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (1.5.2)
-Requirement already satisfied: numpy>=1.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from peft) (2.2.4)
-Requirement already satisfied: fsspec>=2023.5.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.25.0->peft) (2024.12.0)
-Requirement already satisfied: requests in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.25.0->peft) (2.32.3)
-Requirement already satisfied: filelock in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.25.0->peft) (3.18.0)
-Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from huggingface-hub>=0.25.0->peft) (4.12.2)
-Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.2.1.3)
-Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (9.1.0.70)
-Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (11.6.1.9)
-Requirement already satisfied: networkx in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (3.4.2)
-Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (0.6.2)
-Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (10.3.5.147)
-Requirement already satisfied: sympy==1.13.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (1.13.1)
-Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.3.1.170)
-Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.4.127)
-Requirement already satisfied: triton==3.2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (3.2.0)
-Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.4.5.8)
-Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.4.127)
-Requirement already satisfied: jinja2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (3.1.6)
-Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.4.127)
-Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.4.127)
-Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (12.4.127)
-Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from torch>=1.13.0->peft) (2.21.5)
-Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from sympy==1.13.1->torch>=1.13.0->peft) (1.3.0)
-Requirement already satisfied: regex!=2019.12.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers->peft) (2024.11.6)
-Requirement already satisfied: tokenizers<0.21,>=0.20 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from transformers->peft) (0.20.3)
-Requirement already satisfied: MarkupSafe>=2.0 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from jinja2->torch>=1.13.0->peft) (3.0.2)
-Requirement already satisfied: charset-normalizer<4,>=2 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.25.0->peft) (3.4.1)
-Requirement already satisfied: idna<4,>=2.5 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.25.0->peft) (3.10)
-Requirement already satisfied: certifi>=2017.4.17 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.25.0->peft) (2025.1.31)
-Requirement already satisfied: urllib3<3,>=1.21.1 in /home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.25.0->peft) (2.3.0)
-[2025-03-22 09:26:04,075] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
-OK
-Traceback (most recent call last):
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
-    resolved_file = hf_hub_download(
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-large'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/users/ap794/final_project_distillLLM/minillm/./tools/process_data_dolly.py", line 158, in <module>
-    main()
-  File "/home/users/ap794/final_project_distillLLM/minillm/./tools/process_data_dolly.py", line 84, in main
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
-    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
-    resolved_config_file = cached_file(
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
-    raise EnvironmentError(
-OSError: Incorrect path_or_model_id: './checkpoints/gpt2-large'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
-[2025-03-22 09:26:10,419] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
-OK
-Traceback (most recent call last):
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
-    resolved_file = hf_hub_download(
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-large'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/users/ap794/final_project_distillLLM/minillm/./tools/process_data_dolly.py", line 158, in <module>
-    main()
-  File "/home/users/ap794/final_project_distillLLM/minillm/./tools/process_data_dolly.py", line 84, in main
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
-    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
-    resolved_config_file = cached_file(
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
-    raise EnvironmentError(
-OSError: Incorrect path_or_model_id: './checkpoints/gpt2-large'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
-srun: error: compsci-cluster-fitz-08: task 0: Exited with exit code 1
-[2025-03-22 09:26:16,143] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
-Traceback (most recent call last):
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
-    resolved_file = hf_hub_download(
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
-    validate_repo_id(arg_value)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
-    raise HFValidationError(
-huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': './checkpoints/gpt2-large'. Use `repo_type` argument if needed.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/users/ap794/final_project_distillLLM/minillm/./tools/process_data_pretrain.py", line 100, in <module>
-    main()
-  File "/home/users/ap794/final_project_distillLLM/minillm/./tools/process_data_pretrain.py", line 39, in main
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 857, in from_pretrained
-    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 689, in get_tokenizer_config
-    resolved_config_file = cached_file(
-  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 469, in cached_file
-    raise EnvironmentError(
-OSError: Incorrect path_or_model_id: './checkpoints/gpt2-large'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
-srun: error: compsci-cluster-fitz-08: task 0: Exited with exit code 1
-torchrun --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path gpt2-xl --ckpt-name gpt2-xlarge --n-gpu 1 --data-dir ./processed_data/dolly/full/gpt2/ --num-workers 0 --dev-num 1000 --lr 0.00001 --batch-size 2 --eval-batch-size 8 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 10 --eval-interval 10 --log-interval 4 --mid-log-num 10 --save ./results/gpt2/train/sft --seed 10 --seed-order 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type lm --do-sample --top-k 0 --top-p 1.0 --temperature 1.0 .
-PYTHONPATH=.
-[2025-03-22 09:26:22,884] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
-using world size: 1
-[2025-03-22 09:26:26,308] [INFO] [comm.py:658:init_distributed] cdb=None
-[2025-03-22 09:26:26,308] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
-arguments:
-  model_path ................... gpt2-xl
-  ckpt_name .................... gpt2-xlarge
-  model_type ................... gpt2
-  teacher_model_type ........... None
-  n_gpu ........................ 1
-  n_nodes ...................... 1
-  teacher_model_path ........... None
-  teacher_ckpt_name ............ None
-  teacher_model_fp16 ........... False
-  model_parallel ............... False
-  model_parallel_size .......... None
-  no_value ..................... False
-  dropout_path_rate ............ None
-  dtype ........................ torch.float16
-  type ......................... lm
-  do_train ..................... True
-  do_valid ..................... True
-  do_eval ...................... False
-  base_path .................... .
-  load ......................... None
-  save ......................... ./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1
-  log_interval ................. 4
-  mid_log_num .................. 10
-  save_interval ................ 10
-  eval_interval ................ 10
-  local_rank ................... 0
-  save_additional_suffix ....... 
-  save_rollout ................. False
-  eb_sample_times .............. 3
-  data_dir ..................... ./processed_data/dolly/full/gpt2/
-  processed_data_dir ........... None
-  force_process ................ False
-  force_process_demo ........... False
-  data_process_workers ......... -1
-  train_num .................... -1
-  train_ratio .................. 1
-  dev_num ...................... 1000
-  dev_ratio .................... 1
-  gen_num ...................... -1
-  data_names ................... None
-  prompt_type .................. None
-  num_workers .................. 0
-  max_prompt_length ............ 256
-  min_prompt_length ............ 128
-  json_data .................... False
-  bin_data ..................... False
-  txt_data ..................... False
-  prompt_data_dir .............. None
-  lm_data_dir .................. None
-  eval_ppl ..................... False
-  eval_rw ...................... False
-  eval_gen ..................... True
-  only_prompt .................. False
-  batch_size ................... 2
-  eval_batch_size .............. 8
-  clip_grad .................... 1.0
-  total_iters .................. None
-  train_iters_per_epoch ........ -1
-  max_length ................... 512
-  seed ......................... 10
-  seed_order ................... 10
-  seed_data .................... 42
-  seed_ppo ..................... 42
-  seed_lm ...................... 7
-  epochs ....................... 10
-  training_epochs .............. 10000
-  gradient_accumulation_steps .. 1
-  gradient_checkpointing ....... False
-  attn_dtype ................... None
-  lr ........................... 1e-05
-  lr_min ....................... 1e-07
-  weight_decay ................. 0.01
-  loss_scale ................... 65536
-  kd_ratio ..................... None
-  warmup_iters ................. 0
-  lr_decay_iters ............... None
-  lr_decay_style ............... cosine
-  scheduler_name ............... constant_trm
-  reward_scaling ............... None
-  cliprange_reward ............. 1
-  ppo_epochs ................... None
-  num_rollouts ................. 256
-  num_rollouts_per_device ...... None
-  cliprange .................... 0.2
-  chunk_size ................... None
-  gamma ........................ 0.95
-  length_norm .................. False
-  single_step_reg .............. False
-  teacher_mixed_alpha .......... None
-  lm_coef ...................... 1
-  top_k ........................ 0
-  top_p ........................ 1.0
-  do_sample .................... True
-  no_repeat_ngram_size ......... 6
-  repetition_penalty ........... None
-  num_beams .................... 1
-  temperature .................. 1.0
-  peft ......................... None
-  peft_lora_r .................. 8
-  peft_lora_alpha .............. 32
-  peft_lora_dropout ............ 0.1
-  peft_name .................... None
-  peft_path .................... None
-  teacher_peft_name ............ None
-  teacher_peft_path ............ None
-  deepspeed .................... True
-  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
-  deepscale .................... False
-  deepscale_config ............. None
-  rank ......................... 0
-  world_size ................... 1
-Probing Dataset
-Probing end. Max data state 1, total length 11435
-11435
-Num LM instances: 11435
-train num 11435
-Probing Dataset
-Probing end. Max data state 1, total length 1000
-1000
-Num LM instances: 1000
-Train iters per epoch 5717
-total_iters 57170
- > number of parameters: 1557611200
-Model load time: 8.744046211242676s
-Optimizer = AdamW
-[2025-03-22 09:26:35,556] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed info: version=0.16.4, git-hash=unknown, git-branch=unknown
-[2025-03-22 09:26:35,556] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 1
-[2025-03-22 09:26:35,818] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
-[2025-03-22 09:26:35,820] [INFO] [logging.py:128:log_dist] [Rank 0] Using client Optimizer as basic optimizer
-[2025-03-22 09:26:35,820] [INFO] [logging.py:128:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
-[2025-03-22 09:26:35,853] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
-[2025-03-22 09:26:35,853] [INFO] [utils.py:59:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
-[2025-03-22 09:26:35,853] [INFO] [logging.py:128:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 1 optimizer
-[2025-03-22 09:26:35,853] [INFO] [stage_1_and_2.py:149:__init__] Reduce bucket size 500000000
-[2025-03-22 09:26:35,853] [INFO] [stage_1_and_2.py:150:__init__] Allgather bucket size 500000000
-[2025-03-22 09:26:35,853] [INFO] [stage_1_and_2.py:151:__init__] CPU Offload: False
-[2025-03-22 09:26:35,853] [INFO] [stage_1_and_2.py:152:__init__] Round robin gradient partitioning: False
-[2025-03-22 09:27:01,799] [INFO] [utils.py:781:see_memory_usage] Before initializing optimizer states
-[2025-03-22 09:27:01,801] [INFO] [utils.py:782:see_memory_usage] MA 8.75 GB         Max_MA 8.75 GB         CA 8.77 GB         Max_CA 9 GB 
-[2025-03-22 09:27:01,801] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 21.96 GB, percent = 2.9%
-[2025-03-22 09:27:01,950] [INFO] [utils.py:781:see_memory_usage] After initializing optimizer states
-[2025-03-22 09:27:01,950] [INFO] [utils.py:782:see_memory_usage] MA 8.75 GB         Max_MA 14.55 GB         CA 14.57 GB         Max_CA 15 GB 
-[2025-03-22 09:27:01,951] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 22.54 GB, percent = 3.0%
-[2025-03-22 09:27:01,951] [INFO] [stage_1_and_2.py:550:__init__] optimizer state initialized
-[2025-03-22 09:27:02,074] [INFO] [utils.py:781:see_memory_usage] After initializing ZeRO optimizer
-[2025-03-22 09:27:02,075] [INFO] [utils.py:782:see_memory_usage] MA 8.75 GB         Max_MA 8.75 GB         CA 14.57 GB         Max_CA 15 GB 
-[2025-03-22 09:27:02,075] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 22.08 GB, percent = 2.9%
-[2025-03-22 09:27:02,094] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedZeroOptimizer
-[2025-03-22 09:27:02,095] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed using client LR scheduler
-[2025-03-22 09:27:02,095] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7f624ebe2950>
-[2025-03-22 09:27:02,095] [INFO] [logging.py:128:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05, 1e-05], mom=[(0.9, 0.999), (0.9, 0.999)]
-[2025-03-22 09:27:02,097] [INFO] [config.py:1001:print] DeepSpeedEngine configuration:
-[2025-03-22 09:27:02,098] [INFO] [config.py:1005:print]   activation_checkpointing_config  {
-    "partition_activations": false, 
-    "contiguous_memory_optimization": false, 
-    "cpu_checkpointing": false, 
-    "number_checkpoints": null, 
-    "synchronize_checkpoint_boundary": false, 
-    "profile": false
-}
-[2025-03-22 09:27:02,098] [INFO] [config.py:1005:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'intra_op_parallelism': 1, 'single_submit': False, 'overlap_events': True, 'use_gds': False}
-[2025-03-22 09:27:02,098] [INFO] [config.py:1005:print]   amp_enabled .................. False
-[2025-03-22 09:27:02,098] [INFO] [config.py:1005:print]   amp_params ................... False
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   autotuning_config ............ {
-    "enabled": false, 
-    "start_step": null, 
-    "end_step": null, 
-    "metric_path": null, 
-    "arg_mappings": null, 
-    "metric": "throughput", 
-    "model_info": null, 
-    "results_dir": "autotuning_results", 
-    "exps_dir": "autotuning_exps", 
-    "overwrite": true, 
-    "fast": true, 
-    "start_profile_step": 3, 
-    "end_profile_step": 5, 
-    "tuner_type": "gridsearch", 
-    "tuner_early_stopping": 5, 
-    "tuner_num_trials": 50, 
-    "model_info_path": null, 
-    "mp_size": 1, 
-    "max_train_batch_size": null, 
-    "min_train_batch_size": 1, 
-    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
-    "min_train_micro_batch_size_per_gpu": 1, 
-    "num_tuning_micro_batch_sizes": 3
-}
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   bfloat16_enabled ............. False
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   bfloat16_immediate_grad_update  False
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   checkpoint_parallel_write_pipeline  False
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   checkpoint_tag_validation_enabled  True
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   checkpoint_tag_validation_fail  False
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f6262585840>
-[2025-03-22 09:27:02,099] [INFO] [config.py:1005:print]   communication_data_type ...... None
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   curriculum_enabled_legacy .... False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   curriculum_params_legacy ..... False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   data_efficiency_enabled ...... False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   dataloader_drop_last ......... False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   disable_allgather ............ False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   dump_state ................... False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_enabled ........... False
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_gas_boundary_resolution  1
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_layer_name ........ bert.encoder.layer
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_layer_num ......... 0
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_max_iter .......... 100
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_stability ......... 1e-06
-[2025-03-22 09:27:02,100] [INFO] [config.py:1005:print]   eigenvalue_tol ............... 0.01
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   eigenvalue_verbose ........... False
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   elasticity_enabled ........... False
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   flops_profiler_config ........ {
-    "enabled": false, 
-    "recompute_fwd_factor": 0.0, 
-    "profile_step": 1, 
-    "module_depth": -1, 
-    "top_modules": 1, 
-    "detailed": true, 
-    "output_file": null
-}
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   fp16_auto_cast ............... False
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   fp16_enabled ................. True
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   fp16_master_weights_and_gradients  False
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   global_rank .................. 0
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   grad_accum_dtype ............. None
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   gradient_accumulation_steps .. 1
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   gradient_clipping ............ 1.0
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   gradient_predivide_factor .... 1.0
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   graph_harvesting ............. False
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   initial_dynamic_scale ........ 2048
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   load_universal_checkpoint .... False
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   loss_scale ................... 0
-[2025-03-22 09:27:02,101] [INFO] [config.py:1005:print]   memory_breakdown ............. False
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   mics_hierarchial_params_gather  False
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   mics_shard_size .............. -1
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName')
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   nebula_config ................ {
-    "enabled": false, 
-    "persistent_storage_path": null, 
-    "persistent_time_interval": 100, 
-    "num_of_version_in_retention": 2, 
-    "enable_nebula_load": true, 
-    "load_path": null
-}
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   optimizer_legacy_fusion ...... False
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   optimizer_name ............... None
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   optimizer_params ............. None
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   pld_enabled .................. False
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   pld_params ................... False
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   prescale_gradients ........... False
-[2025-03-22 09:27:02,102] [INFO] [config.py:1005:print]   scheduler_name ............... None
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   scheduler_params ............. None
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   seq_parallel_communication_data_type  torch.float32
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   sparse_attention ............. None
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   sparse_gradients_enabled ..... False
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   steps_per_print .............. 10000000
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   tensor_parallel_config ....... dtype=torch.float16 autotp_size=0 tensor_parallel=TPConfig(tp_size=1, tp_grain_size=1, mpu=None, tp_group=None) injection_policy_tuple=None keep_module_on_host=False replace_with_kernel_inject=False
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   timers_config ................ enabled=True synchronized=True
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   train_batch_size ............. 2
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   train_micro_batch_size_per_gpu  2
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   use_data_before_expert_parallel_  False
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   use_node_local_storage ....... False
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   wall_clock_breakdown ......... False
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   weight_quantization_config ... None
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   world_size ................... 1
-[2025-03-22 09:27:02,103] [INFO] [config.py:1005:print]   zero_allow_untested_optimizer  True
-[2025-03-22 09:27:02,104] [INFO] [config.py:1005:print]   zero_config .................. stage=1 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False module_granularity_threshold=0 use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False zeropp_loco_param=None mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True log_trace_cache_warnings=False
-[2025-03-22 09:27:02,104] [INFO] [config.py:1005:print]   zero_enabled ................. True
-[2025-03-22 09:27:02,104] [INFO] [config.py:1005:print]   zero_force_ds_cpu_optimizer .. True
-[2025-03-22 09:27:02,104] [INFO] [config.py:1005:print]   zero_optimization_stage ...... 1
-[2025-03-22 09:27:02,104] [INFO] [config.py:991:print_user_config]   json = {
-    "train_micro_batch_size_per_gpu": 2, 
-    "gradient_accumulation_steps": 1, 
-    "zero_optimization": {
-        "stage": 1
-    }, 
-    "zero_allow_untested_optimizer": true, 
-    "fp16": {
-        "enabled": true, 
-        "loss_scale": 0, 
-        "initial_scale_power": 11, 
-        "loss_scale_window": 2.000000e+03, 
-        "hysteresis": 4
-    }, 
-    "wall_clock_breakdown": false, 
-    "gradient_clipping": 1.0, 
-    "steps_per_print": 1.000000e+07
-}
-Model mem
- |===========================================================================|
-|                  PyTorch CUDA memory summary, device ID 0                 |
-|---------------------------------------------------------------------------|
-|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
-|===========================================================================|
-|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
-|---------------------------------------------------------------------------|
-| Allocated memory      |   8960 MiB |   8960 MiB |  20912 MiB |  11951 MiB |
-|       from large pool |   8912 MiB |   8912 MiB |  20862 MiB |  11949 MiB |
-|       from small pool |     48 MiB |     48 MiB |     50 MiB |      2 MiB |
-|---------------------------------------------------------------------------|
-| Active memory         |   8960 MiB |   8960 MiB |  20912 MiB |  11951 MiB |
-|       from large pool |   8912 MiB |   8912 MiB |  20862 MiB |  11949 MiB |
-|       from small pool |     48 MiB |     48 MiB |     50 MiB |      2 MiB |
-|---------------------------------------------------------------------------|
-| Requested memory      |   8960 MiB |   8960 MiB |  20844 MiB |  11883 MiB |
-|       from large pool |   8912 MiB |   8912 MiB |  20794 MiB |  11881 MiB |
-|       from small pool |     48 MiB |     48 MiB |     49 MiB |      1 MiB |
-|---------------------------------------------------------------------------|
-| GPU reserved memory   |  14918 MiB |  14918 MiB |  20938 MiB |   6020 MiB |
-|       from large pool |  14866 MiB |  14866 MiB |  20886 MiB |   6020 MiB |
-|       from small pool |     52 MiB |     52 MiB |     52 MiB |      0 MiB |
-|---------------------------------------------------------------------------|
-| Non-releasable memory |  17661 KiB |  17661 KiB |   1056 MiB |   1039 MiB |
-|       from large pool |  15637 KiB |  15637 KiB |   1026 MiB |   1011 MiB |
-|       from small pool |   2024 KiB |   2024 KiB |     30 MiB |     28 MiB |
-|---------------------------------------------------------------------------|
-| Allocations           |     100    |     100    |    1264    |    1164    |
-|       from large pool |       4    |       4    |     202    |     198    |
-|       from small pool |      96    |      96    |    1062    |     966    |
-|---------------------------------------------------------------------------|
-| Active allocs         |     100    |     100    |    1264    |    1164    |
-|       from large pool |       4    |       4    |     202    |     198    |
-|       from small pool |      96    |      96    |    1062    |     966    |
-|---------------------------------------------------------------------------|
-| GPU reserved segments |      30    |      30    |     177    |     147    |
-|       from large pool |       4    |       4    |     151    |     147    |
-|       from small pool |      26    |      26    |      26    |       0    |
-|---------------------------------------------------------------------------|
-| Non-releasable allocs |       6    |       6    |     279    |     273    |
-|       from large pool |       3    |       3    |     100    |      97    |
-|       from small pool |       3    |       3    |     179    |     176    |
-|---------------------------------------------------------------------------|
-| Oversize allocations  |       0    |       0    |       0    |       0    |
-|---------------------------------------------------------------------------|
-| Oversize GPU segments |       0    |       0    |       0    |       0    |
-|===========================================================================|
-
-Start Fine-tuning
-dp size 1
-0/125
-1/125
-2/125
-3/125
-4/125
-5/125
-6/125
-7/125
-8/125
-9/125
-10/125
-11/125
-12/125
-13/125
-14/125
-15/125
-Evaluating:   0%|          | 0/125 [00:00<?, ?it/s]Evaluating:   1%|          | 1/125 [00:07<16:16,  7.87s/it]Evaluating:   2%|▏         | 2/125 [00:13<13:19,  6.50s/it]Evaluating:   2%|▏         | 3/125 [00:18<12:17,  6.05s/it]Evaluating:   3%|▎         | 4/125 [00:24<11:46,  5.84s/it]Evaluating:   4%|▍         | 5/125 [00:29<11:25,  5.71s/it]Evaluating:   5%|▍         | 6/125 [00:35<11:11,  5.64s/it]Evaluating:   6%|▌         | 7/125 [00:40<11:00,  5.60s/it]Evaluating:   6%|▋         | 8/125 [00:46<10:50,  5.56s/it]Evaluating:   7%|▋         | 9/125 [00:51<10:43,  5.54s/it]Evaluating:   8%|▊         | 10/125 [00:57<10:36,  5.54s/it]Evaluating:   9%|▉         | 11/125 [01:02<10:30,  5.53s/it]Evaluating:  10%|▉         | 12/125 [01:08<10:24,  5.53s/it]Evaluating:  10%|█         | 13/125 [01:13<10:17,  5.51s/it]Evaluating:  11%|█         | 14/125 [01:19<10:11,  5.51s/it]Evaluating:  12%|█▏        | 15/125 [01:24<10:06,  5.51s/it]Evaluating:  13%|█▎        | 1616/125
-17/125
-18/125
-19/125
-20/125
-21/125
-22/125
-23/125
-24/125
-25/125
-26/125
-27/125
-28/125
-29/125
-30/125
-31/125
-/125 [01:30<10:01,  5.52s/it]Evaluating:  14%|█▎        | 17/125 [01:36<09:56,  5.52s/it]Evaluating:  14%|█▍        | 18/125 [01:41<09:49,  5.51s/it]Evaluating:  15%|█▌        | 19/125 [01:47<09:45,  5.52s/it]Evaluating:  16%|█▌        | 20/125 [01:52<09:38,  5.51s/it]Evaluating:  17%|█▋        | 21/125 [01:58<09:32,  5.50s/it]Evaluating:  18%|█▊        | 22/125 [02:03<09:26,  5.50s/it]Evaluating:  18%|█▊        | 23/125 [02:09<09:22,  5.51s/it]Evaluating:  19%|█▉        | 24/125 [02:14<09:16,  5.51s/it]Evaluating:  20%|██        | 25/125 [02:20<09:09,  5.49s/it]Evaluating:  21%|██        | 26/125 [02:25<09:03,  5.49s/it]Evaluating:  22%|██▏       | 27/125 [02:31<08:58,  5.50s/it]Evaluating:  22%|██▏       | 28/125 [02:36<08:53,  5.50s/it]Evaluating:  23%|██▎       | 29/125 [02:42<08:49,  5.52s/it]Evaluating:  24%|██▍       | 30/125 [02:47<08:45,  5.53s/it]Evaluating:  25%|██▍       | 31/125 [02:53<08:40,  5.53s/it]Evaluatin32/125
-33/125
-34/125
-35/125
-36/125
-37/125
-38/125
-39/125
-40/125
-41/125
-42/125
-43/125
-44/125
-45/125
-46/125
-g:  26%|██▌       | 32/125 [02:58<08:32,  5.51s/it]Evaluating:  26%|██▋       | 33/125 [03:04<08:26,  5.50s/it]Evaluating:  27%|██▋       | 34/125 [03:09<08:20,  5.50s/it]Evaluating:  28%|██▊       | 35/125 [03:15<08:15,  5.50s/it]Evaluating:  29%|██▉       | 36/125 [03:20<08:09,  5.51s/it]Evaluating:  30%|██▉       | 37/125 [03:26<08:04,  5.51s/it]Evaluating:  30%|███       | 38/125 [03:31<07:59,  5.51s/it]Evaluating:  31%|███       | 39/125 [03:37<07:53,  5.51s/it]Evaluating:  32%|███▏      | 40/125 [03:42<07:48,  5.51s/it]Evaluating:  33%|███▎      | 41/125 [03:48<07:41,  5.50s/it]Evaluating:  34%|███▎      | 42/125 [03:53<07:36,  5.50s/it]Evaluating:  34%|███▍      | 43/125 [03:59<07:30,  5.50s/it]Evaluating:  35%|███▌      | 44/125 [04:04<07:24,  5.49s/it]Evaluating:  36%|███▌      | 45/125 [04:10<07:18,  5.48s/it]Evaluating:  37%|███▋      | 46/125 [04:15<07:13,  5.49s/it]Evaluating:  347/125
-48/125
-49/125
-50/125
-51/125
-52/125
-53/125
-54/125
-55/125
-56/125
-57/125
-58/125
-59/125
-60/125
-8%|███▊      | 47/125 [04:21<07:07,  5.48s/it]Evaluating:  38%|███▊      | 48/125 [04:26<07:02,  5.48s/it]Evaluating:  39%|███▉      | 49/125 [04:32<06:57,  5.49s/it]Evaluating:  40%|████      | 50/125 [04:37<06:51,  5.49s/it]Evaluating:  41%|████      | 51/125 [04:43<06:46,  5.49s/it]Evaluating:  42%|████▏     | 52/125 [04:48<06:40,  5.49s/it]Evaluating:  42%|████▏     | 53/125 [04:54<06:35,  5.49s/it]Evaluating:  43%|████▎     | 54/125 [04:59<06:30,  5.51s/it]Evaluating:  44%|████▍     | 55/125 [05:05<06:25,  5.50s/it]Evaluating:  45%|████▍     | 56/125 [05:10<06:19,  5.49s/it]Evaluating:  46%|████▌     | 57/125 [05:15<06:12,  5.48s/it]Evaluating:  46%|████▋     | 58/125 [05:21<06:07,  5.48s/it]Evaluating:  47%|████▋     | 59/125 [05:26<06:01,  5.48s/it]Evaluating:  48%|████▊     | 60/125 [05:32<05:55,  5.47s/it]Evaluating:  49%|████▉     | 61/125 [05:37<061/125
-62/125
-63/125
-64/125
-65/125
-66/125
-67/125
-68/125
-69/125
-70/125
-71/125
-72/125
-73/125
-74/125
-5:50,  5.48s/it]Evaluating:  50%|████▉     | 62/125 [05:43<05:45,  5.48s/it]Evaluating:  50%|█████     | 63/125 [05:48<05:39,  5.47s/it]Evaluating:  51%|█████     | 64/125 [05:54<05:34,  5.48s/it]Evaluating:  52%|█████▏    | 65/125 [05:59<05:28,  5.47s/it]Evaluating:  53%|█████▎    | 66/125 [06:05<05:23,  5.48s/it]Evaluating:  54%|█████▎    | 67/125 [06:10<05:18,  5.49s/it]Evaluating:  54%|█████▍    | 68/125 [06:16<05:13,  5.50s/it]Evaluating:  55%|█████▌    | 69/125 [06:21<05:08,  5.51s/it]Evaluating:  56%|█████▌    | 70/125 [06:27<05:02,  5.50s/it]Evaluating:  57%|█████▋    | 71/125 [06:32<04:56,  5.49s/it]Evaluating:  58%|█████▊    | 72/125 [06:38<04:51,  5.49s/it]Evaluating:  58%|█████▊    | 73/125 [06:43<04:45,  5.49s/it]Evaluating:  59%|█████▉    | 74/125 [06:49<04:40,  5.50s/it]Evaluating:  60%|██████    | 75/125 [06:54<04:34,  575/125
-76/125
-77/125
-78/125
-79/125
-80/125
-81/125
-82/125
-83/125
-84/125
-85/125
-86/125
-87/125
-88/125
-.50s/it]Evaluating:  61%|██████    | 76/125 [07:00<04:28,  5.49s/it]Evaluating:  62%|██████▏   | 77/125 [07:05<04:23,  5.48s/it]Evaluating:  62%|██████▏   | 78/125 [07:11<04:17,  5.48s/it]Evaluating:  63%|██████▎   | 79/125 [07:16<04:12,  5.48s/it]Evaluating:  64%|██████▍   | 80/125 [07:22<04:07,  5.49s/it]Evaluating:  65%|██████▍   | 81/125 [07:27<04:01,  5.48s/it]Evaluating:  66%|██████▌   | 82/125 [07:33<03:55,  5.48s/it]Evaluating:  66%|██████▋   | 83/125 [07:38<03:50,  5.49s/it]Evaluating:  67%|██████▋   | 84/125 [07:44<03:45,  5.49s/it]Evaluating:  68%|██████▊   | 85/125 [07:49<03:40,  5.50s/it]Evaluating:  69%|██████▉   | 86/125 [07:55<03:35,  5.52s/it]Evaluating:  70%|██████▉   | 87/125 [08:00<03:30,  5.53s/it]Evaluating:  70%|███████   | 88/125 [08:06<03:23,  5.51s/it]Evaluating:  71%|███████   |89/125
-90/125
-91/125
-92/125
-93/125
-94/125
-95/125
-96/125
-97/125
-98/125
-99/125
-100/125
-101/125
- 89/125 [08:11<03:18,  5.50s/it]Evaluating:  72%|███████▏  | 90/125 [08:17<03:12,  5.50s/it]Evaluating:  73%|███████▎  | 91/125 [08:22<03:06,  5.50s/it]Evaluating:  74%|███████▎  | 92/125 [08:28<03:01,  5.50s/it]Evaluating:  74%|███████▍  | 93/125 [08:33<02:55,  5.50s/it]Evaluating:  75%|███████▌  | 94/125 [08:39<02:50,  5.49s/it]Evaluating:  76%|███████▌  | 95/125 [08:44<02:44,  5.49s/it]Evaluating:  77%|███████▋  | 96/125 [08:50<02:38,  5.48s/it]Evaluating:  78%|███████▊  | 97/125 [08:55<02:33,  5.48s/it]Evaluating:  78%|███████▊  | 98/125 [09:01<02:27,  5.48s/it]Evaluating:  79%|███████▉  | 99/125 [09:06<02:22,  5.50s/it]Evaluating:  80%|████████  | 100/125 [09:12<02:17,  5.51s/it]Evaluating:  81%|████████  | 101/125 [09:17<02:12,  5.52s/it]Evaluating:  82%|████████▏ | 102/125 [09:23<02:102/125
-103/125
-104/125
-105/125
-106/125
-107/125
-108/125
-109/125
-110/125
-111/125
-112/125
-113/125
-114/125
-06,  5.52s/it]Evaluating:  82%|████████▏ | 103/125 [09:28<02:01,  5.52s/it]Evaluating:  83%|████████▎ | 104/125 [09:34<01:55,  5.50s/it]Evaluating:  84%|████████▍ | 105/125 [09:39<01:49,  5.50s/it]Evaluating:  85%|████████▍ | 106/125 [09:45<01:44,  5.50s/it]Evaluating:  86%|████████▌ | 107/125 [09:50<01:38,  5.49s/it]Evaluating:  86%|████████▋ | 108/125 [09:56<01:33,  5.49s/it]Evaluating:  87%|████████▋ | 109/125 [10:01<01:27,  5.49s/it]Evaluating:  88%|████████▊ | 110/125 [10:07<01:22,  5.48s/it]Evaluating:  89%|████████▉ | 111/125 [10:12<01:16,  5.48s/it]Evaluating:  90%|████████▉ | 112/125 [10:18<01:11,  5.49s/it]Evaluating:  90%|█████████ | 113/125 [10:23<01:05,  5.49s/it]Evaluating:  91%|█████████ | 114/125 [10:29<01:00,  5.49s/it]Evaluating:  92%|█████████▏| 115/125
-116/125
-117/125
-118/125
-119/125
-120/125
-121/125
-122/125
-123/125
-124/125
-115/125 [10:34<00:55,  5.50s/it]Evaluating:  93%|█████████▎| 116/125 [10:40<00:49,  5.51s/it]Evaluating:  94%|█████████▎| 117/125 [10:45<00:44,  5.52s/it]Evaluating:  94%|█████████▍| 118/125 [10:51<00:38,  5.53s/it]Evaluating:  95%|█████████▌| 119/125 [10:56<00:33,  5.52s/it]Evaluating:  96%|█████████▌| 120/125 [11:02<00:27,  5.52s/it]Evaluating:  97%|█████████▋| 121/125 [11:07<00:22,  5.52s/it]Evaluating:  98%|█████████▊| 122/125 [11:13<00:16,  5.52s/it]Evaluating:  98%|█████████▊| 123/125 [11:18<00:11,  5.51s/it]Evaluating:  99%|█████████▉| 124/125 [11:24<00:05,  5.50s/it]Evaluating: 100%|██████████| 125/125 [11:29<00:00,  5.50s/it]Evaluating: 100%|██████████| 125/125 [11:29<00:00,  5.52s/it]
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1/eval/0
-dev | avg_loss: 2.5189140625 | {'exact_match': 0.0, 'rougeL': 7.2434}
-train | epoch   0 | Iter:      1/ 57170 | global iter:      1/ 57170 | loss: 1.6575 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 1.117 | step time: 0.000
-train | epoch   0 | Iter:      2/ 57170 | global iter:      2/ 57170 | loss: 2.7681 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.000
-train | epoch   0 | Iter:      3/ 57170 | global iter:      3/ 57170 | loss: 2.6077 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.000
-train | epoch   0 | Iter:      4/ 57170 | global iter:      4/ 57170 | loss: 1.3133 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.000
-****************************************************************************************************
-train | epoch   0 | Iter:      4/ 57170 | global iter:      4/ 57170 | loss: 2.0866 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.736
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1
-****************************************************************************************************
-train | epoch   0 | Iter:      5/ 57170 | global iter:      5/ 57170 | loss: 2.7056 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.000
-train | epoch   0 | Iter:      6/ 57170 | global iter:      6/ 57170 | loss: 2.4883 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.000
-train | epoch   0 | Iter:      7/ 57170 | global iter:      7/ 57170 | loss: 2.7007 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.000
-train | epoch   0 | Iter:      8/ 57170 | global iter:      8/ 57170 | loss: 1.9647 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.000
-****************************************************************************************************
-train | epoch   0 | Iter:      8/ 57170 | global iter:      8/ 57170 | loss: 2.4648 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.610
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1
-****************************************************************************************************
-train | epoch   0 | Iter:      9/ 57170 | global iter:      9/ 57170 | loss: 1.4823 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.000
-train | epoch   0 | Iter:     10/ 57170 | global iter:     10/ 57170 | loss: 2.3698 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.608 | step time: 0.000
-Model save to ./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1/10
-dp size 1
-0/125
-1/125
-2/125
-3/125
-4/125
-5/125
-6/125
-7/125
-8/125
-9/125
-10/125
-11/125
-12/125
-13/125
-14/125
-15/125
-Evaluating:   0%|          | 0/125 [00:00<?, ?it/s]Evaluating:   1%|          | 1/125 [00:05<11:42,  5.67s/it]Evaluating:   2%|▏         | 2/125 [00:11<11:26,  5.58s/it]Evaluating:   2%|▏         | 3/125 [00:14<08:50,  4.35s/it]Evaluating:   3%|▎         | 4/125 [00:19<09:43,  4.83s/it]Evaluating:   4%|▍         | 5/125 [00:25<10:09,  5.08s/it]Evaluating:   5%|▍         | 6/125 [00:30<10:22,  5.23s/it]Evaluating:   6%|▌         | 7/125 [00:35<09:49,  5.00s/it]Evaluating:   6%|▋         | 8/125 [00:40<09:48,  5.03s/it]Evaluating:   7%|▋         | 9/125 [00:45<10:01,  5.18s/it]Evaluating:   8%|▊         | 10/125 [00:49<08:51,  4.62s/it]Evaluating:   9%|▉         | 11/125 [00:52<07:52,  4.14s/it]Evaluating:  10%|▉         | 12/125 [00:55<07:23,  3.93s/it]Evaluating:  10%|█         | 13/125 [00:59<07:01,  3.77s/it]Evaluating:  11%|█         | 14/125 [01:04<07:55,  4.28s/it]Evaluating:  12%|█▏        | 15/125 [01:10<08:31,  4.65s/it]Evaluating:  13%|█▎        | 1616/125
-17/125
-18/125
-19/125
-20/125
-21/125
-22/125
-23/125
-24/125
-25/125
-26/125
-27/125
-28/125
-29/125
-30/125
-31/125
-/125 [01:14<08:26,  4.65s/it]Evaluating:  14%|█▎        | 17/125 [01:17<07:24,  4.12s/it]Evaluating:  14%|█▍        | 18/125 [01:23<08:04,  4.53s/it]Evaluating:  15%|█▌        | 19/125 [01:26<07:24,  4.19s/it]Evaluating:  16%|█▌        | 20/125 [01:29<06:35,  3.77s/it]Evaluating:  17%|█▋        | 21/125 [01:33<06:58,  4.02s/it]Evaluating:  18%|█▊        | 22/125 [01:37<06:57,  4.05s/it]Evaluating:  18%|█▊        | 23/125 [01:42<06:53,  4.05s/it]Evaluating:  19%|█▉        | 24/125 [01:44<05:48,  3.45s/it]Evaluating:  20%|██        | 25/125 [01:45<04:50,  2.91s/it]Evaluating:  21%|██        | 26/125 [01:51<06:04,  3.69s/it]Evaluating:  22%|██▏       | 27/125 [01:55<06:16,  3.84s/it]Evaluating:  22%|██▏       | 28/125 [02:00<06:38,  4.11s/it]Evaluating:  23%|██▎       | 29/125 [02:05<07:13,  4.52s/it]Evaluating:  24%|██▍       | 30/125 [02:11<07:37,  4.82s/it]Evaluating:  25%|██▍       | 31/125 [02:16<07:51,  5.01s/it]Evaluatin32/125
-33/125
-34/125
-35/125
-36/125
-37/125
-38/125
-39/125
-40/125
-41/125
-42/125
-43/125
-44/125
-45/125
-46/125
-g:  26%|██▌       | 32/125 [02:22<07:59,  5.16s/it]Evaluating:  26%|██▋       | 33/125 [02:27<08:05,  5.27s/it]Evaluating:  27%|██▋       | 34/125 [02:32<07:39,  5.05s/it]Evaluating:  28%|██▊       | 35/125 [02:35<06:39,  4.44s/it]Evaluating:  29%|██▉       | 36/125 [02:40<07:03,  4.76s/it]Evaluating:  30%|██▉       | 37/125 [02:44<06:20,  4.33s/it]Evaluating:  30%|███       | 38/125 [02:48<06:16,  4.33s/it]Evaluating:  31%|███       | 39/125 [02:53<06:42,  4.68s/it]Evaluating:  32%|███▏      | 40/125 [02:57<06:00,  4.24s/it]Evaluating:  33%|███▎      | 41/125 [03:02<06:27,  4.62s/it]Evaluating:  34%|███▎      | 42/125 [03:08<06:44,  4.87s/it]Evaluating:  34%|███▍      | 43/125 [03:12<06:24,  4.69s/it]Evaluating:  35%|███▌      | 44/125 [03:15<05:36,  4.16s/it]Evaluating:  36%|███▌      | 45/125 [03:18<05:14,  3.93s/it]Evaluating:  37%|███▋      | 46/125 [03:24<05:47,  4.40s/it]Evaluating:  347/125
-48/125
-49/125
-50/125
-51/125
-52/125
-53/125
-54/125
-55/125
-56/125
-57/125
-58/125
-59/125
-60/125
-8%|███▊      | 47/125 [03:28<05:37,  4.32s/it]Evaluating:  38%|███▊      | 48/125 [03:33<05:52,  4.58s/it]Evaluating:  39%|███▉      | 49/125 [03:37<05:31,  4.36s/it]Evaluating:  40%|████      | 50/125 [03:42<05:51,  4.69s/it]Evaluating:  41%|████      | 51/125 [03:44<04:47,  3.89s/it]Evaluating:  42%|████▏     | 52/125 [03:49<05:04,  4.17s/it]Evaluating:  42%|████▏     | 53/125 [03:53<04:53,  4.08s/it]Evaluating:  43%|████▎     | 54/125 [03:57<04:39,  3.94s/it]Evaluating:  44%|████▍     | 55/125 [04:02<05:08,  4.41s/it]Evaluating:  45%|████▍     | 56/125 [04:08<05:27,  4.74s/it]Evaluating:  46%|████▌     | 57/125 [04:11<04:48,  4.24s/it]Evaluating:  46%|████▋     | 58/125 [04:13<04:02,  3.61s/it]Evaluating:  47%|████▋     | 59/125 [04:18<04:36,  4.18s/it]Evaluating:  48%|████▊     | 60/125 [04:24<04:56,  4.57s/it]Evaluating:  49%|████▉     | 61/125 [04:29<061/125
-62/125
-63/125
-64/125
-65/125
-66/125
-67/125
-68/125
-69/125
-70/125
-71/125
-72/125
-73/125
-74/125
-5:10,  4.86s/it]Evaluating:  50%|████▉     | 62/125 [04:32<04:32,  4.33s/it]Evaluating:  50%|█████     | 63/125 [04:36<04:13,  4.09s/it]Evaluating:  51%|█████     | 64/125 [04:41<04:35,  4.52s/it]Evaluating:  52%|█████▏    | 65/125 [04:45<04:22,  4.37s/it]Evaluating:  53%|█████▎    | 66/125 [04:51<04:38,  4.73s/it]Evaluating:  54%|█████▎    | 67/125 [04:57<04:48,  4.97s/it]Evaluating:  54%|█████▍    | 68/125 [05:02<04:52,  5.13s/it]Evaluating:  55%|█████▌    | 69/125 [05:08<04:53,  5.24s/it]Evaluating:  56%|█████▌    | 70/125 [05:12<04:34,  5.00s/it]Evaluating:  57%|█████▋    | 71/125 [05:16<04:11,  4.67s/it]Evaluating:  58%|█████▊    | 72/125 [05:21<04:20,  4.91s/it]Evaluating:  58%|█████▊    | 73/125 [05:27<04:25,  5.10s/it]Evaluating:  59%|█████▉    | 74/125 [05:31<04:02,  4.76s/it]Evaluating:  60%|██████    | 75/125 [05:33<03:24,  475/125
-76/125
-77/125
-78/125
-79/125
-80/125
-81/125
-82/125
-83/125
-84/125
-85/125
-86/125
-87/125
-88/125
-.09s/it]Evaluating:  61%|██████    | 76/125 [05:39<03:41,  4.52s/it]Evaluating:  62%|██████▏   | 77/125 [05:42<03:08,  3.94s/it]Evaluating:  62%|██████▏   | 78/125 [05:45<03:03,  3.91s/it]Evaluating:  63%|██████▎   | 79/125 [05:47<02:27,  3.21s/it]Evaluating:  64%|██████▍   | 80/125 [05:52<02:55,  3.90s/it]Evaluating:  65%|██████▍   | 81/125 [05:58<03:12,  4.37s/it]Evaluating:  66%|██████▌   | 82/125 [06:03<03:23,  4.72s/it]Evaluating:  66%|██████▋   | 83/125 [06:06<02:48,  4.02s/it]Evaluating:  67%|██████▋   | 84/125 [06:10<02:45,  4.04s/it]Evaluating:  68%|██████▊   | 85/125 [06:15<02:59,  4.48s/it]Evaluating:  69%|██████▉   | 86/125 [06:20<02:55,  4.51s/it]Evaluating:  70%|██████▉   | 87/125 [06:23<02:34,  4.06s/it]Evaluating:  70%|███████   | 88/125 [06:27<02:31,  4.09s/it]Evaluating:  71%|███████   |89/125
-90/125
-91/125
-92/125
-93/125
-94/125
-95/125
-96/125
-97/125
-98/125
-99/125
-100/125
-101/125
- 89/125 [06:33<02:42,  4.51s/it]Evaluating:  72%|███████▏  | 90/125 [06:35<02:19,  3.99s/it]Evaluating:  73%|███████▎  | 91/125 [06:39<02:07,  3.74s/it]Evaluating:  74%|███████▎  | 92/125 [06:43<02:10,  3.96s/it]Evaluating:  74%|███████▍  | 93/125 [06:49<02:21,  4.42s/it]Evaluating:  75%|███████▌  | 94/125 [06:53<02:16,  4.40s/it]Evaluating:  76%|███████▌  | 95/125 [06:55<01:53,  3.77s/it]Evaluating:  77%|███████▋  | 96/125 [06:59<01:45,  3.65s/it]Evaluating:  78%|███████▊  | 97/125 [07:02<01:41,  3.63s/it]Evaluating:  78%|███████▊  | 98/125 [07:05<01:30,  3.36s/it]Evaluating:  79%|███████▉  | 99/125 [07:10<01:44,  4.02s/it]Evaluating:  80%|████████  | 100/125 [07:14<01:40,  4.00s/it]Evaluating:  81%|████████  | 101/125 [07:18<01:34,  3.95s/it]Evaluating:  82%|████████▏ | 102/125 [07:24<01:102/125
-103/125
-104/125
-105/125
-106/125
-107/125
-108/125
-109/125
-110/125
-111/125
-112/125
-113/125
-114/125
-41,  4.41s/it]Evaluating:  82%|████████▏ | 103/125 [07:28<01:34,  4.28s/it]Evaluating:  83%|████████▎ | 104/125 [07:33<01:37,  4.65s/it]Evaluating:  84%|████████▍ | 105/125 [07:39<01:38,  4.90s/it]Evaluating:  85%|████████▍ | 106/125 [07:44<01:36,  5.09s/it]Evaluating:  86%|████████▌ | 107/125 [07:50<01:34,  5.22s/it]Evaluating:  86%|████████▋ | 108/125 [07:55<01:30,  5.30s/it]Evaluating:  87%|████████▋ | 109/125 [08:01<01:25,  5.36s/it]Evaluating:  88%|████████▊ | 110/125 [08:06<01:19,  5.28s/it]Evaluating:  89%|████████▉ | 111/125 [08:09<01:06,  4.75s/it]Evaluating:  90%|████████▉ | 112/125 [08:15<01:04,  4.94s/it]Evaluating:  90%|█████████ | 113/125 [08:20<01:01,  5.12s/it]Evaluating:  91%|█████████ | 114/125 [08:24<00:53,  4.84s/it]Evaluating:  92%|█████████▏| 115/125
-116/125
-117/125
-118/125
-119/125
-120/125
-121/125
-122/125
-123/125
-124/125
-115/125 [08:30<00:50,  5.04s/it]Evaluating:  93%|█████████▎| 116/125 [08:34<00:41,  4.63s/it]Evaluating:  94%|█████████▎| 117/125 [08:36<00:32,  4.02s/it]Evaluating:  94%|█████████▍| 118/125 [08:42<00:31,  4.47s/it]Evaluating:  95%|█████████▌| 119/125 [08:45<00:23,  3.98s/it]Evaluating:  96%|█████████▌| 120/125 [08:48<00:18,  3.77s/it]Evaluating:  97%|█████████▋| 121/125 [08:52<00:15,  3.77s/it]Evaluating:  98%|█████████▊| 122/125 [08:56<00:12,  4.04s/it]Evaluating:  98%|█████████▊| 123/125 [08:59<00:07,  3.58s/it]Evaluating:  99%|█████████▉| 124/125 [09:04<00:04,  4.15s/it]Evaluating: 100%|██████████| 125/125 [09:10<00:00,  4.57s/it]Evaluating: 100%|██████████| 125/125 [09:10<00:00,  4.40s/it]
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1/eval/0
-dev | avg_loss: 2.165609375 | {'exact_match': 0.2, 'rougeL': 12.0939}
-train | epoch   0 | Iter:     11/ 57170 | global iter:     11/ 57170 | loss: 2.4694 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.616 | step time: 0.000
-train | epoch   0 | Iter:     12/ 57170 | global iter:     12/ 57170 | loss: 1.8352 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.000
-****************************************************************************************************
-train | epoch   0 | Iter:     12/ 57170 | global iter:     12/ 57170 | loss: 2.0392 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.611
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1
-****************************************************************************************************
-train | epoch   0 | Iter:     13/ 57170 | global iter:     13/ 57170 | loss: 1.7974 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.609 | step time: 0.000
-train | epoch   0 | Iter:     14/ 57170 | global iter:     14/ 57170 | loss: 2.2427 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.610 | step time: 0.000
-train | epoch   0 | Iter:     15/ 57170 | global iter:     15/ 57170 | loss: 2.1672 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.614 | step time: 0.000
-train | epoch   0 | Iter:     16/ 57170 | global iter:     16/ 57170 | loss: 2.1743 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.614 | step time: 0.000
-****************************************************************************************************
-train | epoch   0 | Iter:     16/ 57170 | global iter:     16/ 57170 | loss: 2.0954 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.614 | step time: 0.612
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1
-****************************************************************************************************
-train | epoch   0 | Iter:     17/ 57170 | global iter:     17/ 57170 | loss: 2.0646 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.617 | step time: 0.000
-train | epoch   0 | Iter:     18/ 57170 | global iter:     18/ 57170 | loss: 2.7306 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.613 | step time: 0.000
-train | epoch   0 | Iter:     19/ 57170 | global iter:     19/ 57170 | loss: 2.0014 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.614 | step time: 0.000
-train | epoch   0 | Iter:     20/ 57170 | global iter:     20/ 57170 | loss: 1.7460 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.614 | step time: 0.000
-****************************************************************************************************
-train | epoch   0 | Iter:     20/ 57170 | global iter:     20/ 57170 | loss: 2.1356 | ds_loss: 0.0000 | lr: 1.0000e-05 | scale:  2048.0000 | micro time: 0.614 | step time: 0.615
-./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1
-****************************************************************************************************
-Model save to ./results/gpt2/train/sft/e10-bs2-lr1e-05-G1-N1-NN1/20
-dp size 1
-0/125
-1/125
-2/125
-3/125
-4/125
-5/125
-6/125
-7/125
-8/125
-9/125
-10/125
-11/125
-12/125
-13/125
-14/125
-15/125
-Evaluating:   0%|          | 0/125 [00:00<?, ?it/s]Evaluating:   1%|          | 1/125 [00:06<13:05,  6.33s/it]Evaluating:   2%|▏         | 2/125 [00:08<08:24,  4.10s/it]Evaluating:   2%|▏         | 3/125 [00:10<05:44,  2.82s/it]Evaluating:   3%|▎         | 4/125 [00:14<06:49,  3.39s/it]Evaluating:   4%|▍         | 5/125 [00:18<07:01,  3.51s/it]Evaluating:   5%|▍         | 6/125 [00:21<07:01,  3.54s/it]Evaluating:   6%|▌         | 7/125 [00:26<07:37,  3.88s/it]Evaluating:   6%|▋         | 8/125 [00:29<07:16,  3.73s/it]Evaluating:   7%|▋         | 9/125 [00:34<07:49,  4.05s/it]Evaluating:   8%|▊         | 10/125 [00:38<07:30,  3.92s/it]Evaluating:   9%|▉         | 11/125 [00:43<08:24,  4.42s/it]Evaluating:  10%|▉         | 12/125 [00:49<08:59,  4.77s/it]Evaluating:  10%|█         | 13/125 [00:54<09:17,  4.98s/it]Evaluating:  11%|█         | 14/125 [01:00<09:30,  5.14s/it]Evaluating:  12%|█▏        | 15/125 [01:03<08:22,  4.57s/it]Evaluating:  13%|█▎        | 1616/125
-17/125
-18/125
-19/125
-20/125
-21/125
-22/125
-23/125
-24/125
-25/125
-26/125
-27/125
-28/125
-29/125
-30/125
-31/125
-/125 [01:09<08:55,  4.91s/it]Evaluating:  14%|█▎        | 17/125 [01:14<09:11,  5.11s/it]Evaluating:  14%|█▍        | 18/125 [01:17<07:43,  4.33s/it]Evaluating:  15%|█▌        | 19/125 [01:19<06:27,  3.66s/it]Evaluating:  16%|█▌        | 20/125 [01:24<07:24,  4.24s/it]Evaluating:  17%|█▋        | 21/125 [01:30<08:04,  4.66s/it]Evaluating:  18%|█▊        | 22/125 [01:36<08:29,  4.94s/it]Evaluating:  18%|█▊        | 23/125 [01:41<08:47,  5.17s/it]Evaluating:  19%|█▉        | 24/125 [01:44<07:22,  4.39s/it]Evaluating:  20%|██        | 25/125 [01:47<06:38,  3.99s/it]Evaluating:  21%|██        | 26/125 [01:53<07:21,  4.46s/it]Evaluating:  22%|██▏       | 27/125 [01:56<06:57,  4.26s/it]Evaluating:  22%|██▏       | 28/125 [02:02<07:33,  4.67s/it]Evaluating:  23%|██▎       | 29/125 [02:08<07:53,  4.94s/it]Evaluating:  24%|██▍       | 30/125 [02:09<06:07,  3.87s/it]Evaluating:  25%|██▍       | 31/125 [02:15<06:53,  4.40s/it]Evaluatin32/125
-33/125
-34/125
-35/125
-36/125
-37/125
-38/125
-39/125
-40/125
-41/125
-42/125
-43/125
-44/125
-45/125
-46/125
-g:  26%|██▌       | 32/125 [02:18<06:32,  4.22s/it]Evaluating:  26%|██▋       | 33/125 [02:21<05:36,  3.65s/it]Evaluating:  27%|██▋       | 34/125 [02:25<05:48,  3.83s/it]Evaluating:  28%|██▊       | 35/125 [02:29<06:03,  4.04s/it]Evaluating:  29%|██▉       | 36/125 [02:35<06:40,  4.50s/it]Evaluating:  30%|██▉       | 37/125 [02:41<07:04,  4.83s/it]Evaluating:  30%|███       | 38/125 [02:45<06:54,  4.77s/it]Evaluating:  31%|███       | 39/125 [02:51<07:10,  5.01s/it]Evaluating:  32%|███▏      | 40/125 [02:56<07:04,  4.99s/it]Evaluating:  33%|███▎      | 41/125 [02:59<06:05,  4.35s/it]Evaluating:  34%|███▎      | 42/125 [03:02<05:36,  4.05s/it]Evaluating:  34%|███▍      | 43/125 [03:08<06:10,  4.52s/it]Evaluating:  35%|███▌      | 44/125 [03:10<05:18,  3.94s/it]Evaluating:  36%|███▌      | 45/125 [03:15<05:35,  4.19s/it]Evaluating:  37%|███▋      | 46/125 [03:20<06:02,  4.59s/it]Evaluating:  347/125
-48/125
-49/125
-50/125
-51/125
-52/125
-53/125
-54/125
-55/125
-56/125
-57/125
-58/125
-59/125
-60/125
-8%|███▊      | 47/125 [03:26<06:09,  4.74s/it]Evaluating:  38%|███▊      | 48/125 [03:31<06:22,  4.97s/it]Evaluating:  39%|███▉      | 49/125 [03:37<06:29,  5.13s/it]Evaluating:  40%|████      | 50/125 [03:42<06:23,  5.11s/it]Evaluating:  41%|████      | 51/125 [03:47<06:26,  5.22s/it]Evaluating:  42%|████▏     | 52/125 [03:49<05:17,  4.35s/it]Evaluating:  42%|████▏     | 53/125 [03:55<05:38,  4.70s/it]Evaluating:  43%|████▎     | 54/125 [04:00<05:50,  4.94s/it]Evaluating:  44%|████▍     | 55/125 [04:06<05:56,  5.10s/it]Evaluating:  45%|████▍     | 56/125 [04:08<04:50,  4.22s/it]Evaluating:  46%|████▌     | 57/125 [04:12<04:38,  4.10s/it]Evaluating:  46%|████▋     | 58/125 [04:17<05:01,  4.51s/it]Evaluating:  47%|████▋     | 59/125 [04:23<05:17,  4.81s/it]Evaluating:  48%|████▊     | 60/125 [04:26<04:46,  4.42s/it]Evaluating:  49%|████▉     | 61/125 [04:32<061/125
-62/125
-63/125
-64/125
-65/125
-66/125
-67/125
-68/125
-69/125
-70/125
-71/125
-72/125
-73/125
-74/125
-5:04,  4.76s/it]Evaluating:  50%|████▉     | 62/125 [04:37<05:14,  4.99s/it]Evaluating:  50%|█████     | 63/125 [04:41<04:38,  4.49s/it]Evaluating:  51%|█████     | 64/125 [04:46<04:50,  4.76s/it]Evaluating:  52%|█████▏    | 65/125 [04:51<04:53,  4.89s/it]Evaluating:  53%|█████▎    | 66/125 [04:57<04:59,  5.08s/it]Evaluating:  54%|█████▎    | 67/125 [05:02<05:03,  5.23s/it]Evaluating:  54%|█████▍    | 68/125 [05:08<05:02,  5.31s/it]Evaluating:  55%|█████▌    | 69/125 [05:13<05:00,  5.36s/it]Evaluating:  56%|█████▌    | 70/125 [05:16<04:05,  4.47s/it]Evaluating:  57%|█████▋    | 71/125 [05:21<04:18,  4.80s/it]Evaluating:  58%|█████▊    | 72/125 [05:24<03:34,  4.05s/it]Evaluating:  58%|█████▊    | 73/125 [05:27<03:18,  3.82s/it]Evaluating:  59%|█████▉    | 74/125 [05:33<03:41,  4.34s/it]Evaluating:  60%|██████    | 75/125 [05:36<03:17,  375/125
-76/125
-77/125
-78/125
-79/125
-80/125
-81/125
-82/125
-83/125
-84/125
-85/125
-86/125
-87/125
-88/125
-.94s/it]Evaluating:  61%|██████    | 76/125 [05:39<03:10,  3.88s/it]Evaluating:  62%|██████▏   | 77/125 [05:41<02:39,  3.33s/it]Evaluating:  62%|██████▏   | 78/125 [05:45<02:43,  3.48s/it]Evaluating:  63%|██████▎   | 79/125 [05:51<03:08,  4.09s/it]Evaluating:  64%|██████▍   | 80/125 [05:54<03:00,  4.00s/it]Evaluating:  65%|██████▍   | 81/125 [06:00<03:15,  4.45s/it]Evaluating:  66%|██████▌   | 82/125 [06:03<02:57,  4.12s/it]Evaluating:  66%|██████▋   | 83/125 [06:09<03:10,  4.53s/it]Evaluating:  67%|██████▋   | 84/125 [06:14<03:17,  4.82s/it]Evaluating:  68%|██████▊   | 85/125 [06:20<03:21,  5.03s/it]Evaluating:  69%|██████▉   | 86/125 [06:25<03:21,  5.18s/it]Evaluating:  70%|██████▉   | 87/125 [06:30<03:12,  5.07s/it]Evaluating:  70%|███████   | 88/125 [06:36<03:12,  5.20s/it]Evaluating:  71%|███████   |89/125
-90/125
-91/125
-92/125
-93/125
-94/125
-95/125
-96/125
-slurmstepd: error: *** JOB 8274644 ON compsci-cluster-fitz-08 CANCELLED AT 2025-03-22T09:55:33 DUE TO TIME LIMIT ***
- 89/125 [06:41<03:11,  5.31s/it]Evaluating:  72%|███████▏  | 90/125 [06:47<03:07,  5.36s/it]Evaluating:  73%|███████▎  | 91/125 [06:52<03:03,  5.41s/it]Evaluating:  74%|███████▎  | 92/125 [06:56<02:39,  4.84s/it]Evaluating:  74%|███████▍  | 93/125 [07:00<02:26,  4.57s/it]Evaluating:  75%|███████▌  | 94/125 [07:05<02:30,  4.87s/it]Evaluating:  76%|███████▌  | 95/125 [07:10<02:24,  4.83s/it]Evaluating:  77%|███████▋  | 96/125 [07:15<02:26,  5.04s/it]slurmstepd: error: *** STEP 8274644.6 ON compsci-cluster-fitz-08 CANCELLED AT 2025-03-22T09:55:33 DUE TO TIME LIMIT ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.

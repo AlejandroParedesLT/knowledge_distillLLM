@@ -1,0 +1,290 @@
+Pulling image into RAM...
+INFO:    Converting OCI blobs to SIF format
+WARNING: 'nodev' mount option set on /dev/shm, it could be a source of failure during build process
+INFO:    Starting build...
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:5a227b2c244ca9622f6a354eea1db4318881661b368a5bd43bfae371e6372fbb
+Copying blob sha256:2ec662c81bf0619c9c8d3c5c59fc06d69ab25f2f7be6e97b5a2d4be6d8a0e7e7
+Copying blob sha256:5a7813e071bfadf18aaa6ca8318be4824a9b6297b3240f2cc84c1db6f4113040
+Copying blob sha256:bcc8cc5f9090ef4a6c6577e3a9e9a3f648907618a73050dad76aa5f3deaa703b
+Copying blob sha256:8e949501457905425f131369174adf7c2f6e65332ad755a072f45aa8dd533ae0
+Copying blob sha256:ee9d666be0a110251c5a5e2177c6dd88e4817b90fecdab63faf3100f3581f70f
+Copying blob sha256:30c45e1273d687f6f000dc8c7c1b1c0be66f1df20a86da97c27b30bc75ae0a79
+Copying blob sha256:04d0b5bf5e0a00e0b18e5cf9bb9c2eeb136ff950985f9653608401506de8adc1
+Copying blob sha256:4cd3c482eefe57d8a05f7a7521ca3310788e216206103b0978ccc212b62da6e9
+Copying blob sha256:bbbf37c364f1c9ea42ea659c1b708e3ee5346df88b96f2b3aaaedda7b0fbf487
+Copying blob sha256:0f22deed6c96ba37d9e3e5ad1cb0a74904a052bf47d19d741a4306bb909e2b86
+Copying blob sha256:149402a5adbf12d766ecde4242463fdb80087a0b463f4e101fee5beb27c9df29
+Copying blob sha256:585d60eab6d4b3aeb1e27c1c6fdfaf53b109337b5179b301cff5f54791bb3a8d
+Copying blob sha256:cebf0db1b38e957499ed4b13285c3aaaffcf13827ce869dbfd96e20bb67de906
+Copying blob sha256:2ec0da87f89925c733ec41d0b6bad618fe6c53fd69a376c9f1c547745d1b9dcd
+Copying blob sha256:9c9ec56298711c0c92f261c32548eea8f095a7103f2e05ebb67ea23f3a447b02
+Copying blob sha256:407ab7a11d1a44f606bd3a5516701fabea776fe5741258d95da5ae93e7c4b3d8
+Copying blob sha256:1595fd7f83a174a2cb9877c23a769dfd5b1c316f6b1c9f336e9b70604c768be5
+Copying blob sha256:4c0b16c69a3bbf11cf76f981c1e03c6c21672059b3cf66a62efdf50f04904ac5
+Copying blob sha256:c74ab35e5418e00a051a41211c6159768126b1630661aaf17903d90df593a22f
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:c7e9382f74bd4b0e4b6a0cf30d3a90d3c038c513539908b1232990e5ca10c705
+Copying blob sha256:66bfc514835634b39784160c87d03aee1476f38fc7943e17fb275b3a11a38fee
+Copying blob sha256:41b1ec2c96463bbe6a60ffd5acdc81d01e924112d6c3be5e709ea169706c6af3
+Copying blob sha256:93fee5d668e3f604ebda113c44245e4775016434874e514bb99c4217bd6dbaf2
+Copying blob sha256:52bdc489996e69f0ed4593946517b95cca21211ce5a572f4ff747f9276e1df83
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:3de7f56715c31bf2ce6b8517db76ccbaa77c42b3c59861c3f2229362dd9f2108
+Copying blob sha256:1099dbd340905ffebb1253218557dacd0b63baf363e999838dfc9648646e417a
+Copying blob sha256:9fca2b677804cd37fa77aec4ebf6c691e4c24303249d1ee680801c925a6d7b96
+Copying blob sha256:f74cd9a380cccd881424523376e4c954cf14fa6d8eaa346781583cde0a4349ed
+Copying blob sha256:61d045e513fc14fbfcbcb7442cd8c1b1b212fac584b802c423b8abdc01c2d2c5
+Copying blob sha256:ea2f24bca45f21e17287c52b34f943ae6ca080239e3f630ef9826c0ca6d9b2e1
+Copying blob sha256:f8a98118b95a814edb9a5b1a87579fb9984eb11d5b9934087cbd4695374b27e7
+Copying blob sha256:6978706af50ff33e32d03110acd9f80b6140f207945f00f6bd56f2b9898c9b6d
+Copying blob sha256:c4308adc834a56d0d46b105f414d06fb0945f0acec59f75b414fbd842bf71476
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:a938f9e7d1b8e06857c02eb4d9be296035983988de27cb4f6ef0ca90576c5a88
+Copying blob sha256:269f30e2051b6b5f53e62d44c4e7d602b0401aa25984f4943fe745c198e77ac5
+Copying blob sha256:00099aeee0de4526a31ddbb3603649138e4807bd38074cc9c1a6e1025ce13493
+Copying blob sha256:b4e8220482f22dfa074e762bdc7c2620c21a1419b0ccb5d64f435327095aa219
+Copying blob sha256:ef08d7c56641d212e6e1b3f14aeb7139b5544353e2519e056b1823ddbaf866dd
+Copying blob sha256:a432e6b6711b8e01226534f15ad598a2198f31537b66a0ba65c1d2a2c23a1b96
+Copying blob sha256:e3a0113c18ba7be52a95ac9f00fd156d80afa2699a2ab53fb8b9fb3d13d6a300
+Copying blob sha256:824a985dd01e5ba170ac79d366929faa627013146eaad8046c7fb36a3ad0ab6c
+Copying blob sha256:a2ae30306d17ed4b8a2241c490d48acfd4094dd1d401a7a0f106a788aa918393
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:bc6eb37af609eebcb48a5e72bc2229ff3bcedb4ce79398767aa178322f261749
+Copying blob sha256:8daf4d7ac83931535fccfe8e0948d32081042c173ee867de760d173f43e6d97f
+Copying blob sha256:26d908916a0b62c92e74b24238ad103613222c5c44325eb3a09e4fc2df2de071
+Copying blob sha256:10eb499e8b1e04e4952e317a8dff580d008c7306a7cd0b56a286d09a32a4e09e
+Copying blob sha256:ce6371732708be542b4ad7899374738cf03cf8723d1b2bc3580661cb8cba981a
+Copying blob sha256:0e350e76b8884c8351c9397a94dfe5505b526a304702b2af44a9d00f6515b007
+Copying blob sha256:d308fe289d93e97fe02fa7dfa9fdffa9aa1eee6827e664eef7c387ca5f3384bd
+Copying blob sha256:367788114e9b71a21accde812cabd7f1e3bd6affe4408f96607b7b3d44260a39
+Copying blob sha256:af60051cebf62e95732cc008969d6760bf9d523437af0530553851458d27bff8
+Copying blob sha256:3ee6f9ae14aa423b4ac18d730228368b9db841c4fbbf7651981a1100d0a9cd33
+Copying blob sha256:de54e91f203c8ddfa3bfbaf531e07ff77afc0a5af69a6dc5cf5ea1959383dea8
+Copying blob sha256:a5a55b00d2d4b548c06489cc265d43d8165f9dc871229aa89fd037e7c23222cd
+Copying blob sha256:b7f3d250c8993f99fe82352ce09c21c2c7dd446b8c0e36c829cf8dbfd51b0e10
+Copying blob sha256:599490394ad34745927d419c2cfbc81c3bb42e0960923ef52ebb5154563db6ef
+Copying blob sha256:0e20a253a7e229bcc843edfdc4815ea6d01ed39a89fb0b3f6719aea27a12929d
+Copying config sha256:7a86799ec6d6ea3462b566235e63dcc14a881b54263f687e66977578bd60bb63
+Writing manifest to image destination
+2025/04/17 15:54:34  info unpack layer: sha256:5a7813e071bfadf18aaa6ca8318be4824a9b6297b3240f2cc84c1db6f4113040
+2025/04/17 15:54:34  warn xattr{etc/gshadow} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:54:34  warn xattr{/dev/shm/build-temp-4044437148/rootfs/etc/gshadow} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:54:35  info unpack layer: sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2025/04/17 15:54:35  info unpack layer: sha256:5a227b2c244ca9622f6a354eea1db4318881661b368a5bd43bfae371e6372fbb
+2025/04/17 15:54:40  warn xattr{var/log/apt/term.log} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:54:40  warn xattr{/dev/shm/build-temp-4044437148/rootfs/var/log/apt/term.log} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:54:40  info unpack layer: sha256:2ec662c81bf0619c9c8d3c5c59fc06d69ab25f2f7be6e97b5a2d4be6d8a0e7e7
+2025/04/17 15:54:40  warn xattr{etc/gshadow} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:54:40  warn xattr{/dev/shm/build-temp-4044437148/rootfs/etc/gshadow} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:54:42  info unpack layer: sha256:bcc8cc5f9090ef4a6c6577e3a9e9a3f648907618a73050dad76aa5f3deaa703b
+2025/04/17 15:54:50  info unpack layer: sha256:8e949501457905425f131369174adf7c2f6e65332ad755a072f45aa8dd533ae0
+2025/04/17 15:54:50  info unpack layer: sha256:ee9d666be0a110251c5a5e2177c6dd88e4817b90fecdab63faf3100f3581f70f
+2025/04/17 15:56:36  info unpack layer: sha256:30c45e1273d687f6f000dc8c7c1b1c0be66f1df20a86da97c27b30bc75ae0a79
+2025/04/17 15:56:36  warn xattr{usr/share/doc/cuda-runtime-9-0/NVIDIA-CUDA.jpg} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:56:36  warn xattr{/dev/shm/build-temp-4044437148/rootfs/usr/share/doc/cuda-runtime-9-0/NVIDIA-CUDA.jpg} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:56:36  info unpack layer: sha256:04d0b5bf5e0a00e0b18e5cf9bb9c2eeb136ff950985f9653608401506de8adc1
+2025/04/17 15:56:36  info unpack layer: sha256:4cd3c482eefe57d8a05f7a7521ca3310788e216206103b0978ccc212b62da6e9
+2025/04/17 15:56:36  info unpack layer: sha256:bbbf37c364f1c9ea42ea659c1b708e3ee5346df88b96f2b3aaaedda7b0fbf487
+2025/04/17 15:56:36  info unpack layer: sha256:0f22deed6c96ba37d9e3e5ad1cb0a74904a052bf47d19d741a4306bb909e2b86
+2025/04/17 15:56:36  warn xattr{etc/gshadow} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:56:36  warn xattr{/dev/shm/build-temp-4044437148/rootfs/etc/gshadow} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:56:38  info unpack layer: sha256:149402a5adbf12d766ecde4242463fdb80087a0b463f4e101fee5beb27c9df29
+2025/04/17 15:56:38  info unpack layer: sha256:585d60eab6d4b3aeb1e27c1c6fdfaf53b109337b5179b301cff5f54791bb3a8d
+2025/04/17 15:56:48  info unpack layer: sha256:cebf0db1b38e957499ed4b13285c3aaaffcf13827ce869dbfd96e20bb67de906
+2025/04/17 15:56:48  info unpack layer: sha256:2ec0da87f89925c733ec41d0b6bad618fe6c53fd69a376c9f1c547745d1b9dcd
+2025/04/17 15:56:48  info unpack layer: sha256:9c9ec56298711c0c92f261c32548eea8f095a7103f2e05ebb67ea23f3a447b02
+2025/04/17 15:56:50  warn xattr{var/log/apt/term.log} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:56:50  warn xattr{/dev/shm/build-temp-4044437148/rootfs/var/log/apt/term.log} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:56:50  info unpack layer: sha256:407ab7a11d1a44f606bd3a5516701fabea776fe5741258d95da5ae93e7c4b3d8
+2025/04/17 15:56:51  warn xattr{var/lib/apt/lists/auxfiles} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:56:51  warn xattr{/dev/shm/build-temp-4044437148/rootfs/var/lib/apt/lists/auxfiles} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:56:51  info unpack layer: sha256:1595fd7f83a174a2cb9877c23a769dfd5b1c316f6b1c9f336e9b70604c768be5
+2025/04/17 15:56:51  info unpack layer: sha256:4c0b16c69a3bbf11cf76f981c1e03c6c21672059b3cf66a62efdf50f04904ac5
+2025/04/17 15:56:52  info unpack layer: sha256:c74ab35e5418e00a051a41211c6159768126b1630661aaf17903d90df593a22f
+2025/04/17 15:56:53  info unpack layer: sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2025/04/17 15:56:53  info unpack layer: sha256:c7e9382f74bd4b0e4b6a0cf30d3a90d3c038c513539908b1232990e5ca10c705
+2025/04/17 15:56:53  info unpack layer: sha256:66bfc514835634b39784160c87d03aee1476f38fc7943e17fb275b3a11a38fee
+2025/04/17 15:57:21  info unpack layer: sha256:41b1ec2c96463bbe6a60ffd5acdc81d01e924112d6c3be5e709ea169706c6af3
+2025/04/17 15:57:43  info unpack layer: sha256:93fee5d668e3f604ebda113c44245e4775016434874e514bb99c4217bd6dbaf2
+2025/04/17 15:57:47  info unpack layer: sha256:52bdc489996e69f0ed4593946517b95cca21211ce5a572f4ff747f9276e1df83
+2025/04/17 15:57:47  info unpack layer: sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2025/04/17 15:57:47  info unpack layer: sha256:3de7f56715c31bf2ce6b8517db76ccbaa77c42b3c59861c3f2229362dd9f2108
+2025/04/17 15:57:47  info unpack layer: sha256:1099dbd340905ffebb1253218557dacd0b63baf363e999838dfc9648646e417a
+2025/04/17 15:57:47  info unpack layer: sha256:9fca2b677804cd37fa77aec4ebf6c691e4c24303249d1ee680801c925a6d7b96
+2025/04/17 15:57:47  info unpack layer: sha256:f74cd9a380cccd881424523376e4c954cf14fa6d8eaa346781583cde0a4349ed
+2025/04/17 15:57:47  info unpack layer: sha256:61d045e513fc14fbfcbcb7442cd8c1b1b212fac584b802c423b8abdc01c2d2c5
+2025/04/17 15:57:48  info unpack layer: sha256:ea2f24bca45f21e17287c52b34f943ae6ca080239e3f630ef9826c0ca6d9b2e1
+2025/04/17 15:58:19  info unpack layer: sha256:f8a98118b95a814edb9a5b1a87579fb9984eb11d5b9934087cbd4695374b27e7
+2025/04/17 15:58:19  info unpack layer: sha256:6978706af50ff33e32d03110acd9f80b6140f207945f00f6bd56f2b9898c9b6d
+2025/04/17 15:58:19  info unpack layer: sha256:c4308adc834a56d0d46b105f414d06fb0945f0acec59f75b414fbd842bf71476
+2025/04/17 15:58:19  info unpack layer: sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2025/04/17 15:58:19  info unpack layer: sha256:a938f9e7d1b8e06857c02eb4d9be296035983988de27cb4f6ef0ca90576c5a88
+2025/04/17 15:58:19  info unpack layer: sha256:269f30e2051b6b5f53e62d44c4e7d602b0401aa25984f4943fe745c198e77ac5
+2025/04/17 15:58:19  info unpack layer: sha256:00099aeee0de4526a31ddbb3603649138e4807bd38074cc9c1a6e1025ce13493
+2025/04/17 15:58:26  info unpack layer: sha256:b4e8220482f22dfa074e762bdc7c2620c21a1419b0ccb5d64f435327095aa219
+2025/04/17 15:58:37  info unpack layer: sha256:ef08d7c56641d212e6e1b3f14aeb7139b5544353e2519e056b1823ddbaf866dd
+2025/04/17 15:58:38  info unpack layer: sha256:a432e6b6711b8e01226534f15ad598a2198f31537b66a0ba65c1d2a2c23a1b96
+2025/04/17 15:58:38  info unpack layer: sha256:e3a0113c18ba7be52a95ac9f00fd156d80afa2699a2ab53fb8b9fb3d13d6a300
+2025/04/17 15:58:43  info unpack layer: sha256:824a985dd01e5ba170ac79d366929faa627013146eaad8046c7fb36a3ad0ab6c
+2025/04/17 15:58:43  info unpack layer: sha256:a2ae30306d17ed4b8a2241c490d48acfd4094dd1d401a7a0f106a788aa918393
+2025/04/17 15:58:43  warn xattr{usr/bin} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:43  warn xattr{/dev/shm/build-temp-4044437148/rootfs/usr/bin} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:58:43  warn rootless{usr/bin/protoc} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_bad_any_cast_impl.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_bad_optional_access.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_bad_variant_access.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_base.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_city.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_civil_time.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_cord.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_cord_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_cordz_functions.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_cordz_handle.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_cordz_info.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_cordz_sample_token.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_crc32c.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_crc_cord_state.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_crc_cpu_detect.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_crc_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_debugging_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_demangle_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_die_if_null.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_examine_stack.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_exponential_biased.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_failure_signal_handler.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_commandlineflag.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_commandlineflag_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_config.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_marshalling.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_parse.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_private_handle_accessor.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:44  warn rootless{usr/lib/libabsl_flags_program_name.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_flags_reflection.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_flags_usage.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_flags_usage_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_graphcycles_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_hash.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_hashtablez_sampler.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_int128.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_kernel_timeout_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_leak_check.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_entry.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_flags.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_globals.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_initialize.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_check_op.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_conditions.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_format.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_globals.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_log_sink_set.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_message.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_nullguard.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_internal_proto.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_severity.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_log_sink.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_low_level_hash.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_malloc_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_periodic_sampler.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_distributions.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_distribution_test_util.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_platform.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_pool_urbg.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_randen.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_randen_hwaes.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_randen_hwaes_impl.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_randen_slow.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_internal_seed_material.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_seed_gen_exception.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_random_seed_sequences.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_raw_hash_set.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_raw_logging_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_scoped_set_env.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_spinlock_wait.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_stacktrace.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_status.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_statusor.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_str_format_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_strerror.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_string_view.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_strings.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_strings_internal.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_symbolize.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_synchronization.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_throw_delegate.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_time.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libabsl_time_zone.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libaddress_sorting.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:58:45  warn rootless{usr/lib/libaddress_sorting.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libdmlc.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libdmlc.so.0} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libfmt.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libfmt.so.10} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libfmt.so.11} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgpr.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgpr.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_alts.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_alts.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_error_details.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_error_details.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_reflection.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_reflection.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_unsecure.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc++_unsecure.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc_authorization_provider.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc_authorization_provider.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc_plugin_support.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc_plugin_support.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc_unsecure.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpc_unsecure.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpcpp_channelz.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libgrpcpp_channelz.so.1.62} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libnvcomp.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:00  warn rootless{usr/lib/libnvcomp.so.4} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libnvcomp_cpu.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libnvcomp_cpu.so.4} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libprotobuf-lite.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libprotobuf.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libprotoc.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libspdlog.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libspdlog.so.1.14} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_base_lib.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_base_lib.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_json_lib.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_json_lib.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_mem_lib.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_mem_lib.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_message_lib.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_message_lib.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_textformat_lib.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libupb_textformat_lib.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libutf8_range_lib.so} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:01  warn rootless{usr/lib/libutf8_range_lib.so.39} ignoring (usually) harmless EPERM on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:13  info unpack layer: sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+2025/04/17 15:59:13  info unpack layer: sha256:bc6eb37af609eebcb48a5e72bc2229ff3bcedb4ce79398767aa178322f261749
+2025/04/17 15:59:13  info unpack layer: sha256:8daf4d7ac83931535fccfe8e0948d32081042c173ee867de760d173f43e6d97f
+2025/04/17 15:59:13  info unpack layer: sha256:26d908916a0b62c92e74b24238ad103613222c5c44325eb3a09e4fc2df2de071
+2025/04/17 15:59:13  info unpack layer: sha256:10eb499e8b1e04e4952e317a8dff580d008c7306a7cd0b56a286d09a32a4e09e
+2025/04/17 15:59:14  info unpack layer: sha256:ce6371732708be542b4ad7899374738cf03cf8723d1b2bc3580661cb8cba981a
+2025/04/17 15:59:14  warn xattr{usr/src} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:14  warn xattr{/dev/shm/build-temp-4044437148/rootfs/usr/src} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:59:14  info unpack layer: sha256:0e350e76b8884c8351c9397a94dfe5505b526a304702b2af44a9d00f6515b007
+2025/04/17 15:59:15  info unpack layer: sha256:d308fe289d93e97fe02fa7dfa9fdffa9aa1eee6827e664eef7c387ca5f3384bd
+2025/04/17 15:59:17  info unpack layer: sha256:367788114e9b71a21accde812cabd7f1e3bd6affe4408f96607b7b3d44260a39
+2025/04/17 15:59:21  info unpack layer: sha256:af60051cebf62e95732cc008969d6760bf9d523437af0530553851458d27bff8
+2025/04/17 15:59:22  info unpack layer: sha256:3ee6f9ae14aa423b4ac18d730228368b9db841c4fbbf7651981a1100d0a9cd33
+2025/04/17 15:59:34  info unpack layer: sha256:de54e91f203c8ddfa3bfbaf531e07ff77afc0a5af69a6dc5cf5ea1959383dea8
+2025/04/17 15:59:34  warn xattr{usr/include} ignoring ENOTSUP on setxattr "user.rootlesscontainers"
+2025/04/17 15:59:34  warn xattr{/dev/shm/build-temp-4044437148/rootfs/usr/include} destination filesystem does not support xattrs, further warnings will be suppressed
+2025/04/17 15:59:43  info unpack layer: sha256:a5a55b00d2d4b548c06489cc265d43d8165f9dc871229aa89fd037e7c23222cd
+2025/04/17 15:59:43  info unpack layer: sha256:b7f3d250c8993f99fe82352ce09c21c2c7dd446b8c0e36c829cf8dbfd51b0e10
+2025/04/17 15:59:43  info unpack layer: sha256:599490394ad34745927d419c2cfbc81c3bb42e0960923ef52ebb5154563db6ef
+2025/04/17 15:59:43  info unpack layer: sha256:0e20a253a7e229bcc843edfdc4815ea6d01ed39a89fb0b3f6719aea27a12929d
+INFO:    Creating SIF file...
+slurmstepd: error: *** JOB 8484089 ON linux45 CANCELLED AT 2025-04-17T16:24:06 ***

@@ -4,7 +4,7 @@ MASTER_ADDR=localhost
 MASTER_PORT=${2-2012}
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=4
+GPUS_PER_NODE=2
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -14,37 +14,43 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH=${1-"."}
-CKPT_NAME="qwen2.5-1.5B-Instruct"
-CKPT="Qwen/Qwen2.5-1.5B-Instruct"
+CKPT_NAME="Qwen2.5-0.5B"
+CKPT="Qwen/Qwen2.5-0.5B-Instruct"
+TEACHER_CKPT_NAME="Qwen2.5-1.5B-sft"
+TEACHER_CKPT="${BASE_PATH}/results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000"
+
+#MP_SIZE=1
 # data
 DATA_DIR="${BASE_PATH}/processed_data/pytorrent/full/qwen2"
-#/processed_data/pytorrent/full/qwen2_comp
-
 # hp
-BATCH_SIZE=1
+BATCH_SIZE=8
 LR=0.00001
-GRAD_ACC=2
+GRAD_ACC=1
 EVAL_BATCH_SIZE=8
 # length
 MAX_LENGTH=512
 # runtime
-SAVE_PATH="${BASE_PATH}/results/qwen2.5/train/sft"
+SAVE_PATH="${BASE_PATH}/results/qwen2/train/kd/${CKPT_NAME}-to-${TEACHER_CKPT_NAME}"
 # seed
 SEED=10
-SEED_ORDER=10
 
 
 OPTS=""
 # model
 OPTS+=" --base-path ${BASE_PATH}"
 OPTS+=" --model-path ${CKPT}"
+OPTS+=" --teacher-model-path ${TEACHER_CKPT}"
 OPTS+=" --ckpt-name ${CKPT_NAME}"
+OPTS+=" --teacher-ckpt-name ${TEACHER_CKPT_NAME}"
+OPTS+=" --teacher-model-fp16"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --model-type qwen2"
-OPTS+=" --gradient-checkpointing"
+# OPTS+=" --gradient-checkpointing"
+# OPTS+=" --model-parallel"
+# OPTS+=" --model-parallel-size ${MP_SIZE}"
 # data
 OPTS+=" --data-dir ${DATA_DIR}"
-OPTS+=" --num-workers 0"
+OPTS+=" --num-workers 4"
 OPTS+=" --dev-num 1000"
 # hp
 OPTS+=" --lr ${LR}"
@@ -56,6 +62,7 @@ OPTS+=" --lr-decay-style cosine"
 OPTS+=" --weight-decay 1e-2"
 OPTS+=" --clip-grad 1.0"
 OPTS+=" --epochs 10"
+OPTS+=" --kd-ratio 0.5"
 # length
 OPTS+=" --max-length ${MAX_LENGTH}"
 OPTS+=" --max-prompt-length 256"
@@ -63,19 +70,18 @@ OPTS+=" --max-prompt-length 256"
 OPTS+=" --do-train"
 OPTS+=" --do-valid"
 OPTS+=" --eval-gen"
-OPTS+=" --save-interval 4000"
-OPTS+=" --eval-interval 4000"
+OPTS+=" --save-interval 2000"
+OPTS+=" --eval-interval 2000"
 OPTS+=" --log-interval 4"
-OPTS+=" --mid-log-num 1"
+OPTS+=" --mid-log-num  10"
 OPTS+=" --save ${SAVE_PATH}"
 # seed
 OPTS+=" --seed ${SEED}"
-OPTS+=" --seed-order ${SEED_ORDER}"
 # deepspeed
 OPTS+=" --deepspeed"
-OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config_zero2_bf16.json"
+OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config_zero1_fp16.json"
 # type
-OPTS+=" --type lm"
+OPTS+=" --type kd"
 # gen
 OPTS+=" --do-sample"
 OPTS+=" --top-k 0"

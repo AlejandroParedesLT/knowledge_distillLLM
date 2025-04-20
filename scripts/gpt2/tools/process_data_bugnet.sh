@@ -1,5 +1,8 @@
-BASE_PATH=${1}
+#!/bin/bash
+set -e
+set -x  # Print commands as they execute (helps debugging)
 
+BASE_PATH=${1}
 export TF_CPP_MIN_LOG_LEVEL=3
 
 # only prompt for MiniLLM train

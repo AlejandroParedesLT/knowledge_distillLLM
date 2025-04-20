@@ -14,9 +14,9 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH=${1-"."}
-CKPT_NAME="gpt2-xlarge"
+CKPT_NAME="gpt2-xlarge-SFT"
 #CKPT="check points/${CKPT_NAME}/"
-CKPT="gpt2-xl" # download automatically
+CKPT="MiniLLM/teacher-gpt2-1.5B" # download automatically
 # data
 DATA_DIR="${BASE_PATH}/processed_data/pytorrent/full/gpt2/"
 # hp

@@ -14,8 +14,8 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH=${1-"."}
-CKPT_NAME="qwen2.5-1.5B-Instruct"
-CKPT="Qwen/Qwen2.5-1.5B-Instruct"
+CKPT_NAME="qwen2.5-0.5B-Instruct"
+CKPT="Qwen/Qwen2.5-0.5B-Instruct"
 # data
 DATA_DIR="${BASE_PATH}/processed_data/pytorrent/full/qwen2"
 #/processed_data/pytorrent/full/qwen2_comp
@@ -28,7 +28,7 @@ EVAL_BATCH_SIZE=8
 # length
 MAX_LENGTH=512
 # runtime
-SAVE_PATH="${BASE_PATH}/results/qwen2.5/train/sft"
+SAVE_PATH="${BASE_PATH}/results/qwen2.5/train/sft/${CKPT_NAME}"
 # seed
 SEED=10
 SEED_ORDER=10

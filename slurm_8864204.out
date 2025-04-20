@@ -1,0 +1,1062 @@
+compsci-cluster-fitz-03
+Sat Apr 19 10:15:39 AM EDT 2025
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path gpt2-xl --ckpt-name gpt2-xlarge --n-gpu 4 --data-dir ./processed_data/bugnet_python/full/gpt2/ --num-workers 0 --dev-num 1000 --lr 0.00005 --batch-size 2 --eval-batch-size 4 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 2000 --eval-interval 2000 --log-interval 4 --mid-log-num 10 --save ./results/gpt2/train/sft/gpt2-xlarge/ --seed 10 --seed-order 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type lm --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0419 10:15:45.219000 3876963 torch/distributed/run.py:792] 
+W0419 10:15:45.219000 3876963 torch/distributed/run.py:792] *****************************************
+W0419 10:15:45.219000 3876963 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0419 10:15:45.219000 3876963 torch/distributed/run.py:792] *****************************************
+[2025-04-19 10:15:51,004] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-19 10:15:51,004] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-19 10:15:51,005] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-19 10:15:51,006] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+using world size: 4
+[2025-04-19 10:16:00,713] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-19 10:16:00,714] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... gpt2-xl
+  ckpt_name .................... gpt2-xlarge
+  model_type ................... gpt2
+  teacher_model_type ........... None
+  n_gpu ........................ 4
+  n_nodes ...................... 1
+  teacher_model_path ........... None
+  teacher_ckpt_name ............ None
+  teacher_model_fp16 ........... False
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... lm
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/gpt2/train/sft/gpt2-xlarge/e10-bs2-lr5e-05-G1-N4-NN1
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 2000
+  eval_interval ................ 2000
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/bugnet_python/full/gpt2/
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 2
+  eval_batch_size .............. 4
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 10
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... False
+  attn_dtype ................... None
+  lr ........................... 5e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... None
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 4
+[2025-04-19 10:16:00,932] [INFO] [comm.py:658:init_distributed] cdb=None
+Sat Apr 19 10:16:00 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             16W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   27C    P0             18W /  230W |      27MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   26C    P2             17W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   25C    P0             17W /  230W |      25MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3         20MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3         18MiB |
++-----------------------------------------------------------------------------------------+
+
+[2025-04-19 10:16:01,292] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-19 10:16:01,295] [INFO] [comm.py:658:init_distributed] cdb=None
+Sat Apr 19 10:16:01 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             17W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   28C    P2             30W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   26C    P2             30W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             31W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+[rank0]:     response.raise_for_status()
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+[rank0]:     raise HTTPError(http_error_msg, response=self)
+[rank0]: requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank0]:     resolved_file = hf_hub_download(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+[rank0]:     return _hf_hub_download_to_cache_dir(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 969, in _hf_hub_download_to_cache_dir
+[rank0]:     _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1486, in _raise_on_head_call_error
+[rank0]:     raise head_call_error
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1376, in _get_metadata_or_catch_error
+[rank0]:     metadata = get_hf_file_metadata(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1296, in get_hf_file_metadata
+[rank0]:     r = _request_wrapper(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 280, in _request_wrapper
+[rank0]:     response = _request_wrapper(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 304, in _request_wrapper
+[rank0]:     hf_raise_for_status(response)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 481, in hf_raise_for_status
+[rank0]:     raise _format(HfHubHTTPError, str(e), response) from e
+[rank0]: huggingface_hub.errors.HfHubHTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b021-17d6e87d4f2b45081ab421c8;f9e0381d-02d9-4d95-be17-389ae8b3813a)
+
+[rank0]: Invalid credentials in Authorization header
+
+[rank0]: During handling of the above exception, another exception occurred:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 560, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank0]:     tokenizer = get_tokenizer(args)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank0]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 877, in from_pretrained
+[rank0]:     config = AutoConfig.from_pretrained(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1017, in from_pretrained
+[rank0]:     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+[rank0]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 633, in _get_config_dict
+[rank0]:     resolved_config_file = cached_file(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 467, in cached_file
+[rank0]:     raise EnvironmentError(f"There was a specific connection error when trying to load {path_or_repo_id}:\n{err}")
+[rank0]: OSError: There was a specific connection error when trying to load gpt2-xl:
+[rank0]: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b021-17d6e87d4f2b45081ab421c8;f9e0381d-02d9-4d95-be17-389ae8b3813a)
+
+[rank0]: Invalid credentials in Authorization header
+Sat Apr 19 10:16:01 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             18W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   28C    P2             37W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             37W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             38W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+[rank0]:[W419 10:16:02.032648268 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+Sat Apr 19 10:16:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             20W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             60W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             55W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             61W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+Sat Apr 19 10:16:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             20W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             60W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             55W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             61W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+Sat Apr 19 10:16:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             20W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             59W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             55W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             61W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+[rank2]:     response.raise_for_status()
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+[rank2]:     raise HTTPError(http_error_msg, response=self)
+[rank2]: requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json
+
+[rank2]: The above exception was the direct cause of the following exception:
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank2]:     resolved_file = hf_hub_download(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank2]:     return fn(*args, **kwargs)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+[rank2]:     return _hf_hub_download_to_cache_dir(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 969, in _hf_hub_download_to_cache_dir
+[rank2]:     _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1486, in _raise_on_head_call_error
+[rank2]:     raise head_call_error
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1376, in _get_metadata_or_catch_error
+[rank2]:     metadata = get_hf_file_metadata(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank2]:     return fn(*args, **kwargs)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1296, in get_hf_file_metadata
+[rank2]:     r = _request_wrapper(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 280, in _request_wrapper
+[rank2]:     response = _request_wrapper(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 304, in _request_wrapper
+[rank2]:     hf_raise_for_status(response)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 481, in hf_raise_for_status
+[rank2]:     raise _format(HfHubHTTPError, str(e), response) from e
+[rank2]: huggingface_hub.errors.HfHubHTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b023-1a6892162b49e61b191b5fbb;93b84c72-f0f6-4efe-9e0b-b90445db00a1)
+
+[rank2]: Invalid credentials in Authorization header
+
+[rank2]: During handling of the above exception, another exception occurred:
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 560, in <module>
+[rank2]:     main()
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank2]:     tokenizer = get_tokenizer(args)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank2]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 877, in from_pretrained
+[rank2]:     config = AutoConfig.from_pretrained(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1017, in from_pretrained
+[rank2]:     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+[rank2]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 633, in _get_config_dict
+[rank2]:     resolved_config_file = cached_file(
+[rank2]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 467, in cached_file
+[rank2]:     raise EnvironmentError(f"There was a specific connection error when trying to load {path_or_repo_id}:\n{err}")
+[rank2]: OSError: There was a specific connection error when trying to load gpt2-xl:
+[rank2]: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b023-1a6892162b49e61b191b5fbb;93b84c72-f0f6-4efe-9e0b-b90445db00a1)
+
+[rank2]: Invalid credentials in Authorization header
+Sat Apr 19 10:16:02 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             16W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             59W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             58W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             61W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3876970      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3876971      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3876972      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+W0419 10:16:03.525000 3876963 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3876970 closing signal SIGTERM
+W0419 10:16:03.525000 3876963 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3876971 closing signal SIGTERM
+W0419 10:16:03.535000 3876963 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3876972 closing signal SIGTERM
+E0419 10:16:03.728000 3876963 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 3876969) of binary: /home/users/ap794/final_project_distillLLM/venv/bin/python3
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/venv/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+./finetune.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-19_10:16:03
+  host      : compsci-cluster-fitz-03.cs.duke.edu.
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 3876969)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: compsci-cluster-fitz-03: task 0: Exited with exit code 1
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path gpt2-xl --ckpt-name gpt2-xlarge --n-gpu 4 --data-dir ./processed_data/dolly_spanish/full/gpt2/ --num-workers 0 --dev-num 1000 --lr 0.00005 --batch-size 2 --eval-batch-size 4 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 1000 --eval-interval 1000 --log-interval 4 --mid-log-num 10 --save ./results/gpt2/train/sft/gpt2-xlarge-spanish/ --seed 10 --seed-order 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type lm --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0419 10:16:05.797000 3877170 torch/distributed/run.py:792] 
+W0419 10:16:05.797000 3877170 torch/distributed/run.py:792] *****************************************
+W0419 10:16:05.797000 3877170 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0419 10:16:05.797000 3877170 torch/distributed/run.py:792] *****************************************
+[2025-04-19 10:16:10,040] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-19 10:16:10,196] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-19 10:16:10,214] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-19 10:16:10,221] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+using world size: 4
+[2025-04-19 10:16:17,118] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-19 10:16:17,118] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... gpt2-xl
+  ckpt_name .................... gpt2-xlarge
+  model_type ................... gpt2
+  teacher_model_type ........... None
+  n_gpu ........................ 4
+  n_nodes ...................... 1
+  teacher_model_path ........... None
+  teacher_ckpt_name ............ None
+  teacher_model_fp16 ........... False
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... lm
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/gpt2/train/sft/gpt2-xlarge-spanish/e10-bs2-lr5e-05-G1-N4-NN1
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 1000
+  eval_interval ................ 1000
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/dolly_spanish/full/gpt2/
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 2
+  eval_batch_size .............. 4
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 10
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... False
+  attn_dtype ................... None
+  lr ........................... 5e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... None
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 4
+[2025-04-19 10:16:17,346] [INFO] [comm.py:658:init_distributed] cdb=None
+Sat Apr 19 10:16:17 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   27C    P8             16W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   28C    P0             18W /  230W |      19MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   26C    P0             16W /  230W |      27MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   25C    P0             18W /  230W |      25MiB /  24564MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3         20MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3         20MiB |
++-----------------------------------------------------------------------------------------+
+
+[2025-04-19 10:16:17,713] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-19 10:16:17,724] [INFO] [comm.py:658:init_distributed] cdb=None
+Sat Apr 19 10:16:17 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             17W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             27W /  230W |     209MiB /  24564MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             25W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             28W /  230W |     209MiB /  24564MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+Sat Apr 19 10:16:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             19W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             47W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             46W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   26C    P2             51W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+[rank0]:     response.raise_for_status()
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+[rank0]:     raise HTTPError(http_error_msg, response=self)
+[rank0]: requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank0]:     resolved_file = hf_hub_download(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+[rank0]:     return _hf_hub_download_to_cache_dir(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 969, in _hf_hub_download_to_cache_dir
+[rank0]:     _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1486, in _raise_on_head_call_error
+[rank0]:     raise head_call_error
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1376, in _get_metadata_or_catch_error
+[rank0]:     metadata = get_hf_file_metadata(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1296, in get_hf_file_metadata
+[rank0]:     r = _request_wrapper(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 280, in _request_wrapper
+[rank0]:     response = _request_wrapper(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 304, in _request_wrapper
+[rank0]:     hf_raise_for_status(response)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 481, in hf_raise_for_status
+[rank0]:     raise _format(HfHubHTTPError, str(e), response) from e
+[rank0]: huggingface_hub.errors.HfHubHTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b032-39049db808616b0562193fe1;8d764e18-bf7f-47b9-a233-6d691b4e7f22)
+
+[rank0]: Invalid credentials in Authorization header
+
+[rank0]: During handling of the above exception, another exception occurred:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 560, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank0]:     tokenizer = get_tokenizer(args)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank0]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 877, in from_pretrained
+[rank0]:     config = AutoConfig.from_pretrained(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1017, in from_pretrained
+[rank0]:     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+[rank0]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 633, in _get_config_dict
+[rank0]:     resolved_config_file = cached_file(
+[rank0]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 467, in cached_file
+[rank0]:     raise EnvironmentError(f"There was a specific connection error when trying to load {path_or_repo_id}:\n{err}")
+[rank0]: OSError: There was a specific connection error when trying to load gpt2-xl:
+[rank0]: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b032-39049db808616b0562193fe1;8d764e18-bf7f-47b9-a233-6d691b4e7f22)
+
+[rank0]: Invalid credentials in Authorization header
+[rank0]:[W419 10:16:18.728460486 ProcessGroupNCCL.cpp:1496] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+Sat Apr 19 10:16:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             19W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             47W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             46W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   27C    P2             62W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+Sat Apr 19 10:16:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             19W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             59W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             59W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   27C    P2             62W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+Sat Apr 19 10:16:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             19W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             47W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             46W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   27C    P2             62W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 409, in hf_raise_for_status
+[rank1]:     response.raise_for_status()
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+[rank1]:     raise HTTPError(http_error_msg, response=self)
+[rank1]: requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 403, in cached_file
+[rank1]:     resolved_file = hf_hub_download(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank1]:     return fn(*args, **kwargs)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 862, in hf_hub_download
+[rank1]:     return _hf_hub_download_to_cache_dir(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 969, in _hf_hub_download_to_cache_dir
+[rank1]:     _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1486, in _raise_on_head_call_error
+[rank1]:     raise head_call_error
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1376, in _get_metadata_or_catch_error
+[rank1]:     metadata = get_hf_file_metadata(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank1]:     return fn(*args, **kwargs)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1296, in get_hf_file_metadata
+[rank1]:     r = _request_wrapper(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 280, in _request_wrapper
+[rank1]:     response = _request_wrapper(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 304, in _request_wrapper
+[rank1]:     hf_raise_for_status(response)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 481, in hf_raise_for_status
+[rank1]:     raise _format(HfHubHTTPError, str(e), response) from e
+[rank1]: huggingface_hub.errors.HfHubHTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b033-4609960d2065b7d17eb2c1a3;26009edc-9c2f-4241-b47b-0eb11d091b2c)
+
+[rank1]: Invalid credentials in Authorization header
+
+[rank1]: During handling of the above exception, another exception occurred:
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 560, in <module>
+[rank1]:     main()
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 517, in main
+[rank1]:     tokenizer = get_tokenizer(args)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 204, in get_tokenizer
+[rank1]:     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 877, in from_pretrained
+[rank1]:     config = AutoConfig.from_pretrained(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 1017, in from_pretrained
+[rank1]:     config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 574, in get_config_dict
+[rank1]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/configuration_utils.py", line 633, in _get_config_dict
+[rank1]:     resolved_config_file = cached_file(
+[rank1]:   File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py", line 467, in cached_file
+[rank1]:     raise EnvironmentError(f"There was a specific connection error when trying to load {path_or_repo_id}:\n{err}")
+[rank1]: OSError: There was a specific connection error when trying to load gpt2-xl:
+[rank1]: 401 Client Error: Unauthorized for url: https://huggingface.co/gpt2-xl/resolve/main/config.json (Request ID: Root=1-6803b033-4609960d2065b7d17eb2c1a3;26009edc-9c2f-4241-b47b-0eb11d091b2c)
+
+[rank1]: Invalid credentials in Authorization header
+Sat Apr 19 10:16:19 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A5000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   28C    P8             16W /  230W |       4MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A5000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P2             60W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA RTX A5000               Off |   00000000:B1:00.0 Off |                  Off |
+| 30%   27C    P2             59W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA RTX A5000               Off |   00000000:CA:00.0 Off |                  Off |
+| 30%   27C    P2             62W /  230W |     209MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   3877174      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    2   N/A  N/A   3877175      C   ...project_distillLLM/venv/bin/python3        202MiB |
+|    3   N/A  N/A   3877176      C   ...project_distillLLM/venv/bin/python3        202MiB |
++-----------------------------------------------------------------------------------------+
+
+W0419 10:16:19.776000 3877170 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3877174 closing signal SIGTERM
+W0419 10:16:19.777000 3877170 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3877175 closing signal SIGTERM
+W0419 10:16:19.777000 3877170 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 3877176 closing signal SIGTERM
+E0419 10:16:19.989000 3877170 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 3877173) of binary: /home/users/ap794/final_project_distillLLM/venv/bin/python3
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/venv/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+./finetune.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-19_10:16:19
+  host      : compsci-cluster-fitz-03.cs.duke.edu.
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 3877173)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: compsci-cluster-fitz-03: task 0: Exited with exit code 1

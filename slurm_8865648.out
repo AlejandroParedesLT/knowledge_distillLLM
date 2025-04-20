@@ -1,0 +1,70 @@
+compsci-cluster-fitz-03
+Sun Apr 20 03:43:14 AM EDT 2025
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+The token `gemma3test_v2` has been saved to /dev/shm/hf-home/stored_tokens
+Your token has been saved to /dev/shm/hf-home/token
+Login successful.
+The current active token is: `gemma3test_v2`
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 /home/MiniLLM/finetune.py --base-path /home/MiniLLM --model-path Qwen/Qwen2.5-1.5B-Instruct --ckpt-name qwen2.5-1.5B-Instruct --n-gpu 4 --model-type qwen2 --gradient-checkpointing --data-dir /home/MiniLLM/processed_data/pytorrent/full/qwen2_comp --num-workers 0 --dev-num 1000 --lr 0.00001 --batch-size 1 --eval-batch-size 8 --gradient-accumulation-steps 2 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 4000 --eval-interval 4000 --log-interval 4 --mid-log-num 1 --save /home/MiniLLM/results/qwen2.5/train/sft --seed 10 --seed-order 10 --deepspeed --deepspeed_config /home/MiniLLM/configs/deepspeed/ds_config_zero2_bf16.json --type lm --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=/home/MiniLLM
+mkdir: cannot create directory ‘/home/MiniLLM’: Permission denied
+W0420 03:43:18.304000 3921304 torch/distributed/run.py:792] 
+W0420 03:43:18.304000 3921304 torch/distributed/run.py:792] *****************************************
+W0420 03:43:18.304000 3921304 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0420 03:43:18.304000 3921304 torch/distributed/run.py:792] *****************************************
+/home/users/ap794/final_project_distillLLM/venv/bin/python3: can't open file '/home/MiniLLM/finetune.py': [Errno 2] No such file or directory
+/home/users/ap794/final_project_distillLLM/venv/bin/python3: can't open file '/home/MiniLLM/finetune.py': [Errno 2] No such file or directory
+/home/users/ap794/final_project_distillLLM/venv/bin/python3: can't open file '/home/MiniLLM/finetune.py': [Errno 2] No such file or directory
+/home/users/ap794/final_project_distillLLM/venv/bin/python3: can't open file '/home/MiniLLM/finetune.py': [Errno 2] No such file or directory
+E0420 03:43:18.451000 3921304 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 2) local_rank: 0 (pid: 3921308) of binary: /home/users/ap794/final_project_distillLLM/venv/bin/python3
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/venv/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/home/MiniLLM/finetune.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2025-04-20_03:43:18
+  host      : compsci-cluster-fitz-03.cs.duke.edu.
+  rank      : 1 (local_rank: 1)
+  exitcode  : 2 (pid: 3921309)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2025-04-20_03:43:18
+  host      : compsci-cluster-fitz-03.cs.duke.edu.
+  rank      : 2 (local_rank: 2)
+  exitcode  : 2 (pid: 3921310)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2025-04-20_03:43:18
+  host      : compsci-cluster-fitz-03.cs.duke.edu.
+  rank      : 3 (local_rank: 3)
+  exitcode  : 2 (pid: 3921311)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-20_03:43:18
+  host      : compsci-cluster-fitz-03.cs.duke.edu.
+  rank      : 0 (local_rank: 0)
+  exitcode  : 2 (pid: 3921308)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: compsci-cluster-fitz-03: task 0: Exited with exit code 1

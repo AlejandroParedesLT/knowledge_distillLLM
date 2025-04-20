@@ -1,0 +1,6 @@
+compsci-cluster-fitz-32
+Sat Apr 19 10:27:52 AM EDT 2025
+usage: huggingface-cli <command> [<args>] login [-h] [--token TOKEN]
+                                                [--add-to-git-credential]
+huggingface-cli <command> [<args>] login: error: argument --token: expected one argument
+srun: error: compsci-cluster-fitz-32: task 0: Exited with exit code 2

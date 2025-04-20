@@ -1,0 +1,314 @@
+compsci-cluster-fitz-08
+Sun Apr 20 11:36:32 AM EDT 2025
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+The token `llama3` has been saved to /dev/shm/hf-home/stored_tokens
+Your token has been saved to /dev/shm/hf-home/token
+Login successful.
+The current active token is: `llama3`
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path Qwen/Qwen2.5-0.5B-Instruct --teacher-model-path ./results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000 --ckpt-name Qwen2.5-0.5B --teacher-ckpt-name Qwen2.5-1.5B-sft --teacher-model-fp16 --n-gpu 4 --model-type qwen2 --gradient-checkpointing --model-parallel --model-parallel-size 4 --data-dir ./processed_data/pytorrent/full/qwen2 --num-workers 4 --dev-num 1000 --lr 0.00001 --batch-size 8 --eval-batch-size 8 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --kd-ratio 0.5 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 2000 --eval-interval 2000 --log-interval 4 --mid-log-num 10 --save ./results/qwen2/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft --seed 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type kd --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0420 11:36:36.428000 4034841 torch/distributed/run.py:792] 
+W0420 11:36:36.428000 4034841 torch/distributed/run.py:792] *****************************************
+W0420 11:36:36.428000 4034841 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0420 11:36:36.428000 4034841 torch/distributed/run.py:792] *****************************************
+[2025-04-20 11:36:42,115] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-20 11:36:42,116] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-20 11:36:42,119] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-20 11:36:42,120] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+using world size: 4
+[2025-04-20 11:36:49,467] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-20 11:36:49,468] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 560, in <module>
+    main()
+  File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 486, in main
+    initialize(args)
+  File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 116, in initialize
+    init_distributed_ds(args)
+  File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 108, in init_distributed_ds
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 560, in <module>
+    torch.cuda.set_device(device)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/cuda/__init__.py", line 476, in set_device
+> initializing model parallel with size 4
+    torch._C._cuda_setDevice(device)
+RuntimeError: CUDA error: invalid device ordinal
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+    main()
+  File "/home/users/ap794/final_project_distillLLM/minillm/./finetune.py", line 486, in main
+    initialize(args)
+  File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 116, in initialize
+    init_distributed_ds(args)
+  File "/home/users/ap794/final_project_distillLLM/minillm/utils.py", line 108, in init_distributed_ds
+    torch.cuda.set_device(device)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/cuda/__init__.py", line 476, in set_device
+    torch._C._cuda_setDevice(device)
+RuntimeError: CUDA error: invalid device ordinal
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 2728 and data parallel seed: 10
+arguments:
+  model_path ................... Qwen/Qwen2.5-0.5B-Instruct
+  ckpt_name .................... Qwen2.5-0.5B
+  model_type ................... qwen2
+  teacher_model_type ........... None
+  n_gpu ........................ 4
+  n_nodes ...................... 1
+  teacher_model_path ........... ./results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000
+  teacher_ckpt_name ............ Qwen2.5-1.5B-sft
+  teacher_model_fp16 ........... True
+  model_parallel ............... True
+  model_parallel_size .......... 4
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... kd
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/qwen2/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N4-NN1-kd0.5-mp4
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 2000
+  eval_interval ................ 2000
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/pytorrent/full/qwen2
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 4
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 8
+  eval_batch_size .............. 8
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 42
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... True
+  attn_dtype ................... None
+  lr ........................... 1e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... 0.5
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 4
+[2025-04-20 11:36:49,695] [INFO] [comm.py:658:init_distributed] cdb=None
+Sun Apr 20 11:36:49 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   20C    P8             17W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   21C    P2             22W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   4034848      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 11:36:49 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   20C    P8             18W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   22C    P2             29W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   4034848      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 11:36:50 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   20C    P8             21W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   22C    P2             33W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   4034848      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 11:36:50 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.127.08             Driver Version: 550.127.08     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   20C    P8             22W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   22C    P2             51W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   4034848      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+W0420 11:36:50.937000 4034841 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 4034847 closing signal SIGTERM
+W0420 11:36:50.938000 4034841 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 4034848 closing signal SIGTERM
+W0420 11:36:50.944000 4034841 torch/distributed/elastic/multiprocessing/api.py:897] Sending process 4034849 closing signal SIGTERM
+E0420 11:36:51.054000 4034841 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 3 (pid: 4034850) of binary: /home/users/ap794/final_project_distillLLM/venv/bin/python3
+Traceback (most recent call last):
+  File "/home/users/ap794/final_project_distillLLM/venv/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 918, in main
+    run(args)
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/run.py", line 909, in run
+    elastic_launch(
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+./finetune.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-04-20_11:36:50
+  host      : compsci-cluster-fitz-08.cs.duke.edu.
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 4034850)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: compsci-cluster-fitz-08: task 0: Exited with exit code 1

@@ -4,7 +4,7 @@ MASTER_ADDR=localhost
 MASTER_PORT=${2-2012}
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=4
+GPUS_PER_NODE=4 #${3-16}
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -14,21 +14,23 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH=${1-"."}
-CKPT_NAME="qwen2.5-1.5B-Instruct"
-CKPT="Qwen/Qwen2.5-1.5B-Instruct"
+CKPT_NAME="gpt2-xlarge"
+#CKPT="check points/${CKPT_NAME}/"
+CKPT="gpt2-xl" # download automatically
 # data
-DATA_DIR="${BASE_PATH}/processed_data/pytorrent/full/qwen2"
-#/processed_data/pytorrent/full/qwen2_comp
 
+# 
+
+DATA_DIR="${BASE_PATH}/processed_data/dolly_spanish/full/gpt2/"
 # hp
-BATCH_SIZE=1
-LR=0.00001
-GRAD_ACC=2
-EVAL_BATCH_SIZE=8
+BATCH_SIZE=2
+LR=0.00005
+GRAD_ACC=1
+EVAL_BATCH_SIZE=4
 # length
 MAX_LENGTH=512
 # runtime
-SAVE_PATH="${BASE_PATH}/results/qwen2.5/train/sft"
+SAVE_PATH="${BASE_PATH}/results/gpt2/train/sft/gpt2-xlarge-spanish/"
 # seed
 SEED=10
 SEED_ORDER=10
@@ -40,8 +42,7 @@ OPTS+=" --base-path ${BASE_PATH}"
 OPTS+=" --model-path ${CKPT}"
 OPTS+=" --ckpt-name ${CKPT_NAME}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
-OPTS+=" --model-type qwen2"
-OPTS+=" --gradient-checkpointing"
+# OPTS+=" --gradient-checkpointing"
 # data
 OPTS+=" --data-dir ${DATA_DIR}"
 OPTS+=" --num-workers 0"
@@ -65,15 +66,15 @@ OPTS+=" --do-valid"
 OPTS+=" --eval-gen"
 OPTS+=" --save-interval 4000"
 OPTS+=" --eval-interval 4000"
-OPTS+=" --log-interval 4"
-OPTS+=" --mid-log-num 1"
+OPTS+=" --log-interval 10"
+OPTS+=" --mid-log-num 100"
 OPTS+=" --save ${SAVE_PATH}"
 # seed
 OPTS+=" --seed ${SEED}"
 OPTS+=" --seed-order ${SEED_ORDER}"
 # deepspeed
 OPTS+=" --deepspeed"
-OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config_zero2_bf16.json"
+OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config_zero1_fp16.json"
 # type
 OPTS+=" --type lm"
 # gen
@@ -88,7 +89,6 @@ export WANDB_DISABLED=True
 export TF_CPP_MIN_LOG_LEVEL=3
 export PYTHONPATH=${BASE_PATH}
 CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/finetune.py ${OPTS} $@"
-
 echo ${CMD}
 echo "PYTHONPATH=${PYTHONPATH}"
 mkdir -p ${SAVE_PATH}

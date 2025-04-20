@@ -4,7 +4,7 @@ MASTER_ADDR=localhost
 MASTER_PORT=${2-2012}
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=4
+GPUS_PER_NODE=${3-16}
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -13,24 +13,22 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --master_port $MASTER_PORT"
 
 # model
-BASE_PATH=${1-"."}
-CKPT_NAME="qwen2.5-1.5B-Instruct"
-CKPT="Qwen/Qwen2.5-1.5B-Instruct"
+BASE_PATH=${1-"/home/MiniLLM"}
+CKPT_NAME="llama-7B"
+CKPT="${BASE_PATH}/checkpoints/${CKPT_NAME}/"
 # data
-DATA_DIR="${BASE_PATH}/processed_data/pytorrent/full/qwen2"
-#/processed_data/pytorrent/full/qwen2_comp
-
+DATA_DIR="${BASE_PATH}/processed_data/dolly/full/llama/"
 # hp
-BATCH_SIZE=1
-LR=0.00001
-GRAD_ACC=2
+BATCH_SIZE=4
+LR=0.0005
+GRAD_ACC=1
 EVAL_BATCH_SIZE=8
 # length
 MAX_LENGTH=512
 # runtime
-SAVE_PATH="${BASE_PATH}/results/qwen2.5/train/sft"
+SAVE_PATH="${BASE_PATH}/results/llama/train/sft"
 # seed
-SEED=10
+SEED=20
 SEED_ORDER=10
 
 
@@ -40,7 +38,7 @@ OPTS+=" --base-path ${BASE_PATH}"
 OPTS+=" --model-path ${CKPT}"
 OPTS+=" --ckpt-name ${CKPT_NAME}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
-OPTS+=" --model-type qwen2"
+OPTS+=" --model-type llama"
 OPTS+=" --gradient-checkpointing"
 # data
 OPTS+=" --data-dir ${DATA_DIR}"
@@ -55,7 +53,7 @@ OPTS+=" --warmup-iters 0"
 OPTS+=" --lr-decay-style cosine"
 OPTS+=" --weight-decay 1e-2"
 OPTS+=" --clip-grad 1.0"
-OPTS+=" --epochs 10"
+OPTS+=" --epochs 20"
 # length
 OPTS+=" --max-length ${MAX_LENGTH}"
 OPTS+=" --max-prompt-length 256"
@@ -63,17 +61,19 @@ OPTS+=" --max-prompt-length 256"
 OPTS+=" --do-train"
 OPTS+=" --do-valid"
 OPTS+=" --eval-gen"
-OPTS+=" --save-interval 4000"
-OPTS+=" --eval-interval 4000"
+OPTS+=" --save-interval -1"
+OPTS+=" --eval-interval -1"
 OPTS+=" --log-interval 4"
 OPTS+=" --mid-log-num 1"
 OPTS+=" --save ${SAVE_PATH}"
+# lora
+OPTS+=" --peft lora"
 # seed
 OPTS+=" --seed ${SEED}"
 OPTS+=" --seed-order ${SEED_ORDER}"
 # deepspeed
 OPTS+=" --deepspeed"
-OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config_zero2_bf16.json"
+OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config_zero2_fp16.json"
 # type
 OPTS+=" --type lm"
 # gen
