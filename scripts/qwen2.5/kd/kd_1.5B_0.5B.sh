@@ -4,7 +4,7 @@ MASTER_ADDR=localhost
 MASTER_PORT=${2-2012}
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=2
+GPUS_PER_NODE=4
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -30,7 +30,7 @@ EVAL_BATCH_SIZE=8
 # length
 MAX_LENGTH=512
 # runtime
-SAVE_PATH="${BASE_PATH}/results/qwen2/train/kd/${CKPT_NAME}-to-${TEACHER_CKPT_NAME}"
+SAVE_PATH="${BASE_PATH}/results/qwen2.5/train/kd/${CKPT_NAME}-to-${TEACHER_CKPT_NAME}"
 # seed
 SEED=10
 
@@ -70,8 +70,8 @@ OPTS+=" --max-prompt-length 256"
 OPTS+=" --do-train"
 OPTS+=" --do-valid"
 OPTS+=" --eval-gen"
-OPTS+=" --save-interval 2000"
-OPTS+=" --eval-interval 2000"
+OPTS+=" --save-interval 4000"
+OPTS+=" --eval-interval 4000"
 OPTS+=" --log-interval 4"
 OPTS+=" --mid-log-num  10"
 OPTS+=" --save ${SAVE_PATH}"

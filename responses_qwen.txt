@@ -1,0 +1,256 @@
+############## BASE MODEL ##############
+Prompt: 
+    How can I implement depth first search in python?
+    
+Response: How can I implement depth first search in python?
+     - depth_first_search() function
+     - list all visited nodes using 'depth_first_search() method'
+     - list all visited nodes using 'list() method'
+
+     Example:
+    
+     >>> list_of_all_visited_nodes = deepDFS(list_of_nodes, root_node)
+     >>>
+
+     """
+# List all visited nodes using 'depth_first_seach()' method
+# >>> depth_first_search(list_of_nodes, root_node)
+
+# List all visited nodes using 'list()' method
+# >>> list_of_all_visited_nodes = list_of_nodes
+
+# How can I implement Breadth first search in python?
+     - breadth_first_search() function
+     - initialize  a visited dict
+     - initialize a graph
+     - breadth_first_search() function
+     - print connected components
+     - list all distinct nodes and their edges using breadth_first_search()
+     - list all distinct nodes and their edges using list() method
+
+     Example:
+    
+     >>> breadth_first_search(graph, root_node)
+
+     """
+# Initialize a visited dict
+# >>> visited = {}
+
+# Initialize a graph
+# >>> graph
+
+# Breadth first search
+# >>> breadth_first_search(graph, root_node)
+
+# List all distinct nodes and their EDGES using breadth_first_search
+# >>> list_of_all_distinct_nodes = breadth_first_search(graph, root_node)
+
+# List all distinct nodes and their EDGES using list() method
+# >>> list_of_all_distinct_nodes = breadth_first_search(graph, root_node)
+
+# How can I implement DFT using python?
+     - calculate_dft()
+     - dft1, dft2
+
+     Example:
+     >>> calculate_dft()
+
+     """
+# Calculate dft1
+# >>> calculate_dft()
+
+# Calculate dft1
+# >>> dft1
+
+# DFT implementation using list
+# >>> dft = list(dft)
+
+# Apply dft on given matrix
+# >>> apply_dft(dft, k)
+
+# How can I implement Huffman Encoding using python?
+     - calculate_frequencies()
+     - calculate_parent()
+     - insert_subtree()
+     - join_subtree()
+     - create_tree()
+     - encode_binary()
+
+     Example:
+     >>> encode_huffman()
+
+     """
+# Calculate frequencies
+# >>> calculate_frequencies()
+
+# Calculate frequencies
+# >>> calculate_frequency()
+
+# Create tree to encode
+# >>> create_tree()
+
+# Create tree to encode
+# >>> join_tree()
+    
+# Encode binary representation
+# >>> encode_huffman()
+
+# How can I implement Huffman Decoding using python?
+     - calculate_entropy()
+     - calculate_parent()
+     - calculate_min_binary_tree()
+
+     ...
+
+     """
+# Calculate entropy
+# >>> calculate_entropy()
+
+# Calculate entropy
+# >>> calculate_entropy()
+
+# Calculate minimum binary tree
+# >>> calculate_min_binary_tree()
+==================================================
+############## STUDENT SFT MODEL ##############
+Prompt: 
+    How can I implement depth first search in python?
+    
+Response: How can I implement depth first search in python?
+     i=0
+
+     def __init__(self, graph):
+             # The Graph to walk over
+
+
+             self.edge_list = _createGraph(graph)
+     @abc.abstractproperty
+         def search(self, start=None, path=[], visit_func=None,
+            visit_args={},
+            timeout=None, timeout_seconds=48)
+
+
+             def DFS(self, graph):
+                     """Implement DFS"""
+                 pass
+             pass
+
+             @staticmethod
+             def is_leaf(node):
+                     """
+                         Is leaf node?
+                                 - Returns True if node contains no children.
+                                                                               - Returns False otherwise.
+
+                         Parameters:
+                             * `node`: A deep copy of a node object passed from initialization.
+
+                         Return Value:
+                             * If the given *`node` does not contain any children return True;
+                                           otherwise returns False. Only child nodes are considered.
+
+
+                               .. versionadded:: 1.2.0
+           .. warning:: We recommend that the use of a depth-first search for all data
+                       objects be done manually with proper input validation and exceptions
+                       handling, rather than through the use of recursive DFS as this raises
+                       various design issues:
+
+                   1: In the
+==================================================
+############## TEACHER MODEL ##############
+Prompt: 
+    How can I implement depth first search in python?
+    
+Response: How can I implement depth first search in python?
+     dfs()
+    >>> 
+    """
+def dfs(self):
+    """Depth first search in all the nodes"""
+    return False
+
+
+def dfs_deep_first_visit_with_recursion_function(*arg):
+    """How can I implement depth first search in python?  
+
+      >>> def DFS(D=Graph()):
+      ...     D.add_edge(5,0)
+      ...     n_d=[0]
+      ...     while n_d:
+      ...       c=n.pop(-1)
+      ...        print(d.graph[c])
+      ...         for child in d.graph[c]:
+      ...             if not child in n:
+      ...                 n.append(child)
+      ...                 DFS(d.child_of_node[c])
+            20
+            [] 
+            []
+            []
+            [] 
+            []
+
+
+          >>> a.sort([])
+          Traceback (most recent call last):
+          TypeError: object is callable
+        """
+
+    def outer(graph, seen, n=[]):
+        """How can I implement depth first search in python?  
+
+          >>> from collections import Stack
+          ...
+
+          # Create empty stack and push root
+          s = Stack()
+         s.push(['r', []])  # r
+
+          #
+==================================================
+############## STUDENT MODEL ##############
+Prompt: 
+    How can I implement depth first search in python?
+    
+Response: How can I implement depth first search in python?
+     def _next(x, d):
+      """How can I implement depth first search in python?"""
+      x = next(x)
+      if len(d) == 1:
+          return [x]
+      else:
+          return [x] + [y for y in next(x)[:d]] + [_next(y) for y in next(x)[0:d]]
+
+
+### End of code
+ ### End of file
+ To be continued...
+
+
+### Output:
+
+# _next is a helper function
+
+### End of code
+ ### End of file
+ 
+### end of lines
+### end of data
+python2.7 --data=python --input=text;python2.7 --print=6 -E _next # run only with text input! don't work on other Python versions. python2.6 -E -p 6 _next x
+ 
+
+### Output:
+
+ # (1,)
+ # [(3,), (5,), (4,)]
+
+### End of code
+### End of lines
+### end of input
+
+### Input
+
+python2.8 --data=python x='a', 'ab', 'aba,', 'bac'
+python2.7 --
+==================================================

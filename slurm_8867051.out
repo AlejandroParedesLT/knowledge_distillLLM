@@ -1,0 +1,1571 @@
+compsci-cluster-fitz-05
+Sun Apr 20 04:24:17 PM EDT 2025
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+The token `llama3` has been saved to /dev/shm/hf-home/stored_tokens
+Your token has been saved to /dev/shm/hf-home/token
+Login successful.
+The current active token is: `llama3`
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path Qwen/Qwen2.5-0.5B-Instruct --teacher-model-path ./results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000 --ckpt-name Qwen2.5-0.5B --teacher-ckpt-name Qwen2.5-1.5B-sft --teacher-model-fp16 --n-gpu 2 --model-type qwen2 --data-dir ./processed_data/pytorrent/full/qwen2 --num-workers 4 --dev-num 1000 --lr 0.00001 --batch-size 8 --eval-batch-size 8 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --kd-ratio 0.5 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 10 --eval-interval 10 --log-interval 4 --mid-log-num 10 --save ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft --seed 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type kd --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0420 16:24:23.474000 2198664 torch/distributed/run.py:792] 
+W0420 16:24:23.474000 2198664 torch/distributed/run.py:792] *****************************************
+W0420 16:24:23.474000 2198664 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0420 16:24:23.474000 2198664 torch/distributed/run.py:792] *****************************************
+[2025-04-20 16:24:28,383] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-20 16:24:28,383] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+using world size: 2
+[2025-04-20 16:24:38,357] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-20 16:24:38,357] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... Qwen/Qwen2.5-0.5B-Instruct
+  ckpt_name .................... Qwen2.5-0.5B
+  model_type ................... qwen2
+  teacher_model_type ........... None
+  n_gpu ........................ 2
+  n_nodes ...................... 1
+  teacher_model_path ........... ./results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000
+  teacher_ckpt_name ............ Qwen2.5-1.5B-sft
+  teacher_model_fp16 ........... True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... kd
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 10
+  eval_interval ................ 10
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/pytorrent/full/qwen2
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 4
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 8
+  eval_batch_size .............. 8
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 42
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... False
+  attn_dtype ................... None
+  lr ........................... 1e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... 0.5
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 2
+[2025-04-20 16:24:38,495] [INFO] [comm.py:658:init_distributed] cdb=None
+Sun Apr 20 16:24:38 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   29C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   29C    P0             28W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 16:24:38 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   29C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   30C    P2             36W /  300W |     267MiB /  49140MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 16:24:38 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   29C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   30C    P2             38W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 16:24:39 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   29C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   30C    P2             42W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Probing Dataset
+Probing end. Max data state 1, total length 499991
+499991
+Num LM instances: 499991
+train num 499991
+Probing Dataset
+Probing end. Max data state 1, total length 1000
+1000
+Num LM instances: 1000
+Train iters per epoch 31249
+total_iters 312490
+Sun Apr 20 16:24:45 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   29C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   31C    P2             70W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 16:24:46 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   29C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   31C    P2             70W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+ > number of parameters: 494032768
+Model load time: 2.3015503883361816s
+Optimizer = AdamW
+[2025-04-20 16:24:48,493] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed info: version=0.16.4, git-hash=unknown, git-branch=unknown
+[2025-04-20 16:24:48,494] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 2
+[2025-04-20 16:24:48,614] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 2
+[2025-04-20 16:24:48,964] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2025-04-20 16:24:48,966] [INFO] [logging.py:128:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2025-04-20 16:24:48,966] [INFO] [logging.py:128:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2025-04-20 16:24:48,984] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2025-04-20 16:24:48,984] [INFO] [utils.py:59:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2025-04-20 16:24:48,984] [INFO] [logging.py:128:log_dist] [Rank 0] Creating torch.float32 ZeRO stage 1 optimizer
+[2025-04-20 16:24:48,985] [INFO] [stage_1_and_2.py:149:__init__] Reduce bucket size 500000000
+[2025-04-20 16:24:48,985] [INFO] [stage_1_and_2.py:150:__init__] Allgather bucket size 500000000
+[2025-04-20 16:24:48,985] [INFO] [stage_1_and_2.py:151:__init__] CPU Offload: False
+[2025-04-20 16:24:48,985] [INFO] [stage_1_and_2.py:152:__init__] Round robin gradient partitioning: False
+[2025-04-20 16:24:50,594] [INFO] [utils.py:781:see_memory_usage] Before initializing optimizer states
+[2025-04-20 16:24:50,595] [INFO] [utils.py:782:see_memory_usage] MA 1.84 GB         Max_MA 1.84 GB         CA 1.85 GB         Max_CA 2 GB 
+[2025-04-20 16:24:50,596] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 51.24 GB, percent = 6.8%
+[2025-04-20 16:24:50,894] [INFO] [utils.py:781:see_memory_usage] After initializing optimizer states
+[2025-04-20 16:24:50,896] [INFO] [utils.py:782:see_memory_usage] MA 1.84 GB         Max_MA 2.76 GB         CA 2.78 GB         Max_CA 3 GB 
+[2025-04-20 16:24:50,896] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 51.26 GB, percent = 6.8%
+[2025-04-20 16:24:50,896] [INFO] [stage_1_and_2.py:550:__init__] optimizer state initialized
+[2025-04-20 16:24:51,163] [INFO] [utils.py:781:see_memory_usage] After initializing ZeRO optimizer
+[2025-04-20 16:24:51,164] [INFO] [utils.py:782:see_memory_usage] MA 1.84 GB         Max_MA 1.84 GB         CA 2.78 GB         Max_CA 3 GB 
+[2025-04-20 16:24:51,164] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 51.29 GB, percent = 6.8%
+[2025-04-20 16:24:51,168] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedZeroOptimizer
+[2025-04-20 16:24:51,168] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2025-04-20 16:24:51,168] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7fec68d49c30>
+[2025-04-20 16:24:51,169] [INFO] [logging.py:128:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05, 1e-05], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-20 16:24:51,170] [INFO] [config.py:1001:print] DeepSpeedEngine configuration:
+[2025-04-20 16:24:51,170] [INFO] [config.py:1005:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2025-04-20 16:24:51,170] [INFO] [config.py:1005:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'intra_op_parallelism': 1, 'single_submit': False, 'overlap_events': True, 'use_gds': False}
+[2025-04-20 16:24:51,170] [INFO] [config.py:1005:print]   amp_enabled .................. False
+[2025-04-20 16:24:51,170] [INFO] [config.py:1005:print]   amp_params ................... False
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   bfloat16_enabled ............. False
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   bfloat16_immediate_grad_update  False
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   checkpoint_parallel_write_pipeline  False
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   checkpoint_tag_validation_enabled  True
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   checkpoint_tag_validation_fail  False
+[2025-04-20 16:24:51,171] [INFO] [config.py:1005:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fec110472e0>
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   communication_data_type ...... None
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   curriculum_enabled_legacy .... False
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   curriculum_params_legacy ..... False
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   data_efficiency_enabled ...... False
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   dataloader_drop_last ......... False
+[2025-04-20 16:24:51,172] [INFO] [config.py:1005:print]   disable_allgather ............ False
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   dump_state ................... False
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   dynamic_loss_scale_args ...... None
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   eigenvalue_enabled ........... False
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   eigenvalue_gas_boundary_resolution  1
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   eigenvalue_layer_num ......... 0
+[2025-04-20 16:24:51,179] [INFO] [config.py:1005:print]   eigenvalue_max_iter .......... 100
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   eigenvalue_stability ......... 1e-06
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   eigenvalue_tol ............... 0.01
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   eigenvalue_verbose ........... False
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   elasticity_enabled ........... False
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   fp16_auto_cast ............... None
+[2025-04-20 16:24:51,180] [INFO] [config.py:1005:print]   fp16_enabled ................. False
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   fp16_master_weights_and_gradients  False
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   global_rank .................. 0
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   grad_accum_dtype ............. None
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   gradient_accumulation_steps .. 1
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   gradient_clipping ............ 1.0
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   gradient_predivide_factor .... 1.0
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   graph_harvesting ............. False
+[2025-04-20 16:24:51,181] [INFO] [config.py:1005:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   initial_dynamic_scale ........ 65536
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   load_universal_checkpoint .... False
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   loss_scale ................... 0
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   memory_breakdown ............. False
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   mics_hierarchial_params_gather  False
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   mics_shard_size .............. -1
+[2025-04-20 16:24:51,182] [INFO] [config.py:1005:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName')
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   optimizer_legacy_fusion ...... False
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   optimizer_name ............... None
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   optimizer_params ............. None
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   pld_enabled .................. False
+[2025-04-20 16:24:51,183] [INFO] [config.py:1005:print]   pld_params ................... False
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   prescale_gradients ........... False
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   scheduler_name ............... None
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   scheduler_params ............. None
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   seq_parallel_communication_data_type  torch.float32
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   sparse_attention ............. None
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   sparse_gradients_enabled ..... False
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   steps_per_print .............. 10000000
+[2025-04-20 16:24:51,184] [INFO] [config.py:1005:print]   tensor_parallel_config ....... dtype=torch.float16 autotp_size=0 tensor_parallel=TPConfig(tp_size=1, tp_grain_size=1, mpu=None, tp_group=None) injection_policy_tuple=None keep_module_on_host=False replace_with_kernel_inject=False
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   timers_config ................ enabled=True synchronized=True
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   train_batch_size ............. 16
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   train_micro_batch_size_per_gpu  8
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   use_data_before_expert_parallel_  False
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   use_node_local_storage ....... False
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   wall_clock_breakdown ......... False
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   weight_quantization_config ... None
+[2025-04-20 16:24:51,185] [INFO] [config.py:1005:print]   world_size ................... 2
+[2025-04-20 16:24:51,186] [INFO] [config.py:1005:print]   zero_allow_untested_optimizer  True
+[2025-04-20 16:24:51,186] [INFO] [config.py:1005:print]   zero_config .................. stage=1 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False module_granularity_threshold=0 use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False zeropp_loco_param=None mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True log_trace_cache_warnings=False
+[2025-04-20 16:24:51,186] [INFO] [config.py:1005:print]   zero_enabled ................. True
+[2025-04-20 16:24:51,186] [INFO] [config.py:1005:print]   zero_force_ds_cpu_optimizer .. True
+[2025-04-20 16:24:51,186] [INFO] [config.py:1005:print]   zero_optimization_stage ...... 1
+[2025-04-20 16:24:51,186] [INFO] [config.py:991:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 8, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 1
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": false, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1.000000e+07
+}
+Model mem
+ |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   1884 MiB |   1884 MiB |   4249 MiB |   2364 MiB |
+|       from large pool |   1884 MiB |   1884 MiB |   4238 MiB |   2353 MiB |
+|       from small pool |      0 MiB |      0 MiB |     11 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   1884 MiB |   1884 MiB |   4249 MiB |   2364 MiB |
+|       from large pool |   1884 MiB |   1884 MiB |   4238 MiB |   2353 MiB |
+|       from small pool |      0 MiB |      0 MiB |     11 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   1884 MiB |   1884 MiB |   4240 MiB |   2355 MiB |
+|       from large pool |   1884 MiB |   1884 MiB |   4229 MiB |   2345 MiB |
+|       from small pool |      0 MiB |      0 MiB |     10 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2842 MiB |   2842 MiB |   4296 MiB |   1454 MiB |
+|       from large pool |   2832 MiB |   2832 MiB |   4284 MiB |   1452 MiB |
+|       from small pool |     10 MiB |     10 MiB |     12 MiB |      2 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |   7579 KiB |   7579 KiB |    834 MiB |    827 MiB |
+|       from large pool |   3604 KiB |   3604 KiB |    813 MiB |    809 MiB |
+|       from small pool |   3975 KiB |   3975 KiB |     21 MiB |     17 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |      29    |      29    |     613    |     584    |
+|       from large pool |       2    |       2    |     125    |     123    |
+|       from small pool |      27    |      27    |     488    |     461    |
+|---------------------------------------------------------------------------|
+| Active allocs         |      29    |      29    |     613    |     584    |
+|       from large pool |       2    |       2    |     125    |     123    |
+|       from small pool |      27    |      27    |     488    |     461    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |       8    |       8    |      47    |      39    |
+|       from large pool |       3    |       3    |      41    |      38    |
+|       from small pool |       5    |       5    |       6    |       1    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       7    |       7    |     171    |     164    |
+|       from large pool |       2    |       2    |      86    |      84    |
+|       from small pool |       5    |       5    |      85    |      80    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Sun Apr 20 16:24:54 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P2             77W /  300W |    8327MiB /  49140MiB |      8%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   32C    P2             70W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3       8320MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 16:24:55 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P2             77W /  300W |    9219MiB /  49140MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   32C    P2             71W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Sun Apr 20 16:24:55 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P2             78W /  300W |    9219MiB /  49140MiB |     17%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   32C    P2             71W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+ > number of parameters: 1543714304
+Sun Apr 20 16:24:55 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P2             79W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   32C    P2             72W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+Start Fine-tuning
+Sun Apr 20 16:24:55 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P2             80W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   32C    P2             72W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+Start Fine-tuning
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Sun Apr 20 16:24:56 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P2             80W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   32C    P2             72W /  300W |    9229MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3       9222MiB |
++-----------------------------------------------------------------------------------------+
+
+dp size 2
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Evaluating:   0%|          | 0/63 [00:00<?, ?it/s]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+0/63
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
+From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
+1/63
+Evaluating:   2%|▏         | 1/63 [00:08<08:56,  8.66s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+2/63
+Evaluating:   3%|▎         | 2/63 [00:16<08:23,  8.25s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+3/63
+Evaluating:   5%|▍         | 3/63 [00:24<08:07,  8.12s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+4/63
+Evaluating:   6%|▋         | 4/63 [00:32<07:54,  8.04s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+5/63
+Evaluating:   8%|▊         | 5/63 [00:40<07:44,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+6/63
+Evaluating:  10%|▉         | 6/63 [00:48<07:35,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+7/63
+Evaluating:  11%|█         | 7/63 [00:56<07:27,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+8/63
+Evaluating:  13%|█▎        | 8/63 [01:04<07:18,  7.98s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+9/63
+Evaluating:  14%|█▍        | 9/63 [01:11<06:56,  7.72s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+10/63
+Evaluating:  16%|█▌        | 10/63 [01:19<06:52,  7.79s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+11/63
+Evaluating:  17%|█▋        | 11/63 [01:27<06:48,  7.85s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+12/63
+Evaluating:  19%|█▉        | 12/63 [01:35<06:42,  7.89s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+13/63
+Evaluating:  21%|██        | 13/63 [01:43<06:35,  7.91s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+14/63
+Evaluating:  22%|██▏       | 14/63 [01:51<06:28,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+15/63
+Evaluating:  24%|██▍       | 15/63 [01:59<06:21,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+16/63
+Evaluating:  25%|██▌       | 16/63 [02:07<06:13,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+17/63
+Evaluating:  27%|██▋       | 17/63 [02:15<06:05,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+18/63
+Evaluating:  29%|██▊       | 18/63 [02:23<05:57,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+19/63
+Evaluating:  30%|███       | 19/63 [02:31<05:49,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+20/63
+Evaluating:  32%|███▏      | 20/63 [02:39<05:41,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+21/63
+Evaluating:  33%|███▎      | 21/63 [02:47<05:33,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+22/63
+Evaluating:  35%|███▍      | 22/63 [02:55<05:26,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+23/63
+Evaluating:  37%|███▋      | 23/63 [03:02<05:18,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+24/63
+Evaluating:  38%|███▊      | 24/63 [03:10<05:10,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+25/63
+Evaluating:  40%|███▉      | 25/63 [03:17<04:46,  7.53s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+26/63
+Evaluating:  41%|████▏     | 26/63 [03:25<04:43,  7.66s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+27/63
+Evaluating:  43%|████▎     | 27/63 [03:33<04:39,  7.76s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+28/63
+Evaluating:  44%|████▍     | 28/63 [03:41<04:33,  7.81s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+29/63
+Evaluating:  46%|████▌     | 29/63 [03:49<04:26,  7.85s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+30/63
+Evaluating:  48%|████▊     | 30/63 [03:57<04:20,  7.89s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+31/63
+Evaluating:  49%|████▉     | 31/63 [04:05<04:12,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+32/63
+Evaluating:  51%|█████     | 32/63 [04:13<04:05,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+33/63
+Evaluating:  52%|█████▏    | 33/63 [04:21<03:57,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+34/63
+Evaluating:  54%|█████▍    | 34/63 [04:28<03:49,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+35/63
+Evaluating:  56%|█████▌    | 35/63 [04:36<03:41,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+36/63
+Evaluating:  57%|█████▋    | 36/63 [04:44<03:34,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+37/63
+Evaluating:  59%|█████▊    | 37/63 [04:52<03:26,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+38/63
+Evaluating:  60%|██████    | 38/63 [05:00<03:18,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+39/63
+Evaluating:  62%|██████▏   | 39/63 [05:08<03:10,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+40/63
+Evaluating:  63%|██████▎   | 40/63 [05:16<03:02,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+41/63
+Evaluating:  65%|██████▌   | 41/63 [05:23<02:48,  7.65s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+42/63
+Evaluating:  67%|██████▋   | 42/63 [05:31<02:42,  7.73s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+43/63
+Evaluating:  68%|██████▊   | 43/63 [05:39<02:36,  7.80s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+44/63
+Evaluating:  70%|██████▉   | 44/63 [05:47<02:29,  7.85s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+45/63
+Evaluating:  71%|███████▏  | 45/63 [05:55<02:20,  7.83s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+46/63
+Evaluating:  73%|███████▎  | 46/63 [06:03<02:13,  7.86s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+47/63
+Evaluating:  75%|███████▍  | 47/63 [06:11<02:06,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+48/63
+Evaluating:  76%|███████▌  | 48/63 [06:19<01:58,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+49/63
+Evaluating:  78%|███████▊  | 49/63 [06:27<01:51,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+50/63
+Evaluating:  79%|███████▉  | 50/63 [06:35<01:43,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+51/63
+Evaluating:  81%|████████  | 51/63 [06:43<01:35,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+52/63
+Evaluating:  83%|████████▎ | 52/63 [06:51<01:27,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+53/63
+Evaluating:  84%|████████▍ | 53/63 [06:58<01:18,  7.87s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+54/63
+Evaluating:  86%|████████▌ | 54/63 [07:06<01:11,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+55/63
+Evaluating:  87%|████████▋ | 55/63 [07:14<01:03,  7.91s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+56/63
+Evaluating:  89%|████████▉ | 56/63 [07:22<00:55,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+57/63
+Evaluating:  90%|█████████ | 57/63 [07:30<00:47,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+58/63
+Evaluating:  92%|█████████▏| 58/63 [07:38<00:39,  7.86s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+59/63
+Evaluating:  94%|█████████▎| 59/63 [07:46<00:31,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+60/63
+Evaluating:  95%|█████████▌| 60/63 [07:54<00:23,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+61/63
+Evaluating:  97%|█████████▋| 61/63 [08:02<00:15,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+62/63
+Evaluating:  98%|█████████▊| 62/63 [08:10<00:07,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+Evaluating: 100%|██████████| 63/63 [08:17<00:00,  7.92s/it]Evaluating: 100%|██████████| 63/63 [08:18<00:00,  7.91s/it]
+Sun Apr 20 16:33:14 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   42C    P2             90W /  300W |   11749MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   45C    P2             84W /  300W |   11751MiB /  49140MiB |      9%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3      11742MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3      11744MiB |
++-----------------------------------------------------------------------------------------+
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5/eval/0
+dev | avg_loss: 2.0112537202380953 | {'exact_match': 0.0, 'rougeL': 8.4765}
+Sun Apr 20 16:33:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   42C    P2             80W /  300W |   11749MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   46C    P2             99W /  300W |   31569MiB /  49140MiB |    100%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2198667      C   ...project_distillLLM/venv/bin/python3      11742MiB |
+|    1   N/A  N/A   2198668      C   ...project_distillLLM/venv/bin/python3      31562MiB |
++-----------------------------------------------------------------------------------------+
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+[2025-04-20 16:33:22,947] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4294967296, reducing to 2147483648
+train | epoch   0 | Iter:      1/312490 | global iter:      1/312490 | loss: 2.0544 | ds_loss: 2.0777 | lr: 1.0000e-05 | scale: 2147483648.0000 | micro time: 1.287 | step time: 0.000
+[2025-04-20 16:33:24,235] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2147483648, reducing to 1073741824
+train | epoch   0 | Iter:      2/312490 | global iter:      2/312490 | loss: 2.0459 | ds_loss: 2.1006 | lr: 1.0000e-05 | scale: 1073741824.0000 | micro time: 1.271 | step time: 0.000
+[2025-04-20 16:33:25,517] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 1073741824, reducing to 536870912
+train | epoch   0 | Iter:      3/312490 | global iter:      3/312490 | loss: 2.2396 | ds_loss: 2.3200 | lr: 1.0000e-05 | scale: 536870912.0000 | micro time: 1.277 | step time: 0.000
+[2025-04-20 16:33:26,800] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 536870912, reducing to 268435456
+train | epoch   0 | Iter:      4/312490 | global iter:      4/312490 | loss: 2.2306 | ds_loss: 2.2998 | lr: 1.0000e-05 | scale: 268435456.0000 | micro time: 1.282 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:      4/312490 | global iter:      4/312490 | loss: 2.1426 | ds_loss: 2.1995 | lr: 1.0000e-05 | scale: 268435456.0000 | micro time: 1.282 | step time: 1.279
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+[2025-04-20 16:33:28,086] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 268435456, reducing to 134217728
+train | epoch   0 | Iter:      5/312490 | global iter:      5/312490 | loss: 2.1471 | ds_loss: 2.2358 | lr: 1.0000e-05 | scale: 134217728.0000 | micro time: 1.273 | step time: 0.000
+[2025-04-20 16:33:29,366] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 134217728, reducing to 67108864
+train | epoch   0 | Iter:      6/312490 | global iter:      6/312490 | loss: 1.7568 | ds_loss: 1.8216 | lr: 1.0000e-05 | scale: 67108864.0000 | micro time: 1.274 | step time: 0.000
+[2025-04-20 16:33:30,644] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 67108864, reducing to 33554432
+train | epoch   0 | Iter:      7/312490 | global iter:      7/312490 | loss: 1.9782 | ds_loss: 2.0377 | lr: 1.0000e-05 | scale: 33554432.0000 | micro time: 1.275 | step time: 0.000
+[2025-04-20 16:33:31,924] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 33554432, reducing to 16777216
+train | epoch   0 | Iter:      8/312490 | global iter:      8/312490 | loss: 1.8301 | ds_loss: 1.9160 | lr: 1.0000e-05 | scale: 16777216.0000 | micro time: 1.276 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:      8/312490 | global iter:      8/312490 | loss: 1.9281 | ds_loss: 2.0028 | lr: 1.0000e-05 | scale: 16777216.0000 | micro time: 1.276 | step time: 1.275
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+[2025-04-20 16:33:33,206] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 16777216, reducing to 8388608
+train | epoch   0 | Iter:      9/312490 | global iter:      9/312490 | loss: 1.9875 | ds_loss: 2.0505 | lr: 1.0000e-05 | scale: 8388608.0000 | micro time: 1.278 | step time: 0.000
+[2025-04-20 16:33:34,483] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 8388608, reducing to 4194304
+train | epoch   0 | Iter:     10/312490 | global iter:     10/312490 | loss: 1.9770 | ds_loss: 2.0390 | lr: 1.0000e-05 | scale: 4194304.0000 | micro time: 1.270 | step time: 0.000
+Model save to ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5/10
+dp size 2
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+0/63
+Evaluating:   0%|          | 0/63 [00:00<?, ?it/s]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+1/63
+Evaluating:   2%|▏         | 1/63 [00:08<08:47,  8.51s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+2/63
+Evaluating:   3%|▎         | 2/63 [00:16<08:22,  8.24s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+3/63
+Evaluating:   5%|▍         | 3/63 [00:24<08:08,  8.14s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+4/63
+Evaluating:   6%|▋         | 4/63 [00:32<07:57,  8.09s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+5/63
+Evaluating:   8%|▊         | 5/63 [00:40<07:48,  8.08s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+6/63
+Evaluating:  10%|▉         | 6/63 [00:48<07:29,  7.88s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+7/63
+Evaluating:  11%|█         | 7/63 [00:56<07:23,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+8/63
+Evaluating:  13%|█▎        | 8/63 [01:04<07:17,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+9/63
+Evaluating:  14%|█▍        | 9/63 [01:12<07:10,  7.98s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+10/63
+Evaluating:  16%|█▌        | 10/63 [01:20<07:03,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+11/63
+Evaluating:  17%|█▋        | 11/63 [01:27<06:49,  7.87s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+12/63
+Evaluating:  19%|█▉        | 12/63 [01:35<06:43,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+13/63
+Evaluating:  21%|██        | 13/63 [01:43<06:38,  7.97s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+14/63
+Evaluating:  22%|██▏       | 14/63 [01:51<06:30,  7.98s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+15/63
+Evaluating:  24%|██▍       | 15/63 [01:59<06:23,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+16/63
+Evaluating:  25%|██▌       | 16/63 [02:07<06:15,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+17/63
+Evaluating:  27%|██▋       | 17/63 [02:16<06:08,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+18/63
+Evaluating:  29%|██▊       | 18/63 [02:24<06:01,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+19/63
+Evaluating:  30%|███       | 19/63 [02:32<05:52,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+20/63
+Evaluating:  32%|███▏      | 20/63 [02:40<05:44,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+21/63
+Evaluating:  33%|███▎      | 21/63 [02:48<05:36,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+22/63
+Evaluating:  35%|███▍      | 22/63 [02:56<05:28,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+23/63
+Evaluating:  37%|███▋      | 23/63 [03:04<05:20,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+24/63
+Evaluating:  38%|███▊      | 24/63 [03:12<05:12,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+25/63
+Evaluating:  40%|███▉      | 25/63 [03:19<05:01,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+26/63
+Evaluating:  41%|████▏     | 26/63 [03:27<04:54,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+27/63
+Evaluating:  43%|████▎     | 27/63 [03:35<04:46,  7.97s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+28/63
+Evaluating:  44%|████▍     | 28/63 [03:43<04:39,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+29/63
+Evaluating:  46%|████▌     | 29/63 [03:51<04:32,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+30/63
+Evaluating:  48%|████▊     | 30/63 [03:59<04:24,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+31/63
+Evaluating:  49%|████▉     | 31/63 [04:07<04:16,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+32/63
+Evaluating:  51%|█████     | 32/63 [04:15<04:08,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+33/63
+Evaluating:  52%|█████▏    | 33/63 [04:24<04:00,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+34/63
+Evaluating:  54%|█████▍    | 34/63 [04:32<03:52,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+35/63
+Evaluating:  56%|█████▌    | 35/63 [04:40<03:44,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+36/63
+Evaluating:  57%|█████▋    | 36/63 [04:48<03:36,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+37/63
+Evaluating:  59%|█████▊    | 37/63 [04:56<03:28,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+38/63
+Evaluating:  60%|██████    | 38/63 [05:04<03:20,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+39/63
+Evaluating:  62%|██████▏   | 39/63 [05:12<03:12,  8.04s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+40/63
+Evaluating:  63%|██████▎   | 40/63 [05:20<03:04,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+41/63
+Evaluating:  65%|██████▌   | 41/63 [05:28<02:56,  8.04s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+42/63
+Evaluating:  67%|██████▋   | 42/63 [05:36<02:48,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+43/63
+Evaluating:  68%|██████▊   | 43/63 [05:44<02:40,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+44/63
+Evaluating:  70%|██████▉   | 44/63 [05:52<02:32,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+45/63
+Evaluating:  71%|███████▏  | 45/63 [06:00<02:22,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+46/63
+Evaluating:  73%|███████▎  | 46/63 [06:08<02:15,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+47/63
+Evaluating:  75%|███████▍  | 47/63 [06:16<02:07,  7.98s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+48/63
+Evaluating:  76%|███████▌  | 48/63 [06:24<01:59,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+49/63
+Evaluating:  78%|███████▊  | 49/63 [06:32<01:51,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+50/63
+Evaluating:  79%|███████▉  | 50/63 [06:40<01:44,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+51/63
+Evaluating:  81%|████████  | 51/63 [06:48<01:36,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+52/63
+Evaluating:  83%|████████▎ | 52/63 [06:56<01:28,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+53/63
+Evaluating:  84%|████████▍ | 53/63 [07:04<01:20,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+54/63
+Evaluating:  86%|████████▌ | 54/63 [07:12<01:12,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+55/63
+Evaluating:  87%|████████▋ | 55/63 [07:20<01:04,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+56/63
+Evaluating:  89%|████████▉ | 56/63 [07:28<00:56,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+57/63
+Evaluating:  90%|█████████ | 57/63 [07:36<00:48,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+58/63
+Evaluating:  92%|█████████▏| 58/63 [07:44<00:40,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+59/63
+Evaluating:  94%|█████████▎| 59/63 [07:52<00:32,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+60/63
+Evaluating:  95%|█████████▌| 60/63 [08:00<00:24,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+61/63
+Evaluating:  97%|█████████▋| 61/63 [08:08<00:15,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+62/63
+Evaluating:  98%|█████████▊| 62/63 [08:16<00:07,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+Evaluating: 100%|██████████| 63/63 [08:24<00:00,  7.99s/it]Evaluating: 100%|██████████| 63/63 [08:24<00:00,  8.01s/it]
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5/eval/0
+dev | avg_loss: 2.0112537202380953 | {'exact_match': 0.0, 'rougeL': 8.6956}
+[2025-04-20 16:42:11,679] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4194304, reducing to 2097152
+train | epoch   0 | Iter:     11/312490 | global iter:     11/312490 | loss: 2.0303 | ds_loss: 2.0846 | lr: 1.0000e-05 | scale: 2097152.0000 | micro time: 1.274 | step time: 0.000
+[2025-04-20 16:42:12,960] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2097152, reducing to 1048576
+train | epoch   0 | Iter:     12/312490 | global iter:     12/312490 | loss: 2.0655 | ds_loss: 2.1193 | lr: 1.0000e-05 | scale: 1048576.0000 | micro time: 1.278 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:     12/312490 | global iter:     12/312490 | loss: 2.0151 | ds_loss: 2.0734 | lr: 1.0000e-05 | scale: 1048576.0000 | micro time: 1.278 | step time: 1.275
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+[2025-04-20 16:42:14,241] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 1048576, reducing to 524288
+train | epoch   0 | Iter:     13/312490 | global iter:     13/312490 | loss: 2.0128 | ds_loss: 2.0457 | lr: 1.0000e-05 | scale: 524288.0000 | micro time: 1.272 | step time: 0.000
+[2025-04-20 16:42:15,521] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 524288, reducing to 262144
+train | epoch   0 | Iter:     14/312490 | global iter:     14/312490 | loss: 2.3216 | ds_loss: 2.3794 | lr: 1.0000e-05 | scale: 262144.0000 | micro time: 1.273 | step time: 0.000
+[2025-04-20 16:42:16,805] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 262144, reducing to 131072
+train | epoch   0 | Iter:     15/312490 | global iter:     15/312490 | loss: 1.9458 | ds_loss: 1.9824 | lr: 1.0000e-05 | scale: 131072.0000 | micro time: 1.275 | step time: 0.000
+[2025-04-20 16:42:18,087] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 131072, reducing to 65536
+train | epoch   0 | Iter:     16/312490 | global iter:     16/312490 | loss: 2.0644 | ds_loss: 2.1118 | lr: 1.0000e-05 | scale: 65536.0000 | micro time: 1.276 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:     16/312490 | global iter:     16/312490 | loss: 2.0861 | ds_loss: 2.1298 | lr: 1.0000e-05 | scale: 65536.0000 | micro time: 1.276 | step time: 1.274
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+[2025-04-20 16:42:19,363] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, reducing to 32768
+train | epoch   0 | Iter:     17/312490 | global iter:     17/312490 | loss: 2.1222 | ds_loss: 2.1610 | lr: 1.0000e-05 | scale: 32768.0000 | micro time: 1.272 | step time: 0.000
+[2025-04-20 16:42:20,648] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 32768, reducing to 16384
+train | epoch   0 | Iter:     18/312490 | global iter:     18/312490 | loss: 2.3146 | ds_loss: 2.3024 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.277 | step time: 0.000
+train | epoch   0 | Iter:     19/312490 | global iter:     19/312490 | loss: 2.0566 | ds_loss: 2.1087 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.439 | step time: 0.000
+train | epoch   0 | Iter:     20/312490 | global iter:     20/312490 | loss: 1.8444 | ds_loss: 1.8840 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.368 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:     20/312490 | global iter:     20/312490 | loss: 2.0844 | ds_loss: 2.1140 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.368 | step time: 1.339
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+Model save to ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5/20
+dp size 2
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+0/63
+Evaluating:   0%|          | 0/63 [00:00<?, ?it/s]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+1/63
+Evaluating:   2%|▏         | 1/63 [00:08<08:29,  8.21s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+2/63
+Evaluating:   3%|▎         | 2/63 [00:16<08:15,  8.12s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+3/63
+Evaluating:   5%|▍         | 3/63 [00:24<08:06,  8.10s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+4/63
+Evaluating:   6%|▋         | 4/63 [00:32<07:56,  8.08s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+5/63
+Evaluating:   8%|▊         | 5/63 [00:40<07:47,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+6/63
+Evaluating:  10%|▉         | 6/63 [00:48<07:40,  8.08s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+7/63
+Evaluating:  11%|█         | 7/63 [00:56<07:31,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+8/63
+Evaluating:  13%|█▎        | 8/63 [01:04<07:22,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+9/63
+Evaluating:  14%|█▍        | 9/63 [01:12<07:14,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+10/63
+Evaluating:  16%|█▌        | 10/63 [01:20<07:07,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+11/63
+Evaluating:  17%|█▋        | 11/63 [01:28<06:59,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+12/63
+Evaluating:  19%|█▉        | 12/63 [01:36<06:50,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+13/63
+Evaluating:  21%|██        | 13/63 [01:44<06:42,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+14/63
+Evaluating:  22%|██▏       | 14/63 [01:52<06:35,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+15/63
+Evaluating:  24%|██▍       | 15/63 [02:01<06:26,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+16/63
+Evaluating:  25%|██▌       | 16/63 [02:09<06:18,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+17/63
+Evaluating:  27%|██▋       | 17/63 [02:17<06:10,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+18/63
+Evaluating:  29%|██▊       | 18/63 [02:25<06:02,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+19/63
+Evaluating:  30%|███       | 19/63 [02:33<05:54,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+20/63
+Evaluating:  32%|███▏      | 20/63 [02:41<05:46,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+21/63
+Evaluating:  33%|███▎      | 21/63 [02:49<05:38,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+22/63
+Evaluating:  35%|███▍      | 22/63 [02:57<05:30,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+23/63
+Evaluating:  37%|███▋      | 23/63 [03:05<05:22,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+24/63
+Evaluating:  38%|███▊      | 24/63 [03:13<05:14,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+25/63
+Evaluating:  40%|███▉      | 25/63 [03:21<05:06,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+26/63
+Evaluating:  41%|████▏     | 26/63 [03:29<04:57,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+27/63
+Evaluating:  43%|████▎     | 27/63 [03:37<04:49,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+28/63
+Evaluating:  44%|████▍     | 28/63 [03:45<04:41,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+29/63
+Evaluating:  46%|████▌     | 29/63 [03:53<04:33,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+30/63
+Evaluating:  48%|████▊     | 30/63 [04:01<04:25,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+31/63
+Evaluating:  49%|████▉     | 31/63 [04:09<04:17,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+32/63
+Evaluating:  51%|█████     | 32/63 [04:17<04:09,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+33/63
+Evaluating:  52%|█████▏    | 33/63 [04:26<04:02,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+34/63
+Evaluating:  54%|█████▍    | 34/63 [04:34<03:54,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+35/63
+Evaluating:  56%|█████▌    | 35/63 [04:42<03:45,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+36/63
+Evaluating:  57%|█████▋    | 36/63 [04:50<03:38,  8.08s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+37/63
+Evaluating:  59%|█████▊    | 37/63 [04:58<03:29,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+38/63
+Evaluating:  60%|██████    | 38/63 [05:06<03:21,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+39/63
+Evaluating:  62%|██████▏   | 39/63 [05:14<03:13,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+40/63
+Evaluating:  63%|██████▎   | 40/63 [05:22<03:05,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+41/63
+Evaluating:  65%|██████▌   | 41/63 [05:30<02:57,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+42/63
+Evaluating:  67%|██████▋   | 42/63 [05:38<02:49,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+43/63
+Evaluating:  68%|██████▊   | 43/63 [05:46<02:40,  8.03s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+44/63
+Evaluating:  70%|██████▉   | 44/63 [05:54<02:32,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+45/63
+Evaluating:  71%|███████▏  | 45/63 [06:02<02:24,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+46/63
+Evaluating:  73%|███████▎  | 46/63 [06:10<02:16,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+47/63
+Evaluating:  75%|███████▍  | 47/63 [06:18<02:09,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+48/63
+Evaluating:  76%|███████▌  | 48/63 [06:26<02:00,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+49/63
+Evaluating:  78%|███████▊  | 49/63 [06:35<01:52,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+50/63
+Evaluating:  79%|███████▉  | 50/63 [06:43<01:44,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+51/63
+Evaluating:  81%|████████  | 51/63 [06:51<01:36,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+52/63
+Evaluating:  83%|████████▎ | 52/63 [06:59<01:28,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+53/63
+Evaluating:  84%|████████▍ | 53/63 [07:07<01:20,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+54/63
+Evaluating:  86%|████████▌ | 54/63 [07:15<01:12,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+55/63
+Evaluating:  87%|████████▋ | 55/63 [07:23<01:04,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+56/63
+Evaluating:  89%|████████▉ | 56/63 [07:31<00:56,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+57/63
+Evaluating:  90%|█████████ | 57/63 [07:39<00:48,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+58/63
+Evaluating:  92%|█████████▏| 58/63 [07:47<00:40,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+59/63
+Evaluating:  94%|█████████▎| 59/63 [07:55<00:32,  8.06s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+60/63
+Evaluating:  95%|█████████▌| 60/63 [08:03<00:24,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+61/63
+Evaluating:  97%|█████████▋| 61/63 [08:11<00:16,  8.05s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+62/63
+Evaluating:  98%|█████████▊| 62/63 [08:19<00:08,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+Evaluating: 100%|██████████| 63/63 [08:27<00:00,  8.04s/it]Evaluating: 100%|██████████| 63/63 [08:28<00:00,  8.07s/it]
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5/eval/0
+dev | avg_loss: 1.4796316964285714 | {'exact_match': 0.0, 'rougeL': 9.355}
+train | epoch   0 | Iter:     21/312490 | global iter:     21/312490 | loss: 1.8512 | ds_loss: 1.9072 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.361 | step time: 0.000
+train | epoch   0 | Iter:     22/312490 | global iter:     22/312490 | loss: 1.3644 | ds_loss: 1.4256 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.358 | step time: 0.000
+train | epoch   0 | Iter:     23/312490 | global iter:     23/312490 | loss: 1.6419 | ds_loss: 1.6805 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.363 | step time: 0.000
+train | epoch   0 | Iter:     24/312490 | global iter:     24/312490 | loss: 1.2986 | ds_loss: 1.3314 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.360 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:     24/312490 | global iter:     24/312490 | loss: 1.5391 | ds_loss: 1.5862 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.360 | step time: 1.360
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+train | epoch   0 | Iter:     25/312490 | global iter:     25/312490 | loss: 1.4779 | ds_loss: 1.5445 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.366 | step time: 0.000
+train | epoch   0 | Iter:     26/312490 | global iter:     26/312490 | loss: 1.7450 | ds_loss: 1.7650 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.361 | step time: 0.000
+train | epoch   0 | Iter:     27/312490 | global iter:     27/312490 | loss: 1.4069 | ds_loss: 1.4765 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.355 | step time: 0.000
+train | epoch   0 | Iter:     28/312490 | global iter:     28/312490 | loss: 1.2166 | ds_loss: 1.2230 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.356 | step time: 0.000
+****************************************************************************************************
+train | epoch   0 | Iter:     28/312490 | global iter:     28/312490 | loss: 1.4616 | ds_loss: 1.5022 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.356 | step time: 1.359
+./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+****************************************************************************************************
+train | epoch   0 | Iter:     29/312490 | global iter:     29/312490 | loss: 1.4522 | ds_loss: 1.5121 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.355 | step time: 0.000
+train | epoch   0 | Iter:     30/312490 | global iter:     30/312490 | loss: 1.4741 | ds_loss: 1.5192 | lr: 1.0000e-05 | scale: 16384.0000 | micro time: 1.358 | step time: 0.000
+Model save to ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5/30
+dp size 2
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Evaluating:   0%|          | 0/63 [00:00<?, ?it/s]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+0/63
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+1/63
+Evaluating:   2%|▏         | 1/63 [00:08<08:49,  8.54s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+2/63
+Evaluating:   3%|▎         | 2/63 [00:16<08:23,  8.25s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+3/63
+Evaluating:   5%|▍         | 3/63 [00:24<08:09,  8.16s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+4/63
+Evaluating:   6%|▋         | 4/63 [00:32<07:58,  8.10s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+5/63
+Evaluating:   8%|▊         | 5/63 [00:40<07:48,  8.07s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+6/63
+Evaluating:  10%|▉         | 6/63 [00:47<07:20,  7.73s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+7/63
+Evaluating:  11%|█         | 7/63 [00:55<07:18,  7.83s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+8/63
+Evaluating:  13%|█▎        | 8/63 [01:03<07:14,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+9/63
+Evaluating:  14%|█▍        | 9/63 [01:11<07:08,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+10/63
+Evaluating:  16%|█▌        | 10/63 [01:18<06:45,  7.66s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+11/63
+Evaluating:  17%|█▋        | 11/63 [01:26<06:35,  7.61s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+12/63
+Evaluating:  19%|█▉        | 12/63 [01:34<06:34,  7.73s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+13/63
+Evaluating:  21%|██        | 13/63 [01:42<06:31,  7.83s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+14/63
+Evaluating:  22%|██▏       | 14/63 [01:50<06:27,  7.90s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+15/63
+Evaluating:  24%|██▍       | 15/63 [01:58<06:21,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+16/63
+Evaluating:  25%|██▌       | 16/63 [02:05<05:52,  7.50s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+17/63
+Evaluating:  27%|██▋       | 17/63 [02:13<05:52,  7.66s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+18/63
+Evaluating:  29%|██▊       | 18/63 [02:21<05:49,  7.77s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+19/63
+Evaluating:  30%|███       | 19/63 [02:29<05:45,  7.86s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+20/63
+Evaluating:  32%|███▏      | 20/63 [02:37<05:40,  7.92s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+21/63
+Evaluating:  33%|███▎      | 21/63 [02:45<05:33,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+22/63
+Evaluating:  35%|███▍      | 22/63 [02:53<05:26,  7.95s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+23/63
+Evaluating:  37%|███▋      | 23/63 [03:01<05:19,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+24/63
+Evaluating:  38%|███▊      | 24/63 [03:09<05:11,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+25/63
+Evaluating:  40%|███▉      | 25/63 [03:17<05:03,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+26/63
+Evaluating:  41%|████▏     | 26/63 [03:25<04:56,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+27/63
+Evaluating:  43%|████▎     | 27/63 [03:33<04:48,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+28/63
+Evaluating:  44%|████▍     | 28/63 [03:40<04:36,  7.89s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+29/63
+Evaluating:  46%|████▌     | 29/63 [03:48<04:29,  7.93s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+30/63
+Evaluating:  48%|████▊     | 30/63 [03:56<04:22,  7.96s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+31/63
+Evaluating:  49%|████▉     | 31/63 [04:04<04:15,  7.97s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+32/63
+Evaluating:  51%|█████     | 32/63 [04:12<04:07,  7.98s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+33/63
+Evaluating:  52%|█████▏    | 33/63 [04:20<03:59,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+34/63
+Evaluating:  54%|█████▍    | 34/63 [04:27<03:37,  7.49s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+35/63
+Evaluating:  56%|█████▌    | 35/63 [04:35<03:34,  7.65s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+36/63
+Evaluating:  57%|█████▋    | 36/63 [04:43<03:29,  7.76s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+37/63
+Evaluating:  59%|█████▊    | 37/63 [04:51<03:23,  7.85s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+38/63
+Evaluating:  60%|██████    | 38/63 [04:59<03:17,  7.91s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+39/63
+Evaluating:  62%|██████▏   | 39/63 [05:07<03:10,  7.94s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+40/63
+Evaluating:  63%|██████▎   | 40/63 [05:15<03:03,  7.97s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+41/63
+Evaluating:  65%|██████▌   | 41/63 [05:23<02:55,  7.99s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+42/63
+Evaluating:  67%|██████▋   | 42/63 [05:31<02:48,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+43/63
+Evaluating:  68%|██████▊   | 43/63 [05:39<02:40,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+44/63
+Evaluating:  70%|██████▉   | 44/63 [05:47<02:32,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+45/63
+Evaluating:  71%|███████▏  | 45/63 [05:55<02:24,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+46/63
+Evaluating:  73%|███████▎  | 46/63 [06:03<02:16,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+47/63
+Evaluating:  75%|███████▍  | 47/63 [06:11<02:08,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+48/63
+Evaluating:  76%|███████▌  | 48/63 [06:19<02:00,  8.00s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+49/63
+Evaluating:  78%|███████▊  | 49/63 [06:27<01:52,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+50/63
+Evaluating:  79%|███████▉  | 50/63 [06:35<01:44,  8.01s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+51/63
+Evaluating:  81%|████████  | 51/63 [06:43<01:36,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+52/63
+Evaluating:  83%|████████▎ | 52/63 [06:51<01:28,  8.02s/it]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+slurmstepd: error: *** JOB 8867051 ON compsci-cluster-fitz-05 CANCELLED AT 2025-04-20T16:58:22 ***
+slurmstepd: error: *** STEP 8867051.2 ON compsci-cluster-fitz-05 CANCELLED AT 2025-04-20T16:58:22 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.

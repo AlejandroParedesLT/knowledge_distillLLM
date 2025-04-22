@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -t 15:00:00  # time requested in hour:minute:second
-#SBATCH --mem=128G
+#SBATCH --mem=64G
 #SBATCH --gres=gpu:4
 #SBATCH --constraint=a5000 #24 a6000, v100, a5000
 #SBATCH --partition=compsci-gpu
@@ -31,7 +31,13 @@ export WANDB_CACHE_DIR=/dev/shm/wandb-cache
 #srun bash -c "source $VENV_DIR/bin/activate && bash scripts/gpt2/sft/sft_base_bugnet.sh"
 #srun bash -c "source $VENV_DIR/bin/activate && bash scripts/gpt2/sft/sft_xlarge_dollySpanish.sh"
 
-srun bash -c "source \$HOME/final_project_distillLLM/minillm/.env && source \$VENV_DIR/bin/activate && huggingface-cli login --token \$HF_TOKEN && bash scripts/gpt2/sft/sft_xlarge_pytorrent.sh"
+#srun bash -c "source \$HOME/final_project_distillLLM/minillm/.env && source \$VENV_DIR/bin/activate && huggingface-cli login --token \$HF_TOKEN && bash scripts/gpt2/sft/sft_xlarge_pytorrent.sh"
+srun bash -c "source \$HOME/final_project_distillLLM/minillm/.env && source \$VENV_DIR/bin/activate && huggingface-cli login --token \$HF_TOKEN && bash scripts/gpt2/sft/sft_base_pytorrent.sh"
+
+
+#srun bash -c "source \$HOME/final_project_distillLLM/minillm/.env && source \$VENV_DIR/bin/activate && huggingface-cli login --token \$HF_TOKEN && bash scripts/gpt2/kd/kd_base_pytorrent.sh"
+
+
 
 #srun bash -c "source $VENV_DIR/bin/activate && bash scripts/gpt2/tools/generate_data_seqkd_bugnet.sh ."
 #srun bash -c "source $VENV_DIR/bin/activate && bash python hello.py ."

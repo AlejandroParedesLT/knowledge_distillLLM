@@ -1,0 +1,694 @@
+compsci-cluster-fitz-05
+Sun Apr 20 04:59:58 PM EDT 2025
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+The token `llama3` has been saved to /dev/shm/hf-home/stored_tokens
+Your token has been saved to /dev/shm/hf-home/token
+Login successful.
+The current active token is: `llama3`
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2012 ./finetune.py --base-path . --model-path Qwen/Qwen2.5-0.5B-Instruct --teacher-model-path ./results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000 --ckpt-name Qwen2.5-0.5B --teacher-ckpt-name Qwen2.5-1.5B-sft --teacher-model-fp16 --n-gpu 2 --model-type qwen2 --data-dir ./processed_data/pytorrent/full/qwen2 --num-workers 4 --dev-num 1000 --lr 0.00001 --batch-size 8 --eval-batch-size 8 --gradient-accumulation-steps 1 --warmup-iters 0 --lr-decay-style cosine --weight-decay 1e-2 --clip-grad 1.0 --epochs 10 --kd-ratio 0.5 --max-length 512 --max-prompt-length 256 --do-train --do-valid --eval-gen --save-interval 10 --eval-interval 10 --log-interval 4 --mid-log-num 10 --save ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft --seed 10 --deepspeed --deepspeed_config ./configs/deepspeed/ds_config_zero1_fp16.json --type kd --do-sample --top-k 0 --top-p 1.0 --temperature 1.0
+PYTHONPATH=.
+W0420 17:00:02.419000 2199405 torch/distributed/run.py:792] 
+W0420 17:00:02.419000 2199405 torch/distributed/run.py:792] *****************************************
+W0420 17:00:02.419000 2199405 torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0420 17:00:02.419000 2199405 torch/distributed/run.py:792] *****************************************
+[2025-04-20 17:00:06,055] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-04-20 17:00:06,055] [INFO] [real_accelerator.py:222:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.Warning: The cache directory for DeepSpeed Triton autotune, /home/users/ap794/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+using world size: 2
+[2025-04-20 17:00:13,502] [INFO] [comm.py:658:init_distributed] cdb=None
+[2025-04-20 17:00:13,502] [INFO] [comm.py:689:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... Qwen/Qwen2.5-0.5B-Instruct
+  ckpt_name .................... Qwen2.5-0.5B
+  model_type ................... qwen2
+  teacher_model_type ........... None
+  n_gpu ........................ 2
+  n_nodes ...................... 1
+  teacher_model_path ........... ./results/qwen2.5/train/sft/qwen2.5-1.5B-Instruct/e10-bs1-lr1e-05-G2-N4-NN1/8000
+  teacher_ckpt_name ............ Qwen2.5-1.5B-sft
+  teacher_model_fp16 ........... True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  dtype ........................ torch.float16
+  type ......................... kd
+  do_train ..................... True
+  do_valid ..................... True
+  do_eval ...................... False
+  base_path .................... .
+  load ......................... None
+  save ......................... ./results/qwen2.5/train/kd/Qwen2.5-0.5B-to-Qwen2.5-1.5B-sft/e10-bs8-lr1e-05-G1-N2-NN1-kd0.5
+  log_interval ................. 4
+  mid_log_num .................. 10
+  save_interval ................ 10
+  eval_interval ................ 10
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... ./processed_data/pytorrent/full/qwen2
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 4
+  max_prompt_length ............ 256
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. None
+  lm_data_dir .................. None
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... True
+  only_prompt .................. False
+  batch_size ................... 8
+  eval_batch_size .............. 8
+  clip_grad .................... 1.0
+  total_iters .................. None
+  train_iters_per_epoch ........ -1
+  max_length ................... 512
+  seed ......................... 10
+  seed_order ................... 42
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 1
+  gradient_checkpointing ....... False
+  attn_dtype ................... None
+  lr ........................... 1e-05
+  lr_min ....................... 1e-07
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... 0.5
+  warmup_iters ................. 0
+  lr_decay_iters ............... None
+  lr_decay_style ............... cosine
+  scheduler_name ............... constant_trm
+  reward_scaling ............... None
+  cliprange_reward ............. 1
+  ppo_epochs ................... None
+  num_rollouts ................. 256
+  num_rollouts_per_device ...... None
+  cliprange .................... 0.2
+  chunk_size ................... None
+  gamma ........................ 0.95
+  length_norm .................. False
+  single_step_reg .............. False
+  teacher_mixed_alpha .......... None
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. ./configs/deepspeed/ds_config_zero1_fp16.json
+  deepscale .................... False
+  deepscale_config ............. None
+  rank ......................... 0
+  world_size ................... 2
+[2025-04-20 17:00:13,642] [INFO] [comm.py:658:init_distributed] cdb=None
+Sun Apr 20 17:00:13 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   33C    P2             29W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 17:00:13 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   33C    P2             34W /  300W |     267MiB /  49140MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 17:00:13 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   34C    P2             38W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 17:00:14 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   34C    P2             52W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Probing Dataset
+Probing end. Max data state 1, total length 499991
+499991
+Num LM instances: 499991
+train num 499991
+Probing Dataset
+Probing end. Max data state 1, total length 1000
+1000
+Num LM instances: 1000
+Train iters per epoch 31249
+total_iters 312490
+Sun Apr 20 17:00:20 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P8             34W /  300W |       4MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   34C    P2             71W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+Sun Apr 20 17:00:21 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   31C    P0             34W /  300W |      21MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   34C    P2             71W /  300W |     267MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3         18MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3        260MiB |
++-----------------------------------------------------------------------------------------+
+
+ > number of parameters: 494032768
+Model load time: 1.878258228302002s
+Optimizer = AdamW
+[2025-04-20 17:00:23,019] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed info: version=0.16.4, git-hash=unknown, git-branch=unknown
+[2025-04-20 17:00:23,020] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 2
+[2025-04-20 17:00:23,685] [INFO] [config.py:734:__init__] Config mesh_device None world_size = 2
+[2025-04-20 17:00:24,113] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2025-04-20 17:00:24,115] [INFO] [logging.py:128:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2025-04-20 17:00:24,115] [INFO] [logging.py:128:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2025-04-20 17:00:24,134] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2025-04-20 17:00:24,135] [INFO] [utils.py:59:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2025-04-20 17:00:24,135] [INFO] [logging.py:128:log_dist] [Rank 0] Creating torch.float32 ZeRO stage 1 optimizer
+[2025-04-20 17:00:24,135] [INFO] [stage_1_and_2.py:149:__init__] Reduce bucket size 500000000
+[2025-04-20 17:00:24,135] [INFO] [stage_1_and_2.py:150:__init__] Allgather bucket size 500000000
+[2025-04-20 17:00:24,135] [INFO] [stage_1_and_2.py:151:__init__] CPU Offload: False
+[2025-04-20 17:00:24,135] [INFO] [stage_1_and_2.py:152:__init__] Round robin gradient partitioning: False
+[2025-04-20 17:00:25,730] [INFO] [utils.py:781:see_memory_usage] Before initializing optimizer states
+[2025-04-20 17:00:25,731] [INFO] [utils.py:782:see_memory_usage] MA 1.84 GB         Max_MA 1.84 GB         CA 1.85 GB         Max_CA 2 GB 
+[2025-04-20 17:00:25,732] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 51.65 GB, percent = 6.8%
+[2025-04-20 17:00:26,029] [INFO] [utils.py:781:see_memory_usage] After initializing optimizer states
+[2025-04-20 17:00:26,030] [INFO] [utils.py:782:see_memory_usage] MA 1.84 GB         Max_MA 2.76 GB         CA 2.78 GB         Max_CA 3 GB 
+[2025-04-20 17:00:26,031] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 50.96 GB, percent = 6.7%
+[2025-04-20 17:00:26,031] [INFO] [stage_1_and_2.py:550:__init__] optimizer state initialized
+[2025-04-20 17:00:26,349] [INFO] [utils.py:781:see_memory_usage] After initializing ZeRO optimizer
+[2025-04-20 17:00:26,351] [INFO] [utils.py:782:see_memory_usage] MA 1.84 GB         Max_MA 1.84 GB         CA 2.78 GB         Max_CA 3 GB 
+[2025-04-20 17:00:26,351] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 51.2 GB, percent = 6.8%
+[2025-04-20 17:00:26,355] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedZeroOptimizer
+[2025-04-20 17:00:26,355] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2025-04-20 17:00:26,355] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7f0649ee1c60>
+[2025-04-20 17:00:26,355] [INFO] [logging.py:128:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05, 1e-05], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-20 17:00:26,357] [INFO] [config.py:1001:print] DeepSpeedEngine configuration:
+[2025-04-20 17:00:26,357] [INFO] [config.py:1005:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2025-04-20 17:00:26,357] [INFO] [config.py:1005:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'intra_op_parallelism': 1, 'single_submit': False, 'overlap_events': True, 'use_gds': False}
+[2025-04-20 17:00:26,357] [INFO] [config.py:1005:print]   amp_enabled .................. False
+[2025-04-20 17:00:26,357] [INFO] [config.py:1005:print]   amp_params ................... False
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   bfloat16_enabled ............. False
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   bfloat16_immediate_grad_update  False
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   checkpoint_parallel_write_pipeline  False
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   checkpoint_tag_validation_enabled  True
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   checkpoint_tag_validation_fail  False
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f06022bf310>
+[2025-04-20 17:00:26,358] [INFO] [config.py:1005:print]   communication_data_type ...... None
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   curriculum_enabled_legacy .... False
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   curriculum_params_legacy ..... False
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   data_efficiency_enabled ...... False
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   dataloader_drop_last ......... False
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   disable_allgather ............ False
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   dump_state ................... False
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   dynamic_loss_scale_args ...... None
+[2025-04-20 17:00:26,359] [INFO] [config.py:1005:print]   eigenvalue_enabled ........... False
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_gas_boundary_resolution  1
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_layer_num ......... 0
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_max_iter .......... 100
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_stability ......... 1e-06
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_tol ............... 0.01
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   eigenvalue_verbose ........... False
+[2025-04-20 17:00:26,360] [INFO] [config.py:1005:print]   elasticity_enabled ........... False
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   fp16_auto_cast ............... None
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   fp16_enabled ................. False
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   fp16_master_weights_and_gradients  False
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   global_rank .................. 0
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   grad_accum_dtype ............. None
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   gradient_accumulation_steps .. 1
+[2025-04-20 17:00:26,361] [INFO] [config.py:1005:print]   gradient_clipping ............ 1.0
+[2025-04-20 17:00:26,362] [INFO] [config.py:1005:print]   gradient_predivide_factor .... 1.0
+[2025-04-20 17:00:26,362] [INFO] [config.py:1005:print]   graph_harvesting ............. False
+[2025-04-20 17:00:26,362] [INFO] [config.py:1005:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2025-04-20 17:00:26,362] [INFO] [config.py:1005:print]   initial_dynamic_scale ........ 65536
+[2025-04-20 17:00:26,362] [INFO] [config.py:1005:print]   load_universal_checkpoint .... False
+[2025-04-20 17:00:26,362] [INFO] [config.py:1005:print]   loss_scale ................... 0
+[2025-04-20 17:00:26,363] [INFO] [config.py:1005:print]   memory_breakdown ............. False
+[2025-04-20 17:00:26,363] [INFO] [config.py:1005:print]   mics_hierarchial_params_gather  False
+[2025-04-20 17:00:26,363] [INFO] [config.py:1005:print]   mics_shard_size .............. -1
+[2025-04-20 17:00:26,363] [INFO] [config.py:1005:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName')
+[2025-04-20 17:00:26,363] [INFO] [config.py:1005:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2025-04-20 17:00:26,363] [INFO] [config.py:1005:print]   optimizer_legacy_fusion ...... False
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   optimizer_name ............... None
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   optimizer_params ............. None
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   pld_enabled .................. False
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   pld_params ................... False
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   prescale_gradients ........... False
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   scheduler_name ............... None
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   scheduler_params ............. None
+[2025-04-20 17:00:26,364] [INFO] [config.py:1005:print]   seq_parallel_communication_data_type  torch.float32
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   sparse_attention ............. None
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   sparse_gradients_enabled ..... False
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   steps_per_print .............. 10000000
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   tensor_parallel_config ....... dtype=torch.float16 autotp_size=0 tensor_parallel=TPConfig(tp_size=1, tp_grain_size=1, mpu=None, tp_group=None) injection_policy_tuple=None keep_module_on_host=False replace_with_kernel_inject=False
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   timers_config ................ enabled=True synchronized=True
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   train_batch_size ............. 16
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   train_micro_batch_size_per_gpu  8
+[2025-04-20 17:00:26,365] [INFO] [config.py:1005:print]   use_data_before_expert_parallel_  False
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   use_node_local_storage ....... False
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   wall_clock_breakdown ......... False
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   weight_quantization_config ... None
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   world_size ................... 2
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   zero_allow_untested_optimizer  True
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   zero_config .................. stage=1 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False module_granularity_threshold=0 use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False zeropp_loco_param=None mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True log_trace_cache_warnings=False
+[2025-04-20 17:00:26,366] [INFO] [config.py:1005:print]   zero_enabled ................. True
+[2025-04-20 17:00:26,367] [INFO] [config.py:1005:print]   zero_force_ds_cpu_optimizer .. True
+[2025-04-20 17:00:26,367] [INFO] [config.py:1005:print]   zero_optimization_stage ...... 1
+[2025-04-20 17:00:26,367] [INFO] [config.py:991:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 8, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 1
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": false, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1.000000e+07
+}
+Model mem
+ |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   1884 MiB |   1884 MiB |   4249 MiB |   2364 MiB |
+|       from large pool |   1884 MiB |   1884 MiB |   4238 MiB |   2353 MiB |
+|       from small pool |      0 MiB |      0 MiB |     11 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   1884 MiB |   1884 MiB |   4249 MiB |   2364 MiB |
+|       from large pool |   1884 MiB |   1884 MiB |   4238 MiB |   2353 MiB |
+|       from small pool |      0 MiB |      0 MiB |     11 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   1884 MiB |   1884 MiB |   4240 MiB |   2355 MiB |
+|       from large pool |   1884 MiB |   1884 MiB |   4229 MiB |   2345 MiB |
+|       from small pool |      0 MiB |      0 MiB |     10 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2842 MiB |   2842 MiB |   4296 MiB |   1454 MiB |
+|       from large pool |   2832 MiB |   2832 MiB |   4284 MiB |   1452 MiB |
+|       from small pool |     10 MiB |     10 MiB |     12 MiB |      2 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |   7579 KiB |   7579 KiB |    834 MiB |    827 MiB |
+|       from large pool |   3604 KiB |   3604 KiB |    813 MiB |    809 MiB |
+|       from small pool |   3975 KiB |   3975 KiB |     21 MiB |     17 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |      29    |      29    |     613    |     584    |
+|       from large pool |       2    |       2    |     125    |     123    |
+|       from small pool |      27    |      27    |     488    |     461    |
+|---------------------------------------------------------------------------|
+| Active allocs         |      29    |      29    |     613    |     584    |
+|       from large pool |       2    |       2    |     125    |     123    |
+|       from small pool |      27    |      27    |     488    |     461    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |       8    |       8    |      47    |      39    |
+|       from large pool |       3    |       3    |      41    |      38    |
+|       from small pool |       5    |       5    |       6    |       1    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       7    |       7    |     171    |     164    |
+|       from large pool |       2    |       2    |      86    |      84    |
+|       from small pool |       5    |       5    |      85    |      80    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Sun Apr 20 17:00:30 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   32C    P2             77W /  300W |    9219MiB /  49140MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   34C    P2             71W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+ > number of parameters: 1543714304
+Sun Apr 20 17:00:30 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   32C    P2             78W /  300W |    9219MiB /  49140MiB |     19%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   35C    P2             71W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Sun Apr 20 17:00:30 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   33C    P2             79W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   35C    P2             71W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+Start Fine-tuning
+Sun Apr 20 17:00:30 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   33C    P2             80W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   35C    P2             72W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Sun Apr 20 17:00:31 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   33C    P2             80W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   35C    P2             73W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+Start Fine-tuning
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+Sun Apr 20 17:00:31 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A6000               Off |   00000000:17:00.0 Off |                  Off |
+| 30%   33C    P2             81W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off |   00000000:31:00.0 Off |                  Off |
+| 30%   35C    P2             73W /  300W |    9219MiB /  49140MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A   2199408      C   ...project_distillLLM/venv/bin/python3       9212MiB |
+|    1   N/A  N/A   2199409      C   ...project_distillLLM/venv/bin/python3       9212MiB |
++-----------------------------------------------------------------------------------------+
+
+dp size 2
+/home/users/ap794/final_project_distillLLM/venv/lib/python3.10/site-packages/torch/utils/data/dataloader.py:624: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+0/63
+Evaluating:   0%|          | 0/63 [00:00<?, ?it/s]A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+A decoder-only architecture is being used, but right-padding was detected! For correct generation results, please set `padding_side='left'` when initializing the tokenizer.
+slurmstepd: error: *** STEP 8867076.2 ON compsci-cluster-fitz-05 CANCELLED AT 2025-04-20T17:00:35 ***
+slurmstepd: error: *** JOB 8867076 ON compsci-cluster-fitz-05 CANCELLED AT 2025-04-20T17:00:35 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
