@@ -10,16 +10,7 @@ api = HfApi(token=os.getenv("HF_TOKEN"))
 # Upload all the content from the local folder to your remote Space.
 # By default, files are uploaded at the root of the repo
 api.upload_large_folder(
-    folder_path="./results/gpt2",
-    repo_id="alejandroparedeslatorre/gpt2_sft_models",
-    repo_type="model",
-)
-
-api = HfApi()
-# Upload all the content from the local folder to your remote Space.
-# By default, files are uploaded at the root of the repo
-api.upload_large_folder(
-    folder_path="./results/qwen2.5",
-    repo_id="alejandroparedeslatorre/qwen_codefinetuned",
+    folder_path="./processed_data",
+    repo_id="alejandroparedeslatorre/DeepSeek-R1-Distill-Qwen-1.5B-GRPO",
     repo_type="model",
 )
