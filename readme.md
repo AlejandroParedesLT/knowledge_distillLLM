@@ -2,7 +2,7 @@
 
 ## Overview
 
-We present an application of fine-tuning and knowledge distillation for large language models targeting GPT2. It supports supervised fine-tuning (SFT) and knowledge distillation (KD) techniques for training models like GPT-2 on Python code datasets.
+We present an application of fine-tuning and knowledge distillation for large language models targeting GPT2 and Qwen. It supports supervised fine-tuning (SFT) and knowledge distillation (KD) techniques for training models like GPT-2 and Qwen on Python code datasets.
 
 ## Dataset
 - Bugnet
