@@ -56,9 +56,11 @@ To fine-tune a GPT2-XL model on the PyTorrent dataset:
 ```bash
 ./sft_xlarge_pytorrent.sh [BASE_PATH] [PORT]
 ```
+*Results: Distillation for Spanish*
+![alt text](./figures/kd_spanish.png)
 
-Results:
-![alt text](/figures/training_plot.png)
+*Results: RL-CoT training*
+![alt text](./figures/rltraining.png)
 
 ### Knowledge Distillation
 
@@ -106,10 +108,10 @@ Data should be processed and placed in the appropriate directory structure:
 processed_data/
 ├── pytorrent/
 │   └── full/
-│       └── gpt2/
+│       └── qwen/
 └── bugnet_python/
     └── full/
-        └── gpt2/
+        └── qwen/
 ```
 
 This repo was based on the following research study:

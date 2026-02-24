@@ -1,0 +1,161 @@
+############## BASE MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+       Write a for loop that prints the numbers from 1 to 20.
+        -f 8 -o 8 + -a + -y + 0 -
+ | -f 8 x | = \frac{1}{10}; | -f 8 x | = \frac{1}{20};  - . ( 8 * 10 - x / 10 , 2 ) ( 7 / 2 + 2 * 6 - x / 10 / 20 , 2 ) ( 7 / 2 + 2 * 6 - x / 10 / 20 , 2 ) = 7 * 2 , 7 = 0 --------------------------
+There is another interesting thing that happens when a large number of arguments are input to this algorithm. Most important is that every byte in the range 8 through 20 in the program is now interpreted as 8 bytes at the end of a loop. So a variable length sequence of byte-size numbers where 8 bytes are the number of each byte used in the loop (i.e. a number of bits) that cannot be changed.
+The fact that this is a very, very difficult problem is also pretty obvious.
+==================================================
+############## TEACHER MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+              If none is specified, print the number to all.
+                    If more than one is specified, then print two.
+                      If less than one is specified, then print one.
+
+        """
+    logger.debug('Number of lines to print: %s' % len(
+        lines()))
+    num = 0
+    for i in range(1, 10):
+        if num >= 1:
+            logger.error('Number of lines to print: %s has to be an integer'] % (
+                    2 * num - 1,))
+        else:
+==================================================
+############## STUDENT SFT MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+                                                                                                                                                         '<b>\x0>\x2>\\x2>\x1>\x1>|\x2>?\x0>\x1<!>\x1>\x2>\x1<!>\x1&x2)
+==================================================
+############## STUDENT KD MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+     
+     - 2D array of values
+          (same as the name)
+    - 3D array of values
+           (same as the name)
+       """
+    tp = f'{tp_name}_{tcp_type}:{tcp_value}({tcp_type}({tcp_value}(2)); {tcp_value}(0)})
+{tp_type}({tcp_value}({tcp_value}(2))'
+    start = time.time()
+    tp1 = float(pd.sqrt(1 - start ** 2 ** 1))
+    tp2 = float(pd.sqrt(10 * start ** 2 ** 1))
+    tp3 = float(pd.sqrt(10 * start ** 2 ** 1))
+    tp4 = float(pd
+==================================================
+############## BASE MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+     The input is sent by the program: 0 1 10 0 100 20 3    Prints it from the output column.  At this point the program will print each number in each column twice - one for each input column before starting any further analysis.  (This way the number output should not be too hard to read for certain numbers of digits in its inputs even when looking at the output.)
+The program then checks the end result and print it.  It also prints one more number after each iteration.
+If you notice that the program prints the end result out of the last loop, that's because one row at a time it prints 1 to 10 . If you notice that the number output has been incremented for each iteration you will need to update the program. If it's not clear which row is incremented each time, it will print a result from the next time that the current row was incremented.
+Another neat thing that may or may not be happening is that some inputs are still valid at one time, making it very tempting to add additional values to them. This may be possible by
+==================================================
+############## TEACHER MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+     """
+    from itertools import map
+    map = map.map(np.fromiter(nobs, data_dim_type=np.int) for
+        nobs, nobs in zip(nobs, nobs))
+    return map
+
+
+### End of code
+==================================================
+############## STUDENT SFT MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+==================================================
+############## STUDENT KD MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+              #:param int             An implementation of the method.
+       """
+    raise NotImplementedError
+
+
+### End of code
+==================================================
+############## BASE MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+     A simple but powerful tool that reads both decimal and hex literals. It reads the same input text as I write its result.     It stores some information about the given set of numbers, such as the end of line, etc.     It also supports the setof functions. Each of the following code snippets are available: 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1  2 2 1  2 2 4 1 2 5 5 8 1  3 3 2  3 3 6 2 3  4 4 8 8 2 1 1  1 1 2  3 2  3 3  3 2 2  4 3 15  1  3  4  3 1  3  6 5  3  3 2 1  3
+3 3 2  5  5 1  3  3 4 3 2  5 4 11 4 1  3  5  3  4  5 7  4 3 1
+==================================================
+############## TEACHER MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+        Write the number of iterations we want to use to calculate this function.
+
+
+       Output:
+
+            The output line of a function is written to stdout.
+    """
+    out = '\n'.join(['\n', '\n', '[:d]+', '(0,'.
+        join('\n')), ''.join(['\n', '\n', '[:d]+') + ['d']
+        )
+    return out[:]
+
+
+### End of code
+==================================================
+############## STUDENT SFT MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+              
+            
+
+    :Args: list of ints
+    :Input: list of ints
+        # The first int in the list
+
+                                                                                                 # # # # #  # #
+==================================================
+############## STUDENT KD MODEL ##############
+Prompt: 
+    Write a for loop that prints the numbers from 1 to 10.
+    
+Response: Write a for loop that prints the numbers from 1 to 10.
+     :class:`~pycensus.stats.statistics.stats`
+      :class:`~pycensus.stats.statistics.stats_interval`.
+
+       """
+    assert 'interval' in _.__name__
+    assert 'percentile_points' in _.__name__
+    assert 'percentile_minutes' in _.__name__
+    assert 'percentile_seconds' in _.__name__
+    df = Statistics.stats_interval('interval', 'minutes')
+    p = p.std()
+    df.std() = p
+    p.std()[0].sum()
+
+
+### End of code
+==================================================
